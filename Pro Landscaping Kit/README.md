@@ -34,7 +34,7 @@
 
 ## Recipes
 
-Recipe | Ingredients | Product
---- | --- | ---
-1x Bag of Fertilizer | 1x Purified Water, 20x Compost
-1x Bag of Fertilizer | 4x Dirty Water, 20x Compost
+Ingredients | Recipe
+--- | ---
+1x Purified Water, 20x Compost | 1x Bag of Fertilizer
+4x Dirty Water, 20x Compost | 1x Bag of Fertilizer
