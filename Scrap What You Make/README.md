@@ -4,18 +4,6 @@
 * Adds 327 scrap recipes for things like workbenches and television sets
 * You'll probably notice the output of workbenches and television sets first
 
-## Example: Television Set
-
-Most television sets now give you:
-
-* 2 Aluminum
-* 3 Circuitry
-* 2 Glass
-* 2 Steel
-* 2 Wood
-
-Previously, you'd receive only Steel. So annoying!
-
 ## Example: Power Armor Station
 
 Power Armor Stations now give you:
@@ -27,3 +15,15 @@ Power Armor Stations now give you:
 * 4 Plastic
 * 4 Screws
 * 4 Oil
+
+## Example: Television Set
+
+Most television sets now give you:
+
+* 2 Aluminum
+* 3 Circuitry
+* 2 Glass
+* 2 Steel
+* 2 Wood
+
+Previously, you'd receive only Steel. So annoying!
