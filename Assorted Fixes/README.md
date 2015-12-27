@@ -10,7 +10,6 @@
 COBJ | Issue
 --- | ---
 mod_Null_Melee_ScrapRecipe_Lead | Created Lead scrap recipe for melee weapon mods (part of the Lead Pipe scrap fix)
-workshop_co_CeilingLamp01 | Added to Power/Lights workbench menu
 workshop_co_PlayerHouse_Ruin_Stove | Added to Furniture/Miscellaneous workbench menu
 workshop_co_ScrapBathroomSink | Changed CMPO component forms to MISC counterparts
 workshop_co_ScrapBathroomToilet | Changed CMPO component forms to MISC counterparts
