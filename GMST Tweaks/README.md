@@ -1,4 +1,4 @@
-# Expanded Buildable Area
+# GMST Tweaks
 
 fireundubh's personal game setting tweak collection
 
