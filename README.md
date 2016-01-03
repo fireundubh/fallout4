@@ -12,6 +12,7 @@ A collection of experimental pre-CK plugins for Fallout 4 by fireundubh
 * **Faster Terminals:** Increases the terminal display rate to instantaneous
 * **GMST Tweaks:** fireundubh's personal collection of game setting tweaks, including Stealth Skills Rebalanced from Skyrim
 * **Interactive Clutter:** Allows objects like Tires to be picked up. 14,049 references replaced!
+* **Leveled List and Container Fixes:** Removes duplicates from leveled lists and containers
 * **Locksmith Loot Fix:** Allows all locked vanilla containers to offer extra loot for skilled locksmiths
 * **More Legendary Items:** Allows more items to receive and spawn with a Legendary mod
 * **No Picket Fences - Sanctuary Hills:** Removes all picket fences from Sanctuary Hills
