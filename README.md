@@ -22,6 +22,7 @@ A collection of experimental pre-CK plugins for Fallout 4 by fireundubh
 * **Settlers Without Borders:** Removes the cosmetic buildable area borders around settlements
 * **Terminal Bypass:** Reduces the number of word possibilities to a single word
 * **Unleveled Power Armor:** Allows all power armor models to spawn at any level
+* **Unlimited Bounties:** Allows you to run multiple bounties simultaneously, and resets the bounty board periodically
 
 ## Notes
 
