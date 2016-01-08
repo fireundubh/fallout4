@@ -5,6 +5,10 @@
 * Simple Bug Fixes has integrated some fixes from Assorted Fixes.
 * Mo Betta Scrap has integrated some fixes from Assorted Fixes.
 
+## Perks
+
+* Demolition Expert IV no longer resets the increased explosion radius
+
 ## Constructible Objects
 
 COBJ | Issue
@@ -47,8 +51,8 @@ workshopScrapRecipe_TreeStump | Added Maple Branches (net effect: produces less 
 
 LVLI | Issue
 --- | ---
-LLE_Perk_Scrounger100 | Added .44, 10mm, Fusion Cell, and Shotgun Shell ammo types (incompatible with Simple Bug Fixes)
-LLE_Perk_ScroungerSmall | Added .44, 10mm, Fusion Cell, and Shotgun Shell ammo types (incompatible with Simple Bug Fixes)
+LLE_Perk_Scrounger100 | Added .44, 10mm, Fusion Cell, and Shotgun Shell ammo types
+LLE_Perk_ScroungerSmall | Added .44, 10mm, Fusion Cell, and Shotgun Shell ammo types
 LLI_Vendor_PowerArmor_Mods_Unique | Removed errant REFR object
 
 Also created unused leveled lists for all other ammo types.
