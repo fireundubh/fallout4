@@ -42,6 +42,7 @@ File | Description
 `Auto Loot - Consumables.esp` | Automatically loots nearby food, drink, and drugs
 `Auto Loot - Flora.esp` | Automatically loots nearby flora, excluding Irradiated Thistle, which is a trap
 `Auto Loot - Junk.esp` | Automatically loots nearby junk items, excluding some items
+`Auto Loot - Valuables.esp` | Automatically loots nearby valuables
 
 ### Loose Files
 
@@ -53,3 +54,33 @@ File | Description
 `scripts\dubhAutoLootQuest.pex` | Auto loot quest script compiled with Caprica
 `scripts\source\dubhAutoLootEffect.psc` | Auto loot effect script source
 `scripts\source\dubhAutoLootQuest.psc` | Auto loot quest script source
+
+## Auto Loot - Valuables
+
+### Table of Items
+
+Object | Editor ID | Form ID
+--- | --- | ---
+`Bottlecap` | `Caps001` | `[MISC:0000000F]`
+`Caps Stash` | `loot_capsStash_tin` | `[ACTI:0003000C]`
+`Caps` | `BottleCapMinePlacedCaps` | `[ACTI:002472ED]`
+`Caps` | `MoneyShotPlacedCaps` | `[ACTI:0020ABE3]`
+`Duct Tape` | `DuctTape01` | `[MISC:0004D1F2]`
+`Economy Wonderglue` | `WonderglueLarge` | `[MISC:0006C5AE]`
+`Enhanced Targeting Card` | `ChipBoard_Chip` | `[MISC:000E7E71]`
+`Fancy Hairbrush` | `Hairbrush_02_Silver` | `[MISC:00060ECD]`
+`Gold Plated Flip Lighter` | `LighterGoldPlated` | `[MISC:00060E88]`
+`Gold Watch` | `WatchGold` | `[MISC:00060E7C]`
+`Microscope` | `Microscope` | `[MISC:00059AEB]`
+`Military Grade Duct Tape` | `DuctTapeMilitary` | `[MISC:00060E78]`
+`Pack of Duct Tape` | `DuctTape01_Rare` | `[MISC:001C7F1F]`
+`Sealed Wonderglue` | `Wonderglue_PreWar` | `[MISC:000E3784]`
+`Silver Bowl` | `Bowl_05_Silver` | `[MISC:00060EDB]`
+`Silver Fork` | `Fork_03_Silver` | `[MISC:00060E8B]`
+`Silver Locket` | `SilverLocket` | `[MISC:00059B34]`
+`Silver Plate` | `Plate_03_Silver` | `[MISC:00060E91]`
+`Silver Pocket Watch` | `WatchSilver` | `[MISC:00060E7D]`
+`Silver Table Knife` | `Knife_03_Silver` | `[MISC:00060E8D]`
+`Silver Table Spoon` | `Spoon_03_Silver` | `[MISC:00060E95]`
+`Vegetable Starch` | `VegetableStarch` | `[MISC:000657FE]`
+`Wonderglue` | `Wonderglue` | `[MISC:00059B25]`
