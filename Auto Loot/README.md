@@ -41,7 +41,7 @@ File | Description
 `Auto Loot - Ammo.esp` | Automatically loots nearby ammo
 `Auto Loot - Consumables.esp` | Automatically loots nearby food, drink, and drugs
 `Auto Loot - Flora.esp` | Automatically loots nearby flora, excluding Irradiated Thistle, which is a trap
-`Auto Loot - Junk.esp` | Automatically loots nearby junk items, excluding
+`Auto Loot - Junk.esp` | Automatically loots nearby junk items, excluding some items
 
 ### Loose Files
 
