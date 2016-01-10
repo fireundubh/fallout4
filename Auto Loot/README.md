@@ -1,7 +1,6 @@
 # Auto Loot
 
 * Automatically loots nearby items within a given radius extending outward from the player
-*
 * Does not loot bodies or containers
 * Does not loot everything
 
