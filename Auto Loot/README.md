@@ -55,9 +55,9 @@ File | Description
 `scripts\source\dubhAutoLootEffect.psc` | Auto loot effect script source
 `scripts\source\dubhAutoLootQuest.psc` | Auto loot quest script source
 
-## Auto Loot - Valuables
+## Table: Auto Loot - Valuables
 
-### Table of Items
+These are the items covered by the Auto Loot - Valuables plugin.
 
 Object | Editor ID | Form ID
 --- | --- | ---
