@@ -18,7 +18,7 @@ Auto Loot Radius can be changed by altering the respective Global Variable in ea
 1. Using the in-game console, type: `help "auto loot" 4`
 2. Find the Form ID of the auto loot quest you want to stop.
 3. Using the in-game console, type: `stopquest #` where `#` is the Form ID of the auto loot quest you want to stop.
-4. When you stop an auto loot quest, the respective perk will be removed from the player, and the auto loot effect will cease.
+4. When you stop an auto loot quest, the associated perk is removed from the player and the auto loot effect ends.
 5. If uninstalling, save and quit, and then remove the appropraite plugin from your load order.
 
 ## Files
