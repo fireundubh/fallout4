@@ -52,6 +52,11 @@ File | Description
 --- | ---
 `scripts\dubhAutoLootEffect.pex` | Auto loot effect script compiled with Caprica
 `scripts\dubhAutoLootQuest.pex` | Auto loot quest script compiled with Caprica
+
+These are the source scripts, and are only needed if you want to modify and compile them yourself.
+
+File | Description
+--- | ---
 `scripts\source\dubhAutoLootEffect.psc` | Auto loot effect script source
 `scripts\source\dubhAutoLootQuest.psc` | Auto loot quest script source
 
