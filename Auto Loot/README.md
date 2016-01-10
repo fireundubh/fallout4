@@ -1,6 +1,7 @@
 # Auto Loot
 
 * Automatically loots nearby items within a given radius extending outward from the player
+*
 * Does not loot bodies or containers
 * Does not loot everything
 
@@ -12,6 +13,10 @@ Auto Loot Radius can be changed by altering the respective Global Variable in ea
 * Rule: A smaller auto loot radius uses less resources than a larger auto loot radius
 * Rule: A smaller auto loot radius is processed faster than a larger auto loot radius
 * Rule: 128 units is the height of a normal humanoid actor
+
+## Warning
+
+If you've decorated your settlements with loose ammo, food, drink, drugs, flora, or junk, and installed an auto loot plugin that loots those items, you should not be surprised when you find all of those items in your inventory.
 
 ## Uninstallation and Deactivation
 
