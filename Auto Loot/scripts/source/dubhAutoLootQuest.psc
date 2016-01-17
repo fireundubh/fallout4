@@ -1,17 +1,15 @@
 ScriptName dubhAutoLootQuest Extends Quest
 
-Perk Property dubhAutoLootPerk Auto
+Form Property dubhAutoLootBook Auto
 
 Function Log(String msgTrace)
 	Debug.Trace("Auto Loot: dubhAutoLootQuest> " + msgTrace, 0)
 EndFunction
 
 Event OnQuestInit()
-	Log("Adding perk...")
-	Game.GetPlayer().AddPerk(dubhAutoLootPerk, False)
+	Game.GetPlayer().AddItem(dubhAutoLootBook, 1, False)
 EndEvent
 
 Event OnQuestShutdown()
-	Log("Removing perk...")
-	Game.GetPlayer().RemovePerk(dubhAutoLootPerk)
+	Game.GetPlayer().RemoveItem(dubhAutoLootBook, 1, False, None)
 EndEvent

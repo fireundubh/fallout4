@@ -6,7 +6,7 @@ A collection of experimental pre-CK plugins for Fallout 4 by fireundubh
 
 * **Armored Vertibirds:** Increases vertibird health to alleviate the consequences of pilot error
 * **Assorted Fixes:** Fixes a number of vanilla issues while strictly keeping to Bethesda's vision
-* **Auto Loot:** Automatically loots nearby ammo, food, drink, drugs, flora, and junk
+* **Auto Loot:** Automatically loots nearby ammo, bodies, containers, drink, flora, food, junk, meds, and valuables
 * **Better Vanilla Perks - Aquaboy and Aquagirl:** Moved water radiation immunity from Rank I to a new Rank III
 * **Better Vanilla Perks - Night Person:** A new Rank III allows you to see nearby hostiles while sneaking, even through walls
 * **Expanded Buildable Area:** Increases the buildable area around all settlements from the center of each settlement

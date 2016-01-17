@@ -1,8 +1,8 @@
 ScriptName dubhAutoLootEffect Extends ActiveMagicEffect
 
-Formlist Property dubhAutoLootList Auto
+Perk Property dubhAutoLootPerk Auto
 
-Formlist Property dubhAutoLootSkip Auto
+Formlist Property dubhAutoLootFilter Auto
 
 GlobalVariable Property dubhAutoLootRadius Auto
 
@@ -14,91 +14,52 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 
 	Actor Player = Game.GetPlayer()
 
-	Float fFirstLootTime = -1.0
-
 	; main loop
-	While True
-
-		; get the cell reset time as a float - this is in main loop so changing the setting in game will affect loop
-		Float fCellResetTime = Game.GetGameSettingInt("iHoursToRespawnCell") as Float
-
-		; create an array of loot references in the defined global radius with the player at the center
-		ObjectReference[] LootArray = Player.FindAllReferencesOfType(dubhAutoLootList, dubhAutoLootRadius.GetValue())
+	While Player.HasPerk(dubhAutoLootPerk)
 
 		; restore loot list to defaults - this was needed in skyrim to prevent a null error
-		dubhAutoLootList.Revert()
+		dubhAutoLootFilter.Revert()
 
-		; check if the loot array has items
-		If LootArray.Length > 0
+		; create an array of loot references in the defined global radius with the player at the center
+		ObjectReference[] LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 
-			Int i = 0
+		; check of array is null
+		If LootArray != None
 
-			; loot array loop
-			While i < LootArray.Length
+			; check if the loot array has items
+			If LootArray.Length > 0
 
-				; check if array item is not null
-				If LootArray[i] != None
+				; loot array loop
+				Int i = 0
+				While i < LootArray.Length - 1
+					ObjectReference objLoot = LootArray[i]
 
-					; check if we can clear the skip list
-					If fFirstLootTime > -1.0
-						If Utility.GetCurrentGameTime() >= (fCellResetTime+fFirstLootTime)
-							dubhAutoLootSkip.Revert()
-							fFirstLootTime = -1.0
-						EndIf
-					EndIf
+					; check if array item is null
+					If objLoot != None
 
-					; filter the loot array using the skip list
-					If dubhAutoLootSkip.GetSize() > 0
-						If dubhAutoLootSkip.HasForm(LootArray[i] as Form)
-							LootArray[i] = None
-						EndIf
-					EndIf
-
-					; continue in loop if we need to skip
-					If LootArray[i] != None
-						ObjectReference objLoot = LootArray[i] as ObjectReference
-
-						; check if object is not disabled and not destroyed
-						If !objLoot.IsDisabled() && !objLoot.IsDestroyed()
+						; check if object is loaded, not disabled, and not in the player's inventory
+						If objLoot.Is3DLoaded() && !objLoot.IsDisabled() && (Player.GetDistance(objLoot) > 1.0)
 
 							; check if object is unowned
-							If Player.IsOwner(objLoot) || ((objLoot.GetFactionOwner() == None) && (objLoot.GetActorOwner() == None) && (objLoot.GetActorRefOwner() == None))
+							If !Player.WouldBeStealing(objLoot)
 
-								; check if object is not inheriting cell ownership
-								Cell pCell = objLoot.GetParentCell()
-								If (pCell.GetFactionOwner() == None) && (pCell.GetActorOwner() == None)
+								; max distance check
+								If Player.GetDistance(objLoot) <= dubhAutoLootRadius.GetValue()
 
 									; activate object
-									If objLoot.Activate(Player as ObjectReference, True)
-										;Log("Activated: " + objLoot)
+									objLoot.Activate(Player as ObjectReference, True)
 
-										; add form to filter
-										dubhAutoLootSkip.AddForm(objLoot)
-
-										; track the time of the first auto looted object
-										; important: the skip list will be reset when the first object on the list was last looted before fCellResetTime
-										If fFirstLootTime < 0
-											fFirstLootTime = Utility.GetCurrentGameTime()
-										EndIf
-
-									EndIf ; endif for activate object
-
-								EndIf ; endif for cell ownership check
-
-							EndIf ; endif for object ownership check
-
-						EndIf ; endif for disabled/destroyed check
-
-					EndIf ; endif for arbitrary null check
-
-				EndIf ; endif for base null check
-
-				i += 1
-
-			EndWhile ; endwhile for loot array loop
-
-		EndIf ; endif for loot array length check
-
+								EndIf
+							EndIf
+						EndIf
+					EndIf
+					i += 1
+				EndWhile
+			EndIf
+		EndIf
 	EndWhile ; endwhile for main loop
 
+EndFunction
+
+Function OnEffectFinish(Actor akTarget, Actor akCaster)
 EndFunction
