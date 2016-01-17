@@ -38,7 +38,7 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 					If objLoot != None
 						If objLoot.Is3DLoaded() && !objLoot.IsDisabled()
 							If objLoot != None
-								If (Player.GetDistance(objLoot) > 1.0)
+								If objLoot.GetContainer() == None
 									If objLoot != None
 										If !Player.WouldBeStealing(objLoot)
 											If objLoot != None
@@ -50,7 +50,7 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 											EndIf ; None
 										EndIf ; WouldBeStealing
 									EndIf ; None
-								EndIf ; GetDistance
+								EndIf ; GetContainer
 							EndIf ; None
 						EndIf ; Is3DLoaded, IsDisabled
 					EndIf ; None
