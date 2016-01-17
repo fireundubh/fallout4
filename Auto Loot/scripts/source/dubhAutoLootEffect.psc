@@ -30,33 +30,34 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 			If LootArray.Length > 0
 
 				; loot array loop
+				; note: the reason for multiple redundant none checks is because things can happen
+				; between the if statements in real time that remove the objects from the cell
 				Int i = 0
 				While i < LootArray.Length - 1
 					ObjectReference objLoot = LootArray[i]
-
-					; check if array item is null
 					If objLoot != None
-
-						; check if object is loaded, not disabled, and not in the player's inventory
-						If objLoot.Is3DLoaded() && !objLoot.IsDisabled() && (Player.GetDistance(objLoot) > 1.0)
-
-							; check if object is unowned
-							If !Player.WouldBeStealing(objLoot)
-
-								; max distance check
-								If Player.GetDistance(objLoot) <= dubhAutoLootRadius.GetValue()
-
-									; activate object
-									objLoot.Activate(Player as ObjectReference, True)
-
-								EndIf
-							EndIf
-						EndIf
-					EndIf
+						If objLoot.Is3DLoaded() && !objLoot.IsDisabled()
+							If objLoot != None
+								If (Player.GetDistance(objLoot) > 1.0)
+									If objLoot != None
+										If !Player.WouldBeStealing(objLoot)
+											If objLoot != None
+												If Player.GetDistance(objLoot) <= dubhAutoLootRadius.GetValue()
+													If objLoot != None
+														objLoot.Activate(Player as ObjectReference, True)
+													EndIf ; None
+												EndIf ; GetDistance
+											EndIf ; None
+										EndIf ; WouldBeStealing
+									EndIf ; None
+								EndIf ; GetDistance
+							EndIf ; None
+						EndIf ; Is3DLoaded, IsDisabled
+					EndIf ; None
 					i += 1
-				EndWhile
-			EndIf
-		EndIf
+				EndWhile ; loot array loop
+			EndIf ; loot array length
+		EndIf ; loot array none
 	EndWhile ; endwhile for main loop
 
 EndFunction
