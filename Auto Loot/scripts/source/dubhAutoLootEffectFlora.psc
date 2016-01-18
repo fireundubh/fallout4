@@ -21,74 +21,79 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 	; main loop
 	While Player.HasPerk(dubhAutoLootPerk)
 
-		; get the cell reset time as a float - this is in main loop so changing the setting in game will affect loop
-		Float fCellResetTime = Game.GetGameSettingInt("iHoursToRespawnCell") as Float
+		If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
 
-		; restore loot list to defaults - this was needed in skyrim to prevent a null error
-		dubhAutoLootFilter.Revert()
+			; get the cell reset time as a float - this is in main loop so changing the setting in game will affect loop
+			Float fCellResetTime = Game.GetGameSettingInt("iHoursToRespawnCell") as Float
 
-		; create an array of loot references in the defined global radius with the player at the center
-		ObjectReference[] LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
+			; restore loot list to defaults - this was needed in skyrim to prevent a null error
+			dubhAutoLootFilter.Revert()
 
-		If LootArray != None
+			; create an array of loot references in the defined global radius with the player at the center
+			ObjectReference[] LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 
-			; check if the loot array has items
-			If LootArray.Length > 0
+			If LootArray != None
 
-				; loot array loop
-				Int i = 0
-				While i < LootArray.Length
+				; check if the loot array has items
+				If LootArray.Length > 0
 
-					; check if array item is not null
-					If LootArray[i] != None
+					; loot array loop
+					Int i = 0
+					While i < LootArray.Length
 
-						; check if we can clear the skip list
-						If fFirstLootTime > -1.0
-							If Utility.GetCurrentGameTime() >= (fCellResetTime+fFirstLootTime)
-								dubhAutoLootSkip.Revert()
-								fFirstLootTime = -1.0
+						; check if array item is not null
+						If LootArray[i] != None
+
+							; check if we can clear the skip list
+							If fFirstLootTime > -1.0
+								If Utility.GetCurrentGameTime() >= (fCellResetTime+fFirstLootTime)
+									dubhAutoLootSkip.Revert()
+									fFirstLootTime = -1.0
+								EndIf
 							EndIf
-						EndIf
 
-						; filter the loot array using the skip list
-						If dubhAutoLootSkip.GetSize() > 0
-							If dubhAutoLootSkip.HasForm(LootArray[i] as Form)
-								LootArray[i] = None
+							; filter the loot array using the skip list
+							If dubhAutoLootSkip.GetSize() > 0
+								If dubhAutoLootSkip.HasForm(LootArray[i] as Form)
+									LootArray[i] = None
+								EndIf
 							EndIf
-						EndIf
 
-						ObjectReference objLoot = LootArray[i]
+							ObjectReference objLoot = LootArray[i]
 
-						; check if object is null
-						If objLoot != None
+							; check if object is null
+							If objLoot != None
 
-							; check if object is not disabled and not destroyed
-							If objLoot.Is3DLoaded() && !objLoot.IsDisabled() && !objLoot.IsDestroyed() && (Player.GetDistance(objLoot) > 1.0)
+								; check if object is not disabled and not destroyed
+								If objLoot.Is3DLoaded() && !objLoot.IsDisabled() && !objLoot.IsDestroyed() && (Player.GetDistance(objLoot) > 1.0)
 
-								; check if object is unowned
-								If !Player.WouldBeStealing(objLoot)
+									; check if object is unowned
+									If !Player.WouldBeStealing(objLoot)
 
-									; max distance check
-									If Player.GetDistance(objLoot) <= dubhAutoLootRadius.GetValue()
+										; max distance check
+										If Player.GetDistance(objLoot) <= dubhAutoLootRadius.GetValue()
 
-										; activate object
-										If objLoot.Activate(Player as ObjectReference, True)
-											; add form to filter
-											dubhAutoLootSkip.AddForm(objLoot)
+											; activate object
+											If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
+												If objLoot.Activate(Player as ObjectReference, True)
+													; add form to filter
+													dubhAutoLootSkip.AddForm(objLoot)
 
-											; track the time of the first auto looted object
-											; important: the skip list will be reset when the first object on the list was last looted before fCellResetTime
-											If fFirstLootTime < 0
-												fFirstLootTime = Utility.GetCurrentGameTime()
+													; track the time of the first auto looted object
+													; important: the skip list will be reset when the first object on the list was last looted before fCellResetTime
+													If fFirstLootTime < 0
+														fFirstLootTime = Utility.GetCurrentGameTime()
+													EndIf
+												EndIf
 											EndIf
 										EndIf
 									EndIf
 								EndIf
 							EndIf
 						EndIf
-					EndIf
-					i += 1
-				EndWhile
+						i += 1
+					EndWhile
+				EndIf
 			EndIf
 		EndIf
 	EndWhile ; endwhile for main loop

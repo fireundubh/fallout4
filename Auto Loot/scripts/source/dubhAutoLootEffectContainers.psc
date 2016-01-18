@@ -63,68 +63,73 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 	; main loop
 	While Player.HasPerk(dubhAutoLootPerks.GetAt(2) as Perk)
 
-		; restore loot list to defaults - this was needed in skyrim to prevent a null error
-		dubhAutoLootFilter.Revert()
+		If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
 
-		; create an array of container references in the defined global radius with the player at the center
-		ObjectReference[] ContainerArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
+			; restore loot list to defaults - this was needed in skyrim to prevent a null error
+			dubhAutoLootFilter.Revert()
 
-		If ContainerArray != None
+			; create an array of container references in the defined global radius with the player at the center
+			ObjectReference[] ContainerArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 
-			; check if the container array has items
-			If ContainerArray.Length > 0
+			If ContainerArray != None
 
-				; container array loop
-				Int i = 0
-				While i < ContainerArray.Length
+				; check if the container array has items
+				If ContainerArray.Length > 0
 
-					; instantiate object variable
-					ObjectReference objContainer = ContainerArray[i]
+					; container array loop
+					Int i = 0
+					While i < ContainerArray.Length
 
-					; check if array item is not null
-					If objContainer != None
+						; instantiate object variable
+						ObjectReference objContainer = ContainerArray[i]
 
-						; check if container is loaded and not disabled
-						If objContainer.Is3DLoaded() && !objContainer.IsDisabled() && (Player.GetDistance(objContainer) > 1.0)
+						; check if array item is not null
+						If objContainer != None
 
-							; check if container has no items - skip if empty
-							If objContainer.GetItemCount(None) > 0
+							; check if container is loaded and not disabled
+							If objContainer.Is3DLoaded() && !objContainer.IsDisabled() && (Player.GetDistance(objContainer) > 1.0)
 
-								; check if container is not locked - skip if locked
-								If !objContainer.IsLocked()
+								; check if container has no items - skip if empty
+								If objContainer.GetItemCount(None) > 0
 
-									; check if object is unowned
-									If !Player.WouldBeStealing(objContainer)
+									; check if container is not locked - skip if locked
+									If !objContainer.IsLocked()
 
-										; max distance check
-										If Player.GetDistance(objContainer) <= dubhAutoLootRadius.GetValue()
+										; check if object is unowned
+										If !Player.WouldBeStealing(objContainer)
 
-											; activate object
-											If dubhAutoLootAll.GetValue() == True
-												objContainer.RemoveAllItems(Player, False)
-											Else
-												If Player.HasPerk(dubhAutoLootPerks.GetAt(0) as Perk)
-													RemoveItems(dubhAutoLootLists.GetAt(0) as Formlist, objContainer, False, Player)
-												EndIf
+											; max distance check
+											If Player.GetDistance(objContainer) <= dubhAutoLootRadius.GetValue()
 
-												If Player.HasPerk(dubhAutoLootPerks.GetAt(3) as Perk)
-													RemoveItems(dubhAutoLootLists.GetAt(3) as Formlist, objContainer, False, Player)
-												EndIf
+												; activate object
+												If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
+													If dubhAutoLootAll.GetValue() == True
+														objContainer.RemoveAllItems(Player, False)
+													Else
+														If Player.HasPerk(dubhAutoLootPerks.GetAt(0) as Perk)
+															RemoveItems(dubhAutoLootLists.GetAt(0) as Formlist, objContainer, False, Player)
+														EndIf
 
-												If Player.HasPerk(dubhAutoLootPerks.GetAt(5) as Perk)
-													RemoveItems(dubhAutoLootLists.GetAt(5) as Formlist, objContainer, False, Player)
-												EndIf
+														If Player.HasPerk(dubhAutoLootPerks.GetAt(3) as Perk)
+															RemoveItems(dubhAutoLootLists.GetAt(3) as Formlist, objContainer, False, Player)
+														EndIf
 
-												If Player.HasPerk(dubhAutoLootPerks.GetAt(6) as Perk)
-													RemoveItems(dubhAutoLootLists.GetAt(6) as Formlist, objContainer, False, Player)
-												EndIf
+														If Player.HasPerk(dubhAutoLootPerks.GetAt(5) as Perk)
+															RemoveItems(dubhAutoLootLists.GetAt(5) as Formlist, objContainer, False, Player)
+														EndIf
 
-												If Player.HasPerk(dubhAutoLootPerks.GetAt(7) as Perk)
-													RemoveItems(dubhAutoLootLists.GetAt(7) as Formlist, objContainer, False, Player)
-												EndIf
+														If Player.HasPerk(dubhAutoLootPerks.GetAt(6) as Perk)
+															RemoveItems(dubhAutoLootLists.GetAt(6) as Formlist, objContainer, False, Player)
+														EndIf
 
-												If Player.HasPerk(dubhAutoLootPerks.GetAt(8) as Perk)
-													RemoveItems(dubhAutoLootLists.GetAt(8) as Formlist, objContainer, False, Player)
+														If Player.HasPerk(dubhAutoLootPerks.GetAt(7) as Perk)
+															RemoveItems(dubhAutoLootLists.GetAt(7) as Formlist, objContainer, False, Player)
+														EndIf
+
+														If Player.HasPerk(dubhAutoLootPerks.GetAt(8) as Perk)
+															RemoveItems(dubhAutoLootLists.GetAt(8) as Formlist, objContainer, False, Player)
+														EndIf
+													EndIf
 												EndIf
 											EndIf
 										EndIf
@@ -132,9 +137,9 @@ Function OnEffectStart(Actor akTarget, Actor akCaster)
 								EndIf
 							EndIf
 						EndIf
-					EndIf
-					i += 1
-				EndWhile ; endwhile for loot array loop
+						i += 1
+					EndWhile ; endwhile for loot array loop
+				EndIf
 			EndIf
 		EndIf
 	EndWhile ; endwhile for main loop

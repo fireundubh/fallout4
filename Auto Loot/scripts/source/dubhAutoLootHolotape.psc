@@ -33,7 +33,12 @@ Function TogglePerk(Perk akPerk, Actor akActor, Bool abNotify)
 	EndIf
 EndFunction
 
+; =============================================================================
+; Last Fragment: 20
+; =============================================================================
+
 ; Remove all perks
+; -----------------------------------------------------------------------------
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 	Actor Player = Game.GetPlayer()
 	Int i = 0
@@ -47,6 +52,7 @@ Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 EndFunction
 
 ; Toggle auto loot perks
+; -----------------------------------------------------------------------------
 Function Fragment_Terminal_02(ObjectReference akTerminalRef)
 	TogglePerk(dubhAutoLootPerks.GetAt(0) as Perk, Game.GetPlayer(), False)
 EndFunction
@@ -84,6 +90,11 @@ Function Fragment_Terminal_10(ObjectReference akTerminalRef)
 EndFunction
 
 ; Control auto loot radius
+; -----------------------------------------------------------------------------
+Function Fragment_Terminal_20(ObjectReference akTerminalRef)
+	dubhAutoLootRadius.SetValue(8192.0)
+EndFunction
+
 Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 	dubhAutoLootRadius.SetValue(4096.0)
 EndFunction
@@ -105,11 +116,26 @@ Function Fragment_Terminal_15(ObjectReference akTerminalRef)
 EndFunction
 
 ; Toggle whether all items are removed from bodies and containers
+; -----------------------------------------------------------------------------
 Function Fragment_Terminal_16(ObjectReference akTerminalRef)
 	ToggleBool(dubhAutoLootAll)
 EndFunction
 
 ; Cast loot everything once by chaining together spells
+; -----------------------------------------------------------------------------
 Function Fragment_Terminal_17(ObjectReference akTerminalRef)
 ; TODO: Create SPEL/MGEF pairs and scripts for single casts
 EndFunction
+
+; Change container where auto looted items are stored
+; -----------------------------------------------------------------------------
+Function Fragment_Terminal_18(ObjectReference akTerminalRef)
+; TODO: Where would this ObjectReference be stored? I'd guess a formlist?
+EndFunction
+
+; Suspend auto looting while in a specific settlement
+; -----------------------------------------------------------------------------
+Function Fragment_Terminal_19(ObjectReference akTerminalRef)
+; TODO: Find nearby workshop location and add to formlist
+EndFunction
+
