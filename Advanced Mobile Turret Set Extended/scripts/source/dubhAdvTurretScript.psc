@@ -21,26 +21,40 @@ Function OnActivate(ObjectReference akActionRef)
 	If Player.HasPerk(dubhAdvTurretPerk)
 		If akActionRef == Player
 			Int button = dubhAdvTurretMessage.Show(0, 0, 0, 0, 0, 0, 0, 0, 0)
+			; Dismantle
 			If button == 0
-				If Self.Is3DLoaded() && !Self.IsDisabled()
-					Self.Disable(False)
-					RewardScrap(dubhAdvTurretScrap, Player)
-				EndIf
-			ElseIf button == 1
 				If Self.Is3DLoaded() && !Self.IsDisabled()
 					Self.Disable(False)
 					Player.AddItem(dubhAdvTurretItem, 1, False)
 				EndIf
-			ElseIf button == 2
+			; Rig
+			ElseIf button == 1
 				If Self.Is3DLoaded() && !Self.IsDisabled()
-					Utility.Wait(5.0) ; wait 5 seconds
+					Utility.Wait(3.0) ; wait 3 seconds
 					If !Self.IsDead()
-						Self.KillEssential(None)
-						Self.RemoveAllItems(None, False)
-						Self.Disable(True)
+						Self.SetEssential(False)
+						Self.DamageObject(9999)
 					EndIf
 				EndIf
+			; Scrap
+			ElseIf button == 2
+				If Self.Is3DLoaded() && !Self.IsDisabled()
+					Self.Disable(False)
+					RewardScrap(dubhAdvTurretScrap, Player)
+				EndIf
+			Else
+				; do nothing
 			EndIf
 		EndIf
 	EndIf
+EndFunction
+
+Function OnDeath(Actor akKiller)
+	Self.RemoveAllItems(None, False) ; make sure player can't loot turret
+	Self.Disable(True) ; disable because actor continues to play a sound
+EndFunction
+
+Function OnKill(Actor akVictim)
+	Int iXPRewardKillOpponent = Game.GetGameSettingInt("iXPRewardKillOpponent")
+	Game.RewardPlayerXP(iXPRewardKillOpponent, False)
 EndFunction
