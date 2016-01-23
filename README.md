@@ -4,6 +4,7 @@ A collection of experimental pre-CK plugins for Fallout 4 by fireundubh
 
 ## Mods
 
+* **Advanced Mobile Turret Set Extended:** An extension for Advanced Mobile Turret Set by ccmads
 * **Armored Vertibirds:** Increases vertibird health to alleviate the consequences of pilot error
 * **Assorted Fixes:** Fixes a number of vanilla issues while strictly keeping to Bethesda's vision
 * **Auto Loot:** Automatically loots nearby ammo, bodies, containers, drink, flora, food, junk, meds, and valuables
