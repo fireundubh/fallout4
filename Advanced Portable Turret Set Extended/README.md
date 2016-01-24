@@ -4,8 +4,8 @@ This mod is an extension for [Advanced Portable Turret Set by ccmads](http://www
 
 ## Requirements
 
-* `AdvMobileTurretSet.esp`
-* `AdvMobileTurretSet Extended.esp`
+* `AdvPortableTurretSet.esp`
+* `AdvPortableTurretSetExt.esp`
 * `scripts\dubhAdvTurretScript.pex`
 
 ## Scrap/Dismantle/Rig Menu
