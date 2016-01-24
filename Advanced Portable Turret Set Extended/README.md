@@ -39,6 +39,7 @@ Portable Minigun Turret | Gun Nut I |
 Portable Missile Turret | Gun Nut IV | Science I
 Portable Plasma Turret | Science III |
 Portable Railway Spike Turret | |
+Portable Shotgun Turret | |
 
 ## Changes
 
@@ -46,10 +47,12 @@ Portable Railway Spike Turret | |
 
 * New Feature: Added Scrap/Dismantle/Rig menu
 * New Feature: Added a Machine Gun Turret (a.k.a. Assault Rifle Turret) with proper barrel model
+* New Feature: Added a Shotgun Turret with proper barrel model
 * New Feature: Turrets now explode destructively when destroyed (low damage, medium radius)
 
 ### User Interface
 
+* UI: Turret "grenades" now display in inventory as mod boxes
 * UI: Renamed Mobile Turrets to Portable Turrets
 * UI: Renamed Railway Turret to Railway Spike Turret
 * UI: Added Cancel button to menu
@@ -92,6 +95,7 @@ Portable Railway Spike Turret | |
 * Fixes: Railway Spike Turret now staggers targets
 * Fixes: Turrets are no longer lootable when destroyed
 * Fixes: Turrets now weigh what they actually weigh in your inventory
+* Fixes: Turrets can now be dropped from your inventory and will appear as mod boxes
 
 ### Other
 
