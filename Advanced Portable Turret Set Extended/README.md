@@ -40,6 +40,7 @@ Portable Missile Turret | Gun Nut IV | Science I
 Portable Plasma Turret | Science III |
 Portable Railway Spike Turret | |
 Portable Shotgun Turret | |
+Portable Spotlight Turret | |
 
 ## Changes
 
@@ -48,11 +49,13 @@ Portable Shotgun Turret | |
 * New Feature: Added Scrap/Dismantle/Rig menu
 * New Feature: Added a Machine Gun Turret (a.k.a. Assault Rifle Turret) with proper barrel model
 * New Feature: Added a Shotgun Turret with proper barrel model
+* New Feature: Added a Spotlight Turret with proper model
 * New Feature: Turrets now explode destructively when destroyed (low damage, medium radius)
 
 ### User Interface
 
 * UI: Turret "grenades" now display in inventory as mod boxes
+* UI: Ballistic and energy turret recipes now use different icons
 * UI: Renamed Mobile Turrets to Portable Turrets
 * UI: Renamed Railway Turret to Railway Spike Turret
 * UI: Added Cancel button to menu
