@@ -51,10 +51,12 @@ EndFunction
 
 Function OnDeath(Actor akKiller)
 	Self.RemoveAllItems(None, False) ; make sure player can't loot turret
+	Self.BlockActivation(True, False)
 	Self.Disable(True) ; disable because actor continues to play a sound
 EndFunction
 
 Function OnKill(Actor akVictim)
 	Int iXPRewardKillOpponent = Game.GetGameSettingInt("iXPRewardKillOpponent")
 	Game.RewardPlayerXP(iXPRewardKillOpponent, False)
+	Self.DamageObject(10) ; max: 3 kills per turret
 EndFunction
