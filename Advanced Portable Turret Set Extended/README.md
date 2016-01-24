@@ -39,7 +39,7 @@ Portable Minigun Turret | Gun Nut I |
 Portable Missile Turret | Gun Nut IV | Science I
 Portable Plasma Turret | Science III |
 Portable Railway Spike Turret | |
-Portable Shotgun Turret | |
+Portable Shotgun Turret | Gun Nut II |
 Portable Spotlight Turret | |
 
 ## Changes
