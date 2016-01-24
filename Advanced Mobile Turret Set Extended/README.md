@@ -23,7 +23,7 @@ Rig | Force a placed turret to self-destruct in 5 seconds | Robotics Expert III
 ### New Features
 
 * New Feature: Added Scrap/Dismantle/Rig menu
-* New Feature: Added a Machine Gun Turret (a.k.a. Assault Rifle Turret)
+* New Feature: Added a Machine Gun Turret (a.k.a. Assault Rifle Turret) with proper barrel model
 * New Feature: Turrets now explode destructively when destroyed (low damage, medium radius)
 
 ### User Interface
@@ -75,5 +75,5 @@ Rig | Force a placed turret to self-destruct in 5 seconds | Robotics Expert III
 * Other: Portable turrets no longer count toward your settlement defense rating
 * Other: Portable turrets can no longer be hacked with a terminal
 * Other: Portable turrets can no longer be powered at a settlement
-
+* Other: Renamed all Editor IDs for clarity (only relevant to modders)
 
