@@ -68,6 +68,7 @@ Rig | Force a placed turret to self-destruct in 5 seconds | Robotics Expert III
 * Fixes: Minigun Turret now fires the proper minigun projectile
 * Fixes: Railway Spike Turret now staggers targets
 * Fixes: Turrets are no longer lootable when destroyed
+* Fixes: Turrets now weigh what they actually weigh in your inventory
 
 ### Other
 
