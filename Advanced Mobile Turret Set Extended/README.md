@@ -2,7 +2,13 @@
 
 An extension for Advanced Mobile Turret Set by ccmads
 
-## Features
+## Requirements
+
+* `AdvMobileTurretSet.esp`
+* `AdvMobileTurretSet Extended.esp`
+* `scripts\dubhAdvTurretScript.pex`
+
+## Scrap/Dismantle/Rig Menu
 
 Activating a placed turret brings up a menu with three options:
 
@@ -12,11 +18,26 @@ Scrap | Scrap a placed turret anywhere | Robotics Expert I
 Dismantle | Return a placed turret to your inventory | Robotics Expert II
 Rig | Force a placed turret to self-destruct in 5 seconds | Robotics Expert III
 
-## Requirements
+## Recipe Perk Requirements
 
-* `AdvMobileTurretSet.esp`
-* `AdvMobileTurretSet Extended.esp`
-* `scripts\dubhAdvTurretScript.pex`
+Recipe | Perk 1 | Perk 2
+--- | --- | ---
+Portable Blaster Turret | Science IV |
+Portable Broadsider Turret | |
+Portable Cryolator Turret | Science IV |
+Portable Fatman Turret | Gun Nut IV | Science I
+Portable Flamer Turret | |
+Portable Gamma Turret | Science IV |
+Portable Gamma Turret, Lorenzo's Artifact | Science IV |
+Portable Gamma Turret, Zeta Wave | Science IV |
+Portable Gauss Turret | Science IV |
+Portable Laser Turret | Science I |
+Portable Laser Turret, Institute | Science III |
+Portable Laser Turret, Liberty Prime | Science IV |
+Portable Minigun Turret | Gun Nut I |
+Portable Missile Turret | Gun Nut IV | Science I
+Portable Plasma Turret | Science III |
+Portable Railway Spike Turret | |
 
 ## Changes
 
@@ -29,6 +50,7 @@ Rig | Force a placed turret to self-destruct in 5 seconds | Robotics Expert III
 ### User Interface
 
 * UI: Renamed Mobile Turrets to Portable Turrets
+* UI: Renamed Railway Turret to Railway Spike Turret
 * UI: Added Cancel button to menu
 * UI: Reordered menu: 1. Dismantle, 2. Rig, 3. Scrap, 4. Cancel
 
