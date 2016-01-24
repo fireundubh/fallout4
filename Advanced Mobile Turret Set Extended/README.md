@@ -1,6 +1,6 @@
-# Advanced Mobile Turret Set Extended
+# Advanced Portable Turret Set Extended
 
-An extension for Advanced Mobile Turret Set by ccmads
+This mod is an extension for [Advanced Portable Turret Set by ccmads](http://www.nexusmods.com/fallout4/mods/8838).
 
 ## Requirements
 
