@@ -34,6 +34,7 @@ Portable Gauss Turret | Science IV |
 Portable Laser Turret | Science I |
 Portable Laser Turret, Institute | Science III |
 Portable Laser Turret, Liberty Prime | Science IV |
+Portable Machine Gun Turret | |
 Portable Minigun Turret | Gun Nut I |
 Portable Missile Turret | Gun Nut IV | Science I
 Portable Plasma Turret | Science III |
