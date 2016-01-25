@@ -50,7 +50,7 @@ Portable Spotlight Turret | |
 * New Feature: Added Scrap/Dismantle/Rig menu
 * New Feature: Added a Machine Gun Turret (a.k.a. Assault Rifle Turret) with proper barrel model
 * New Feature: Added a Shotgun Turret with proper barrel model
-* New Feature: Added a Sniper Turret with with proper object mods (e.g., .50 Caliber Receiver)
+* New Feature: Added a Sniper Turret with proper object mods (e.g., .50 Caliber Receiver)
 * New Feature: Added a Spotlight Turret with proper model
 * New Feature: Turrets now explode destructively when destroyed (low damage, medium radius)
 
