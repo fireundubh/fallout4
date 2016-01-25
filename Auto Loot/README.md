@@ -31,4 +31,9 @@ If you've decorated your settlements with loose items, excluding armor and weapo
 File | Description
 --- | ---
 `Auto Loot.esp` | A single plugin for all auto loot features
-`Auto Loot.bsa` | Contains six scripts (four auto loot effect scripts, a holotape menu script, and a quest script that runs once to add the holotape to the player's inventory)
+`scripts\dubhAutoLootEffect.pex` | ActiveMagicEffect script for most auto looted objects
+`scripts\dubhAutoLootEffectBodies.pex` | ActiveMagicEffect script for bodies
+`scripts\dubhAutoLootEffectContainers.pex` | ActiveMagicEffect script for containers
+`scripts\dubhAutoLootEffectFlora.pex` | ActiveMagicEffect script for flora
+`scripts\dubhAutoLootHolotape.pex` | Terminal script for holotape menu
+`scripts\dubhAutoLootQuest.pex` | Quest script for adding holotape item to player's inventory
