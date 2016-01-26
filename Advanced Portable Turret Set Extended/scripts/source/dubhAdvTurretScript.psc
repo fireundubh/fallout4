@@ -18,6 +18,7 @@ Perk Property Scrapper01 Auto
 Perk Property Scrapper02 Auto
 
 ActorValue Property Health Auto
+ActorValue Property Intelligence Auto
 
 Function RewardScrap(Formlist akFormlist, Actor akRecipient)
 	Int i = 0
@@ -108,8 +109,12 @@ Function OnDeath(Actor akKiller)
 EndFunction
 
 Function OnKill(Actor akVictim)
-	Int iXPRewardKillOpponent = Game.GetGameSettingInt("iXPRewardKillOpponent")
-	Game.RewardPlayerXP(iXPRewardKillOpponent, False) ; gives player fixed kill xp reward when turret makes kills
+	Float fIntelligence = Game.GetPlayer().GetValue(Intelligence)
+	Float fXPModBase = Game.GetGameSettingFloat("fXPModBase")
+	Float fXPModMult = Game.GetGameSettingFloat("fXPModMult")
+	Float fXPReward = (5 * (fXPModBase + (fIntelligence * fXPModMult))) ; suspicious that 5 varies with encounter level
+
+	Game.RewardPlayerXP(fXPReward as Int, False)
 
 	akVictim.CreateDetectionEvent(Self, 100) ; ensures that any nearby actors know there was a kill here
 
