@@ -15,14 +15,14 @@
 3. Use a mod manager to activate the plugin, or add `Auto Loot.esp` to `%LocalAppData%\Fallout4\plugins.txt`.
 4. There are no compatibility issues, so you don't have to worry about load order.
 
-The following setting must be in `Fallout4.ini` for most mods to work properly:
+Important: The following setting must be in `Fallout4.ini` for most mods to work properly:
 
 ```
 [Archive]
 bInvalidateOlderFiles=1
 ```
 
-You can find your `Fallout4.ini` in the `%UserProfile%\My Documents\My Games\Fallout4` directory.
+You can find `Fallout4.ini` in the `%UserProfile%\My Documents\My Games\Fallout4` directory.
 
 ## Future Features
 
