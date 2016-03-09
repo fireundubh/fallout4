@@ -17,8 +17,10 @@
 
 The following setting must be in `Fallout4.ini` for most mods to work properly:
 
-```[Archive]
-bInvalidateOlderFiles=1```
+```
+[Archive]
+bInvalidateOlderFiles=1
+```
 
 You can find your `Fallout4.ini` in the `%UserProfile%\My Documents\My Games\Fallout4` directory.
 
