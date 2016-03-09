@@ -8,6 +8,13 @@
 * Auto loot radius can be changed while in the game
 * Does not loot armor or weapons outside bodies and containers
 
+## Download/Installation
+
+1. [Download the master archive](https://github.com/fireundubh/fo4-mods/archive/master.zip) which contains all of my mods.
+2. Extract the contents of the `Auto Loot` folder to your game's `Data` directory.
+3. Use a mod manager to activate the plugin, or add `Auto Loot.esp` to the `%LocalAppData%\Fallout4\plugins.txt` file.
+4. There are no compatibility issues, so you don't have to worry about load order.
+
 ## Future Features
 
 * An option to change the container where auto looted items are stored (e.g., settlements)
