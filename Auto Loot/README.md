@@ -29,8 +29,11 @@
 If you need to adjust the rate at which items are auto looted, use the following console commands:
 
 > set dubhAutoLootDelayGeneral to 0.0
+
 > set dubhAutoLootDelayBodies to 0.0
+
 > set dubhAutoLootDelayContainers to 0.0
+
 > set dubhAutoLootDelayFlora to 0.0
 
 Replace `0.0` with your preferred delay duration in seconds.
