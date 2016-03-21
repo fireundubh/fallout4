@@ -39,7 +39,7 @@ Higher values may increase reliability while lower values will increase the auto
 
 ## Recommendations
 
-I highly recommend installing [Faster Terminals](https://github.com/fireundubh/fo4-mods/tree/master/Faster%20Terminals) alongside Auto Loot; otherwise, you'll have to put up with the slow holotape display rate.
+Install [Faster Terminals](https://github.com/fireundubh/fo4-mods/tree/master/Faster%20Terminals), or put up with the slow holotape display rate.
 
 ## Download/Installation
 
