@@ -1,12 +1,45 @@
 # Auto Loot
 
-* Automatically loots nearby items within a given radius extending outward from the player
-* Defaults to off; can be configured by running the Auto Loot Program with the Pip-Boy
-* With Filter Mode activated, auto loots specific item types from bodies and/or containers
-* With Filter Mode deactivated, auto loots everything from bodies and/or containers
-* Which item types are auto looted can be toggled on and off
-* Auto loot radius can be changed while in the game
-* Does not loot armor or weapons outside bodies and containers
+## Features
+
+* Automatically loot Ammo, Bodies, Containers, Drink, Flora, Food, Meds, and Valuables.
+* Automatically deliver loot to any settlement, or add them to your inventory.
+
+### Configurable
+
+* Receive the Auto Loot Program when you pick up the Pip-Boy, or when you first load the mod into an existing save.
+* Run the Auto Loot Program (Misc. Item\Holotape) in your Pip-Boy to configure auto loot.
+* Radius Control: Control the distance at which items, bodies, containers, and flora are auto looted.
+* Modules Setup: Toggle all auto loot modules at will, including Ammo, Drink, Flora, Food, Meds, and Valuables.
+* Container Setup: Choose from the Player and 30 destinations to send your loot.
+* Advanced Setup: Toggle Auto Steal to auto loot, or ignore, owned items.
+
+### Filter Mode
+
+* With Filter Mode activated, auto loot only user-defined items from bodies and containers.
+* With Filter Mode deactivated (default), auto loot all items from bodies and containers.
+
+### Auto Steal
+
+* With Auto Steal activated, auto loot owned items.
+* With Auto Steal deactivated (default), auto loot only unowned items.
+
+## In-game Performance Tweaks
+
+If you need to adjust the rate at which items are auto looted, use the following console commands:
+
+> set dubhAutoLootDelayGeneral to 0.0
+> set dubhAutoLootDelayBodies to 0.0
+> set dubhAutoLootDelayContainers to 0.0
+> set dubhAutoLootDelayFlora to 0.0
+
+Replace `0.0` with your preferred delay duration in seconds.
+
+Higher values may increase reliability while lower values will increase the auto loot rate.
+
+## Recommendations
+
+I highly recommend installing [Faster Terminals](https://github.com/fireundubh/fo4-mods/tree/master/Faster%20Terminals) alongside Auto Loot; otherwise, you'll have to put up with the slow holotape display rate.
 
 ## Download/Installation
 
@@ -26,9 +59,9 @@ You can find `Fallout4.ini` in the `%UserProfile%\My Documents\My Games\Fallout4
 
 ## Future Features
 
-* An option to change the container where auto looted items are stored (e.g., settlements)
-* An option to execute single auto loot "burst," where you'd auto loot everything nearby once
-* An option to suspend auto loot while in user-defined settlements
+* HIGHEST PRIORITY: An option to auto scrap nearby objects while in workshop mode
+* VERY LOW PRIORITY: An option to execute single auto loot "burst," where you'd auto loot everything nearby once
+* VERY LOW PRIORITY: An option to suspend auto loot while in user-defined settlements
 
 ## Warning
 
@@ -47,9 +80,9 @@ If you've decorated your settlements with loose items, excluding armor and weapo
 File | Description
 --- | ---
 `Auto Loot.esp` | A single plugin for all auto loot features
-`scripts\dubhAutoLootEffect.pex` | ActiveMagicEffect script for most auto looted objects
-`scripts\dubhAutoLootEffectBodies.pex` | ActiveMagicEffect script for bodies
-`scripts\dubhAutoLootEffectContainers.pex` | ActiveMagicEffect script for containers
-`scripts\dubhAutoLootEffectFlora.pex` | ActiveMagicEffect script for flora
-`scripts\dubhAutoLootHolotape.pex` | Terminal script for holotape menu
-`scripts\dubhAutoLootQuest.pex` | Quest script for adding holotape item to player's inventory
+`scripts\dubhAutoLootEffectScript.pex` | ActiveMagicEffect script for most auto looted objects
+`scripts\dubhAutoLootEffectBodiesScript.pex` | ActiveMagicEffect script for bodies
+`scripts\dubhAutoLootEffectContainersScript.pex` | ActiveMagicEffect script for containers
+`scripts\dubhAutoLootEffectFloraScript.pex` | ActiveMagicEffect script for flora
+`scripts\dubhAutoLootHolotapeScript.pex` | Terminal script for holotape menu
+`scripts\dubhAutoLootQuestScript.pex` | Quest script for adding holotape item to player's inventory
