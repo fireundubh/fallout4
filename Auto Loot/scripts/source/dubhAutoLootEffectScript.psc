@@ -5,7 +5,6 @@ ScriptName dubhAutoLootEffectScript Extends ActiveMagicEffect
 ; -----------------------------------------------------------------------------
 
 ObjectReference[] LootArray = None
-ObjectReference[] PreviousLootArray = None
 
 ; -----------------------------------------------------------------------------
 ; EVENTS
@@ -47,7 +46,6 @@ EndEvent
 
 Event OnEffectFinish(Actor akTarget, Actor akCaster)
 	LootArray = None
-	PreviousLootArray = None
 EndEvent
 
 ; -----------------------------------------------------------------------------
