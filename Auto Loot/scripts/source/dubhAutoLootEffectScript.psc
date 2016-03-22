@@ -5,6 +5,7 @@ ScriptName dubhAutoLootEffectScript Extends ActiveMagicEffect
 ; -----------------------------------------------------------------------------
 
 ObjectReference[] LootArray = None
+ObjectReference[] PreviousLootArray = None
 
 ; -----------------------------------------------------------------------------
 ; EVENTS
@@ -19,25 +20,24 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 			dubhAutoLootFilter.Revert() ; restore loot list to defaults - this was needed in skyrim to prevent a null error
 			LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, fAutoLootRadius)
 
-			If LootArray != None
-				If LootArray.Length > 0
-					Int i = 0
-					While i < LootArray.Length - 1
-						ObjectReference objLoot = LootArray[i]
-						If (objLoot != None) && (Player.GetDistance(objLoot) > 1.0)
-							If (objLoot != None) && (objLoot.GetContainer() == None) && (objLoot.GetContainer() != Player)
-								If dubhAutoLootStolenFilter.GetValue() == True
-									If (objLoot != None) && !Player.WouldBeStealing(objLoot)
-										LootObject(objLoot, fAutoLootRadius)
-									EndIf
-								Else
-									LootObject(objLoot, fAutoLootRadius)
-								EndIf
+			If (LootArray != None) && (LootArray.Length > 0)
+
+				Int i = 0
+				While (LootArray != None) && (i < LootArray.Length)
+					ObjectReference objLoot = LootArray[i]
+
+					If (objLoot != None) && (objLoot.GetContainer() == None) && (objLoot.GetContainer() != Player)
+						If dubhAutoLootStolenFilter.GetValue() == True
+							If (objLoot != None) && !Player.WouldBeStealing(objLoot)
+								LootObject(objLoot, fAutoLootRadius)
 							EndIf
+						Else
+							LootObject(objLoot, fAutoLootRadius)
 						EndIf
-						i += 1
-					EndWhile
-				EndIf
+					EndIf
+
+					i += 1
+				EndWhile
 			EndIf
 
 			LootArray = None
@@ -47,6 +47,7 @@ EndEvent
 
 Event OnEffectFinish(Actor akTarget, Actor akCaster)
 	LootArray = None
+	PreviousLootArray = None
 EndEvent
 
 ; -----------------------------------------------------------------------------
