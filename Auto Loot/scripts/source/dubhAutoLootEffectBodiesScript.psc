@@ -18,28 +18,30 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 			dubhAutoLootKeywords.Revert() ; restore loot list to defaults - this was needed in skyrim to prevent a null error
 			lsBodyArray = FindAllReferencesByKeywordList(dubhAutoLootKeywords, dubhAutoLootReferences, Player, dubhAutoLootRadius.GetValue())
 
-			If lsBodyArray != None
-				If lsBodyArray.GetSize() > 0
-					Int i = 0
-					While i < lsBodyArray.GetSize()
-						ObjectReference objBody = lsBodyArray.GetAt(i) as ObjectReference
-						If (objBody != None) && (Player.GetDistance(objBody) > 1.0)
-							If (objBody != None) && (objBody as Actor).IsDead()
-								If (objBody != None) && (objBody.GetItemCount(None) > 0)
-									If dubhAutoLootStolenFilter.GetValue() == True
-										If (objBody != None) && !Player.WouldBeStealing(objBody)
-											LootObject(objBody)
-										EndIf
-									Else
+			If (lsBodyArray != None) && (lsBodyArray.GetSize() > 0)
+
+				Int i = 0
+				While (lsBodyArray != None) && (i < lsBodyArray.GetSize())
+					ObjectReference objBody = lsBodyArray.GetAt(i) as ObjectReference
+
+					If (objBody != None) && (Player.GetDistance(objBody) > 1.0)
+						If (objBody != None) && (objBody as Actor).IsDead()
+							If (objBody != None) && (objBody.GetItemCount(None) > 0)
+								If dubhAutoLootStolenFilter.GetValue() == True
+									If (objBody != None) && !Player.WouldBeStealing(objBody)
 										LootObject(objBody)
 									EndIf
+								Else
+									LootObject(objBody)
 								EndIf
 							EndIf
 						EndIf
-						i += 1
-					EndWhile
-				EndIf
+					EndIf
+
+					i += 1
+				EndWhile
 			EndIf
+
 			lsBodyArray = None
 		EndIf
 	EndWhile

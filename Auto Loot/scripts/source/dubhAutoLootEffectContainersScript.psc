@@ -18,27 +18,28 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 			dubhAutoLootFilter.Revert() ; restore loot list to defaults - this was needed in skyrim to prevent a null error
 			ContainerArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 
-			If ContainerArray != None
-				If ContainerArray.Length > 0
-					Int i = 0
-					While i < ContainerArray.Length
-						ObjectReference objContainer = ContainerArray[i]
-						If (objContainer != None) && (Player.GetDistance(objContainer) > 1.0)
-							If (objContainer != None) && (objContainer.GetItemCount(None) > 0)
-								If (objContainer != None) && !objContainer.IsLocked()
-									If dubhAutoLootStolenFilter.GetValue() == True
-										If (objContainer != None) && !Player.WouldBeStealing(objContainer)
-											LootObject(objContainer)
-										EndIf
-									Else
+			If (ContainerArray != None) && (ContainerArray.Length > 0)
+
+				Int i = 0
+				While (ContainerArray != None) && (i < ContainerArray.Length)
+					ObjectReference objContainer = ContainerArray[i]
+
+					If (objContainer != None) && (Player.GetDistance(objContainer) > 1.0)
+						If (objContainer != None) && (objContainer.GetItemCount(None) > 0)
+							If (objContainer != None) && !objContainer.IsLocked()
+								If dubhAutoLootStolenFilter.GetValue() == True
+									If (objContainer != None) && !Player.WouldBeStealing(objContainer)
 										LootObject(objContainer)
 									EndIf
+								Else
+									LootObject(objContainer)
 								EndIf
 							EndIf
 						EndIf
-						i += 1
-					EndWhile
-				EndIf
+					EndIf
+
+					i += 1
+				EndWhile
 			EndIf
 			ContainerArray = None
 		EndIf

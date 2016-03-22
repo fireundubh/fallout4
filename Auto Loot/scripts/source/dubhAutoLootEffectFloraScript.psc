@@ -22,8 +22,10 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 			LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 
 			If (LootArray != None) && (LootArray.Length > 0)
+
 				Int i = 0
 				While (LootArray != None) && (i < LootArray.Length)
+
 					If (LootArray != None) && (LootArray[i] != None)
 						; check if we can clear the skip list
 						If fFirstLootTime > -1.0
@@ -58,8 +60,10 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 							EndIf
 						EndIf
 					EndIf
+
 					i += 1
 				EndWhile
+
 			EndIf
 
 			LootArray = None
