@@ -63,6 +63,8 @@ Function LootObject(ObjectReference objBody)
 
 	If dubhAutoLootContainer.GetValueInt() == 0
 		targetContainer = Player
+	ElseIf dubhAutoLootAlwaysSendToPlayer.GetValue() == True
+		targetContainer = Player
 	Else
 		containerId = dubhAutoLootContainer.GetValueInt()
 		targetContainer = (dubhAutoLootSettlements.GetAt(containerId) as WorkshopScript) as ObjectReference
@@ -154,6 +156,7 @@ GlobalVariable Property dubhAutoLootRadius Auto
 GlobalVariable Property dubhAutoLootStolenFilter Auto
 GlobalVariable Property dubhAutoLootDelay Auto
 GlobalVariable Property dubhAutoLootContainer Auto
+GlobalVariable Property dubhAutoLootAlwaysSendToPlayer Auto
 
 ; Actor Keywords
 Formlist Property dubhAutoLootKeywords Auto

@@ -1,4 +1,4 @@
-ScriptName dubhAutoLootEffectScript Extends ActiveMagicEffect
+ScriptName dubhAutoLootEffectDrinkScript Extends ActiveMagicEffect
 
 ; -----------------------------------------------------------------------------
 ; VARIABLES
@@ -60,6 +60,8 @@ Function LootObject(ObjectReference objLoot, Float fAutoLootRadius)
 
 	If dubhAutoLootContainer.GetValueInt() == 0
 		targetContainer = Player
+	ElseIf dubhAutoLootAlwaysSendToPlayer.GetValue() == True
+		targetContainer = Player
 	Else
 		containerId = dubhAutoLootContainer.GetValueInt()
 		targetContainer = (dubhAutoLootSettlements.GetAt(containerId) as WorkshopScript) as ObjectReference
@@ -103,6 +105,7 @@ GlobalVariable Property dubhAutoLootStolenFilter Auto
 GlobalVariable Property dubhAutoLootDelay Auto
 GlobalVariable Property dubhAutoLootContainer Auto
 GlobalVariable Property dubhAutoLootDefaultProcessingOnly Auto ; abDefaultProcessingOnly toggle
+GlobalVariable Property dubhAutoLootAlwaysSendToPlayer Auto
 
 Formlist Property dubhAutoLootSettlements Auto
 ; (BostonAirportWorkshopRef as WorkshopScript).SetOwnedByPlayer(False)

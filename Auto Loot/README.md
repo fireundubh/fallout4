@@ -12,6 +12,7 @@
 * Radius Control: Control the distance at which items, bodies, containers, and flora are auto looted.
 * Modules Setup: Toggle all auto loot modules at will, including Ammo, Drink, Flora, Food, Meds, and Valuables.
 * Container Setup: Choose from the Player and 30 destinations to send your loot.
+* Container Setup - Preferences: Choose whether to always send loot by module to the Player.
 * Advanced Setup: Toggle Auto Steal to auto loot, or ignore, owned items.
 
 ### Filter Mode
@@ -72,17 +73,3 @@ If you've decorated your settlements with loose items, excluding armor and weapo
 1. Run the Auto Loot Program in the Pip-Boy.
 2. Deactivate all modules. If any modules are activated, this option will appear on the main menu.
 3. That's it!
-
-## Files
-
-### Required Files
-
-File | Description
---- | ---
-`Auto Loot.esp` | A single plugin for all auto loot features
-`scripts\dubhAutoLootEffectScript.pex` | ActiveMagicEffect script for most auto looted objects
-`scripts\dubhAutoLootEffectBodiesScript.pex` | ActiveMagicEffect script for bodies
-`scripts\dubhAutoLootEffectContainersScript.pex` | ActiveMagicEffect script for containers
-`scripts\dubhAutoLootEffectFloraScript.pex` | ActiveMagicEffect script for flora
-`scripts\dubhAutoLootHolotapeScript.pex` | Terminal script for holotape menu
-`scripts\dubhAutoLootQuestScript.pex` | Quest script for adding holotape item to player's inventory
