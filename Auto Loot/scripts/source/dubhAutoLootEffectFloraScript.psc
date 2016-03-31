@@ -11,64 +11,70 @@ ObjectReference[] LootArray = None
 ; -----------------------------------------------------------------------------
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
-	Actor Player = Game.GetPlayer()
+	If (dubhAutoLootPerk as Bool)
+		Actor Player = Game.GetPlayer()
+		Float fFirstLootTime = -1.0
 
-	Float fFirstLootTime = -1.0
+		If Player.HasPerk(dubhAutoLootPerk)
+			While Player.HasPerk(dubhAutoLootPerk)
+				If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
+					Float fCellResetTime = Game.GetGameSettingInt("iHoursToRespawnCell") as Float ; get the cell reset time as a float - this is in main loop so changing the setting in game will affect loop
+					LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 
-	While Player.HasPerk(dubhAutoLootPerk)
-		If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
-			Float fCellResetTime = Game.GetGameSettingInt("iHoursToRespawnCell") as Float ; get the cell reset time as a float - this is in main loop so changing the setting in game will affect loop
-			dubhAutoLootFilter.Revert() ; restore loot list to defaults - this was needed in skyrim to prevent a null error
-			LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
+					If (LootArray as Bool) && (LootArray.Length > 0)
 
-			If (LootArray != None) && (LootArray.Length > 0)
+						Int i = 0
+						While Player.HasPerk(dubhAutoLootPerk) && (LootArray as Bool) && (i < LootArray.Length)
 
-				Int i = 0
-				While (LootArray != None) && (i < LootArray.Length)
-
-					If (LootArray != None) && (LootArray[i] != None)
-						; check if we can clear the skip list
-						If fFirstLootTime > -1.0
-							If Utility.GetCurrentGameTime() >= (fCellResetTime + fFirstLootTime)
-								dubhAutoLootSkip.Revert()
-								fFirstLootTime = -1.0
-							EndIf
-						EndIf
-
-						; filter the loot array using the skip list
-						If dubhAutoLootSkip.GetSize() > 0
-							If dubhAutoLootSkip.HasForm(LootArray[i] as Form)
-								If (LootArray != None) && (LootArray[i] != None)
-									LootArray[i] = None
+							If (LootArray as Bool) && (LootArray[i] as Bool)
+								; check if we can clear the skip list
+								If fFirstLootTime > -1.0
+									If Utility.GetCurrentGameTime() >= (fCellResetTime + fFirstLootTime)
+										dubhAutoLootSkip.Revert()
+										fFirstLootTime = -1.0
+									EndIf
 								EndIf
-							EndIf
-						EndIf
 
-						; loot item
-						If (LootArray != None) && (LootArray[i] != None)
-							ObjectReference objLoot = LootArray[i]
-							If (objLoot != None) && !objLoot.IsDestroyed()
-								If (objLoot != None) && (Player.GetDistance(objLoot) > 1.0)
-									If dubhAutoLootStolenFilter.GetValue() == True
-										If (objLoot != None) && !Player.WouldBeStealing(objLoot)
-											LootObject(objLoot, fFirstLootTime)
+								; filter the loot array using the skip list
+								If dubhAutoLootSkip.GetSize() > 0
+									If dubhAutoLootSkip.HasForm(LootArray[i] as Form)
+										If (LootArray as Bool) && (LootArray[i] as Bool)
+											LootArray[i] = None
 										EndIf
-									Else
-										LootObject(objLoot, fFirstLootTime)
+									EndIf
+								EndIf
+
+								; loot item
+								If (LootArray as Bool) && (LootArray[i] as Bool)
+									ObjectReference objLoot = LootArray[i]
+									If (objLoot as Bool) && !objLoot.IsDestroyed()
+										If (objLoot as Bool) && (Player.GetDistance(objLoot) > 1.0)
+											If dubhAutoLootStolenFilter.GetValue() == True
+												If (objLoot as Bool) && !Player.WouldBeStealing(objLoot)
+													LootObject(objLoot, fFirstLootTime)
+												EndIf
+											Else
+												If (objLoot as Bool)
+													LootObject(objLoot, fFirstLootTime)
+												EndIf
+											EndIf
+										EndIf
 									EndIf
 								EndIf
 							EndIf
-						EndIf
+
+							i += 1
+						EndWhile
+
 					EndIf
 
-					i += 1
-				EndWhile
+					LootArray = None
+				EndIf
 
-			EndIf
-
-			LootArray = None
+				Utility.Wait(dubhAutoLootDelay.GetValue())
+			EndWhile
 		EndIf
-	EndWhile
+	EndIf
 EndEvent
 
 Event OnEffectFinish(Actor akTarget, Actor akCaster)
@@ -78,6 +84,26 @@ EndEvent
 ; -----------------------------------------------------------------------------
 ; FUNCTIONS
 ; -----------------------------------------------------------------------------
+
+Bool Function IsLootable(ObjectReference objLoot)
+	Actor Player = Game.GetPlayer()
+	If (objLoot as Bool)
+		If (Player.GetDistance(objLoot) > 1.0)
+			If (objLoot as Bool)
+				If (objLoot.GetContainer() == None)
+					If (objLoot as Bool)
+						If (objLoot.GetContainer() != Player)
+							If (objLoot as Bool)
+								Return True
+							EndIf
+						EndIf
+					EndIf
+				EndIf
+			EndIf
+		EndIf
+	EndIf
+	Return False
+EndFunction
 
 Function LootObject(ObjectReference objLoot, Float fFirstLootTime)
 	Actor Player = Game.GetPlayer()
@@ -94,14 +120,14 @@ Function LootObject(ObjectReference objLoot, Float fFirstLootTime)
 		targetContainer = (dubhAutoLootSettlements.GetAt(containerId) as WorkshopScript) as ObjectReference
 	EndIf
 
-	If targetContainer != None
+	If (targetContainer as Bool) && (objLoot as Bool)
 		; max distance check
 		If Player.GetDistance(objLoot) <= dubhAutoLootRadius.GetValue()
 
 			; activate object
-			If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
-				Utility.Wait(dubhAutoLootDelay.GetValue())
-				If targetContainer != Player
+			Utility.Wait(dubhAutoLootDelay.GetValue())
+			If (targetContainer != Player)
+				If (objLoot as Bool)
 					If objLoot.Activate(dubhAutoLootDummyActor, True)
 						dubhAutoLootSkip.AddForm(objLoot)
 						If fFirstLootTime < 0
@@ -109,7 +135,9 @@ Function LootObject(ObjectReference objLoot, Float fFirstLootTime)
 						EndIf
 					EndIf
 					dubhAutoLootDummyActor.RemoveAllItems(targetContainer, False)
-				Else
+				EndIf
+			Else
+				If (objLoot as Bool)
 					If objLoot.Activate(Player, dubhAutoLootDefaultProcessingOnly.GetValue() as Bool)
 						; add form to filter
 						dubhAutoLootSkip.AddForm(objLoot)

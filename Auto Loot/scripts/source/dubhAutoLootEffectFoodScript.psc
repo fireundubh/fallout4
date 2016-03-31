@@ -11,37 +11,40 @@ ObjectReference[] LootArray = None
 ; -----------------------------------------------------------------------------
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
-	Actor Player = Game.GetPlayer()
-
-	While Player.HasPerk(dubhAutoLootPerk)
-		If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
-			Float fAutoLootRadius = dubhAutoLootRadius.GetValue()
-			dubhAutoLootFilter.Revert() ; restore loot list to defaults - this was needed in skyrim to prevent a null error
-			LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, fAutoLootRadius)
-
-			If (LootArray != None) && (LootArray.Length > 0)
-
-				Int i = 0
-				While (LootArray != None) && (i < LootArray.Length)
-					ObjectReference objLoot = LootArray[i]
-
-					If (objLoot != None) && (objLoot.GetContainer() == None) && (objLoot.GetContainer() != Player)
-						If dubhAutoLootStolenFilter.GetValue() == True
-							If (objLoot != None) && !Player.WouldBeStealing(objLoot)
-								LootObject(objLoot, fAutoLootRadius)
-							EndIf
-						Else
-							LootObject(objLoot, fAutoLootRadius)
+	If (dubhAutoLootPerk as Bool)
+		Actor Player = Game.GetPlayer()
+		If Player.HasPerk(dubhAutoLootPerk)
+			While Player.HasPerk(dubhAutoLootPerk)
+				If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
+					LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
+					If (LootArray as Bool)
+						If (LootArray.Length > 0)
+							Int i = 0
+							While (Player.HasPerk(dubhAutoLootPerk) && (LootArray as Bool) && (i < LootArray.Length))
+								ObjectReference objLoot = LootArray[i]
+								If IsLootable(objLoot)
+									If dubhAutoLootStolenFilter.GetValue() == True
+										If (objLoot as Bool)
+											If !Player.WouldBeStealing(objLoot)
+												LootObject(objLoot)
+											EndIf
+										EndIf
+									Else
+										If (objLoot as Bool)
+											LootObject(objLoot)
+										EndIf
+									EndIf
+								EndIf
+								i += 1
+							EndWhile
 						EndIf
 					EndIf
-
-					i += 1
-				EndWhile
-			EndIf
-
-			LootArray = None
+					LootArray = None
+				EndIf
+				Utility.Wait(dubhAutoLootDelay.GetValue())
+			EndWhile
 		EndIf
-	EndWhile
+	EndIf
 EndEvent
 
 Event OnEffectFinish(Actor akTarget, Actor akCaster)
@@ -52,7 +55,27 @@ EndEvent
 ; FUNCTIONS
 ; -----------------------------------------------------------------------------
 
-Function LootObject(ObjectReference objLoot, Float fAutoLootRadius)
+Bool Function IsLootable(ObjectReference objLoot)
+	Actor Player = Game.GetPlayer()
+	If (objLoot as Bool)
+		If (Player.GetDistance(objLoot) > 1.0)
+			If (objLoot as Bool)
+				If (objLoot.GetContainer() == None)
+					If (objLoot as Bool)
+						If (objLoot.GetContainer() != Player)
+							If (objLoot as Bool)
+								Return True
+							EndIf
+						EndIf
+					EndIf
+				EndIf
+			EndIf
+		EndIf
+	EndIf
+	Return False
+EndFunction
+
+Function LootObject(ObjectReference objLoot)
 	Actor Player = Game.GetPlayer()
 
 	Int containerId = 0
@@ -67,18 +90,18 @@ Function LootObject(ObjectReference objLoot, Float fAutoLootRadius)
 		targetContainer = (dubhAutoLootSettlements.GetAt(containerId) as WorkshopScript) as ObjectReference
 	EndIf
 
-	If targetContainer != None
-		If Player.GetDistance(objLoot) <= fAutoLootRadius
-			If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
-				Utility.Wait(dubhAutoLootDelay.GetValue())
-				If targetContainer != Player
-					objLoot.Activate(dubhAutoLootDummyActor, True)
-					dubhAutoLootDummyActor.RemoveAllItems(targetContainer, False)
-				Else
-					objLoot.Activate(Player, dubhAutoLootDefaultProcessingOnly.GetValue() as Bool)
-				EndIf
+	If (targetContainer as Bool) && (objLoot as Bool)
+		Utility.Wait(dubhAutoLootDelay.GetValue())
+		If (targetContainer != Player)
+			If (objLoot as Bool)
+				objLoot.Activate(dubhAutoLootDummyActor, True)
+				dubhAutoLootDummyActor.RemoveAllItems(targetContainer, False)
 			EndIf
-		EndIf ; None
+		Else
+			If (objLoot as Bool)
+				objLoot.Activate(Player, dubhAutoLootDefaultProcessingOnly.GetValue() as Bool)
+			EndIf
+		EndIf
 	EndIf
 EndFunction
 
