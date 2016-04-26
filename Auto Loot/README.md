@@ -21,13 +21,14 @@ With the in-game menu, you can:
 
 ## Download/Installation
 
-1. [Download the master archive](https://github.com/fireundubh/fo4-mods/archive/master.zip) which contains all of my mods.
-2. Extract the contents of the `Auto Loot` folder to your game's `Data` directory.
-3. Use a mod manager to activate the plugin, or add `Auto Loot.esp` to `%LocalAppData%\Fallout4\plugins.txt`.
-4. There are no compatibility issues, so you don't have to worry about load order.
+1. Click here to download: [Auto Loot.esp](https://github.com/fireundubh/fo4-mods/blob/master/Auto%20Loot/Auto%20Loot.esp?raw=true)
+2. Click here to download: [Auto Loot - Main.ba2](https://github.com/fireundubh/fo4-mods/blob/master/Auto%20Loot/Auto%20Loot%20-%20Main.ba2?raw=true)
+3. Copy these two files to your `Fallout 4\Data` directory.
+4. Use a mod manager to activate the plugin, or add `*Auto Loot.esp` to `%LocalAppData%\Fallout4\plugins.txt`.
+5. There are no compatibility issues, so you don't have to worry about load order.
 
 ## Uninstallation and Deactivation
 
 1. Run the Auto Loot Program in the Pip-Boy.
 2. Deactivate all modules. If any modules are activated, this option will appear on the main menu.
-3. That's it!
+3. To uninstall, remove `Auto Loot.esp` and `Auto Loot - Main.ba2` from the `Fallout 4\Data` directory.
