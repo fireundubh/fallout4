@@ -21,11 +21,10 @@ With the in-game menu, you can:
 
 ## Download/Installation
 
-1. Click here to download: [Auto Loot.esp](https://github.com/fireundubh/fo4-mods/blob/master/Auto%20Loot/Auto%20Loot.esp?raw=true)
-2. Click here to download: [Auto Loot - Main.ba2](https://github.com/fireundubh/fo4-mods/blob/master/Auto%20Loot/Auto%20Loot%20-%20Main.ba2?raw=true)
-3. Copy these two files to your `Fallout 4\Data` directory.
-4. Use a mod manager to activate the plugin, or add `*Auto Loot.esp` to `%LocalAppData%\Fallout4\plugins.txt`.
-5. There are no compatibility issues, so you don't have to worry about load order.
+Auto Loot is now exclusively available at Bethesda.net. (April 28, 2016)
+
+1. [Download Auto Loot from Bethesda.net](https://mods.bethesda.net/#en/workshop/fallout4/mod-detail/758870) while in the game.
+2. Play!
 
 ## Uninstallation and Deactivation
 
