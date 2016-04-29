@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-Scriptname AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F8 Extends Terminal Hidden Const
+ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F8 Extends Terminal Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
@@ -7,7 +7,7 @@ Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(89)
+	kGlobal.SetValue(19)
 	i += 1
 EndWhile
 ;END CODE
@@ -20,7 +20,7 @@ Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(90)
+	kGlobal.SetValue(20)
 	i += 1
 EndWhile
 ;END CODE
@@ -33,7 +33,7 @@ Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(79)
+	kGlobal.SetValue(9)
 	i += 1
 EndWhile
 ;END CODE
@@ -46,7 +46,7 @@ Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(80)
+	kGlobal.SetValue(10)
 	i += 1
 EndWhile
 ;END CODE
@@ -59,7 +59,7 @@ Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(93)
+	kGlobal.SetValue(23)
 	i += 1
 EndWhile
 ;END CODE
@@ -72,7 +72,7 @@ Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(92)
+	kGlobal.SetValue(22)
 	i += 1
 EndWhile
 ;END CODE

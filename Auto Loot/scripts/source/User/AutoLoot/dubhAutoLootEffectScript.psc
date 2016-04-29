@@ -15,9 +15,6 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 EndEvent
 
 Event OnTimer(Int aiTimerID)
-	; get player
-	Actor Player = Game.GetPlayer()
-
 	; do not run if the player no longer has the perk
 	If Player.HasPerk(dubhAutoLootPerk)
 
@@ -95,6 +92,7 @@ Formlist Property dubhAutoLootSettlements Auto
 Perk Property dubhAutoLootPerk Auto
 
 ; Actor
+Actor Property Player Auto
 Actor Property dubhAutoLootDummyActor Auto
 
 ; -----------------------------------------------------------------------------
@@ -113,8 +111,6 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
 
 	If (akArray as Bool) && (akArray != None)
-		Actor Player = Game.GetPlayer()
-
 		Int i = 0
 		While i < akArray.Length
 			ObjectReference kItem = akArray[i]
@@ -159,9 +155,6 @@ EndFunction
 
 Bool Function LootObject(ObjectReference objLoot)
 	If (objLoot as Bool)
-		; get player
-		Actor Player = Game.GetPlayer()
-
 		; do not run if the player no longer has the perk
 		If Player.HasPerk(dubhAutoLootPerk)
 			Bool bPlayerOnly = dubhAutoLootPlayerOnly.GetValue() as Bool
@@ -180,6 +173,7 @@ Bool Function LootObject(ObjectReference objLoot)
 				; force dubhAutoLootDummyActor to activate the objLoot reference
 				If kContainer != Player
 					If objLoot.Activate(dubhAutoLootDummyActor, True)
+						dubhAutoLootDummyActor.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.GetValue())
 						Return True
 					EndIf
 				; handle player object as container

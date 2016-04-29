@@ -17,12 +17,14 @@ Event OnTimer(Int aiTimerID)
 EndEvent
 
 Event OnQuestShutdown()
-	Game.GetPlayer().AddItem(dubhAutoLootHolotape, 1, False)
+	Player.AddItem(dubhAutoLootHolotape, 1, False)
 EndEvent
 
 ; -----------------------------------------------------------------------------
 ; PROPERTIES
 ; -----------------------------------------------------------------------------
+
+Actor Property Player Auto
 
 Int Property dubhAutoLootQuestTimer Auto
 

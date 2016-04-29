@@ -1,11 +1,11 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-Scriptname AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_01002713 Extends Terminal Hidden Const
+ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_01002713 Extends Terminal Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(94)
+kGlobal.SetValue(24)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -14,7 +14,7 @@ EndFunction
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(95)
+kGlobal.SetValue(25)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -23,7 +23,7 @@ EndFunction
 Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(82)
+kGlobal.SetValue(12)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -32,7 +32,7 @@ EndFunction
 Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(96)
+kGlobal.SetValue(26)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -41,7 +41,7 @@ EndFunction
 Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(97)
+kGlobal.SetValue(27)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -50,7 +50,7 @@ EndFunction
 Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(98)
+kGlobal.SetValue(28)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -59,7 +59,7 @@ EndFunction
 Function Fragment_Terminal_13(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(99)
+kGlobal.SetValue(29)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -68,7 +68,7 @@ EndFunction
 Function Fragment_Terminal_15(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(78)
+kGlobal.SetValue(8)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -77,7 +77,7 @@ EndFunction
 Function Fragment_Terminal_17(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(8) as GlobalVariable
-kGlobal.SetValue(100)
+kGlobal.SetValue(30)
 ;END CODE
 EndFunction
 ;END FRAGMENT

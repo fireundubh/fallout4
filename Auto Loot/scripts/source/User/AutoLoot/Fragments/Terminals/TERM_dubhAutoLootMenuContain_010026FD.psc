@@ -1,11 +1,11 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-Scriptname AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026FD Extends Terminal Hidden Const
+ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026FD Extends Terminal Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(77)
+kGlobal.SetValue(7)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -14,7 +14,7 @@ EndFunction
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(85)
+kGlobal.SetValue(15)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -23,7 +23,7 @@ EndFunction
 Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(86)
+kGlobal.SetValue(16)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -32,7 +32,7 @@ EndFunction
 Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(83)
+kGlobal.SetValue(13)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -41,7 +41,7 @@ EndFunction
 Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(84)
+kGlobal.SetValue(14)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -50,7 +50,7 @@ EndFunction
 Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(87)
+kGlobal.SetValue(17)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -59,7 +59,7 @@ EndFunction
 Function Fragment_Terminal_13(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(1) as GlobalVariable
-kGlobal.SetValue(88)
+kGlobal.SetValue(18)
 ;END CODE
 EndFunction
 ;END FRAGMENT

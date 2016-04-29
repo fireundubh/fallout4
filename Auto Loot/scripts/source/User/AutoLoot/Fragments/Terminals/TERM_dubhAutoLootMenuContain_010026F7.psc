@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-Scriptname AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F7 Extends Terminal Hidden Const
+ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F7 Extends Terminal Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
@@ -7,7 +7,7 @@ Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(77)
+	kGlobal.SetValue(7)
 	i += 1
 EndWhile
 ;END CODE
@@ -20,7 +20,7 @@ Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(85)
+	kGlobal.SetValue(15)
 	i += 1
 EndWhile
 ;END CODE
@@ -33,7 +33,7 @@ Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(86)
+	kGlobal.SetValue(16)
 	i += 1
 EndWhile
 ;END CODE
@@ -46,7 +46,7 @@ Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(83)
+	kGlobal.SetValue(13)
 	i += 1
 EndWhile
 ;END CODE
@@ -59,7 +59,7 @@ Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(84)
+	kGlobal.SetValue(14)
 	i += 1
 EndWhile
 ;END CODE
@@ -72,7 +72,7 @@ Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(87)
+	kGlobal.SetValue(17)
 	i += 1
 EndWhile
 ;END CODE
@@ -85,7 +85,7 @@ Function Fragment_Terminal_13(ObjectReference akTerminalRef)
 Int i = 0
 While i < 10
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(88)
+	kGlobal.SetValue(18)
 	i += 1
 EndWhile
 ;END CODE

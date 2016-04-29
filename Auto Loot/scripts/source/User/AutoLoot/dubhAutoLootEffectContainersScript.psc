@@ -15,9 +15,6 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 EndEvent
 
 Event OnTimer(Int aiTimerID)
-	; get player
-	Actor Player = Game.GetPlayer()
-
 	; do not run if the player no longer has the perk
 	If Player.HasPerk(dubhAutoLootPerk)
 
@@ -98,6 +95,7 @@ Formlist Property dubhAutoLootSettlements Auto
 Perk Property dubhAutoLootPerk Auto
 
 ; Actor
+Actor Property Player Auto
 Actor Property dubhAutoLootDummyActor Auto
 
 ; -----------------------------------------------------------------------------
@@ -116,22 +114,18 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
 
 	If (akArray as Bool) && (akArray != None)
-		Actor Player = Game.GetPlayer()
-
 		Int i = 0
 		While i < akArray.Length
 			ObjectReference kItem = akArray[i]
 
 			If kItem != None
-				If (kItem as Actor) != Player
-					If !kItem.IsLocked()
-						If kItem.GetItemCount() > 0
-							If dubhAutoLootTheftOnlyOwned.GetValue() == False
-									kResult.Add(kItem, 1)
-							Else
-								If Player.WouldBeStealing(kItem) == True
-									kResult.Add(kItem, 1)
-								EndIf
+				If !kItem.IsLocked()
+					If kItem.GetItemCount() > 0
+						If dubhAutoLootTheftOnlyOwned.GetValue() == False
+								kResult.Add(kItem, 1)
+						Else
+							If Player.WouldBeStealing(kItem) == True
+								kResult.Add(kItem, 1)
 							EndIf
 						EndIf
 					EndIf
@@ -162,38 +156,25 @@ EndFunction
 
 Bool Function LootObject(ObjectReference objLoot)
 	If (objLoot as Bool)
-		; get player
-		Actor Player = Game.GetPlayer()
-
 		; do not run if the player no longer has the perk
 		If Player.HasPerk(dubhAutoLootPerk)
+			Bool bPlayerOnly = dubhAutoLootPlayerOnly.GetValue() as Bool
 			Int iContainer = dubhAutoLootContainer.GetValueInt() as Int
 
 			; determine where to send loot
 			ObjectReference kContainer = None
-			If (iContainer == 0) || (dubhAutoLootPlayerOnly.GetValue() == True)
+			If (iContainer == 0) || (bPlayerOnly == True)
 				kContainer = Player
 			Else
 				kContainer = (dubhAutoLootSettlements.GetAt(iContainer) as WorkshopScript) as ObjectReference
 			EndIf
 
 			If kContainer != None
-				; handle non-player actor as container
-				If kContainer != Player
-					If dubhAutoLootTakeAll.GetValue() == True
-						dubhAutoLootDummyActor.RemoveAllItems(kContainer, False)
-						Return True
-					Else
-						LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
-						Return True
-					EndIf
-				; handle player object as container
+				If dubhAutoLootTakeAll.GetValue() == True
+					objLoot.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.GetValue())
+					Return True
 				Else
-					If dubhAutoLootTakeAll.GetValue() == True
-						objLoot.RemoveAllItems(Player, False)
-						Return True
-					Else
-						LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
+					If LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
 						Return True
 					EndIf
 				EndIf
@@ -208,7 +189,6 @@ EndFunction
 
 Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akItem, ObjectReference akContainer)
 	If (akFilters as Bool) && (akPerks as Bool) && (akItem as Bool) && (akContainer as Bool)
-		Actor Player = Game.GetPlayer()
 
 		Int i = 0
 		Bool bBreak = False
@@ -219,8 +199,8 @@ Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectRef
 
 			If !bBreak
 				If (i != 1) && (i != 2)
-					If Player.HasPerk(akPerks.GetAt(0) as Perk)
-						RemoveItems(akFilters.GetAt(0) as Formlist, akItem, akContainer)
+					If Player.HasPerk(akPerks.GetAt(i) as Perk)
+						RemoveItems(akFilters.GetAt(i) as Formlist, akItem, akContainer)
 					EndIf
 				EndIf
 			EndIf
@@ -234,7 +214,6 @@ Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectRef
 	Return False
 EndFunction
 
-
 ; Iterates through loot in a container and removes specific items to another container
 
 Bool Function RemoveItems(Formlist akFormlist, ObjectReference akContainer, ObjectReference akOtherContainer)
@@ -245,7 +224,7 @@ Bool Function RemoveItems(Formlist akFormlist, ObjectReference akContainer, Obje
 		Bool bBreak = False
 		While (i < akFormlist.GetSize()) && !bBreak
 
-			If Game.GetPlayer().HasPerk(dubhAutoLootPerk) == False
+			If Player.HasPerk(dubhAutoLootPerk) == False
 				bBreak = True
 			EndIf
 
