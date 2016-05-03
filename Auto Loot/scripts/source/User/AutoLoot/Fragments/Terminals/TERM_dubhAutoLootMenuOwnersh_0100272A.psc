@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuOwnersh_0100272A Extends Terminal Hidden Const
+Scriptname AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuOwnersh_0100272A Extends Terminal Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
@@ -50,6 +50,24 @@ EndFunction
 Function Fragment_Terminal_06(ObjectReference akTerminalRef)
 ;BEGIN CODE
 GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(76) as GlobalVariable
+kGlobal.SetValue(1)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_07
+Function Fragment_Terminal_07(ObjectReference akTerminalRef)
+;BEGIN CODE
+GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(79) as GlobalVariable
+kGlobal.SetValue(0)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_08
+Function Fragment_Terminal_08(ObjectReference akTerminalRef)
+;BEGIN CODE
+GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(79) as GlobalVariable
 kGlobal.SetValue(1)
 ;END CODE
 EndFunction

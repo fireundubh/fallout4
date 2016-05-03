@@ -46,7 +46,11 @@ Event OnTimer(Int aiTimerID)
 								If objLoot != None
 									; loot object if the item is not owned
 									If (dubhAutoLootTheftAllowed.GetValue() == False) && (Player.WouldBeStealing(objLoot) == False)
-										LootObject(objLoot)
+										If LootObject(objLoot)
+											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											EndIf
+										EndIf
 									ElseIf dubhAutoLootTheftAllowed.GetValue() == True
 										; remove ownership if option enabled
 										If dubhAutoLootTheftAlarm.GetValue() == False
@@ -54,7 +58,11 @@ Event OnTimer(Int aiTimerID)
 										EndIf
 
 										; loot object if the item is owned or unowned
-										LootObject(objLoot)
+										If LootObject(objLoot)
+											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											EndIf
+										EndIf
 									EndIf
 								EndIf
 							EndIf
@@ -63,6 +71,8 @@ Event OnTimer(Int aiTimerID)
 						EndWhile
 					EndIf
 				EndIf
+
+				LootArray.Clear()
 			EndIf
 
 		EndIf
@@ -87,6 +97,7 @@ GlobalVariable Property dubhAutoLootTakeAll Auto
 GlobalVariable Property dubhAutoLootTheftAllowed Auto
 GlobalVariable Property dubhAutoLootTheftAlarm Auto
 GlobalVariable Property dubhAutoLootTheftOnlyOwned Auto
+GlobalVariable Property dubhAutoLootToggleDelayOnLoot Auto
 GlobalVariable Property dubhAutoLootWorkshopLooting Auto
 
 ; Formlists
@@ -124,14 +135,16 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 			ObjectReference kItem = akArray[i]
 
 			If kItem != None
-				If (kItem as Actor) != Player
-					If (kItem as Actor).IsDead() == True
-						If kItem.GetItemCount() > 0
-							If dubhAutoLootTheftOnlyOwned.GetValue() == False
-									kResult.Add(kItem, 1)
-							Else
-								If Player.WouldBeStealing(kItem) == True
-									kResult.Add(kItem, 1)
+				If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted()
+					If (kItem as Actor) != Player
+						If (kItem as Actor).IsDead() == True
+							If kItem.GetItemCount() > 0
+								If dubhAutoLootTheftOnlyOwned.GetValue() == False
+										kResult.Add(kItem, 1)
+								Else
+									If Player.WouldBeStealing(kItem) == True
+										kResult.Add(kItem, 1)
+									EndIf
 								EndIf
 							EndIf
 						EndIf

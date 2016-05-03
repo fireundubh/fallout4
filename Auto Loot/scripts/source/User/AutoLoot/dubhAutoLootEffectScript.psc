@@ -25,6 +25,8 @@ Event OnTimer(Int aiTimerID)
 				LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 				LootArray = FilterLootArray(LootArray)
 
+				Log("OnTimer", "LootArray: " + LootArray)
+
 				If (LootArray as Bool)
 					If LootArray.Length > 0
 						Int i = 0
@@ -41,7 +43,11 @@ Event OnTimer(Int aiTimerID)
 								If objLoot != None
 									; loot object if the item is not owned
 									If (dubhAutoLootTheftAllowed.GetValue() == False) && (Player.WouldBeStealing(objLoot) == False)
-										LootObject(objLoot)
+										If LootObject(objLoot)
+											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											EndIf
+										EndIf
 									ElseIf dubhAutoLootTheftAllowed.GetValue() == True
 										; remove ownership if option enabled
 										If dubhAutoLootTheftAlarm.GetValue() == False
@@ -49,7 +55,11 @@ Event OnTimer(Int aiTimerID)
 										EndIf
 
 										; loot object if the item is owned or unowned
-										LootObject(objLoot)
+										If LootObject(objLoot)
+											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											EndIf
+										EndIf
 									EndIf
 								EndIf
 							EndIf
@@ -58,6 +68,8 @@ Event OnTimer(Int aiTimerID)
 						EndWhile
 					EndIf
 				EndIf
+
+				LootArray.Clear()
 			EndIf
 
 		EndIf
@@ -81,6 +93,7 @@ GlobalVariable Property dubhAutoLootRadius Auto
 GlobalVariable Property dubhAutoLootTheftAllowed Auto
 GlobalVariable Property dubhAutoLootTheftAlarm Auto
 GlobalVariable Property dubhAutoLootTheftOnlyOwned Auto
+GlobalVariable Property dubhAutoLootToggleDelayOnLoot Auto
 GlobalVariable Property dubhAutoLootWorkshopLooting Auto
 
 ; Formlists
@@ -119,7 +132,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 				ObjectReference kContainer = kItem.GetContainer()
 
 				If (kContainer == None) && (kContainer != Player)
-					If !kItem.IsDestroyed() ; for flora
+					If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted() && !kItem.IsDestroyed() ; for flora
 						If dubhAutoLootTheftOnlyOwned.GetValue() == False
 								kResult.Add(kItem, 1)
 						Else
@@ -172,13 +185,14 @@ Bool Function LootObject(ObjectReference objLoot)
 				; handle non-player object as container
 				; force dubhAutoLootDummyActor to activate the objLoot reference
 				If kContainer != Player
-					If objLoot.Activate(dubhAutoLootDummyActor, True)
+					If objLoot.Activate(dubhAutoLootDummyActor, False)
 						dubhAutoLootDummyActor.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.GetValue())
 						Return True
 					EndIf
 				; handle player object as container
 				Else
 					If objLoot.Activate(Player, False)
+						Log("LootObject", "objLoot: " + objLoot)
 						Return True
 					EndIf
 				EndIf

@@ -25,6 +25,8 @@ Event OnTimer(Int aiTimerID)
 				LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
 				LootArray = FilterLootArray(LootArray)
 
+				Log("OnTimer", "LootArray: " + LootArray)
+
 				If (LootArray as Bool)
 					If LootArray.Length > 0
 						Int i = 0
@@ -41,7 +43,11 @@ Event OnTimer(Int aiTimerID)
 								If objLoot != None
 									; loot object if the item is not owned
 									If (dubhAutoLootTheftAllowed.GetValue() == False) && (Player.WouldBeStealing(objLoot) == False)
-										LootObject(objLoot)
+										If LootObject(objLoot)
+											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											EndIf
+										EndIf
 									ElseIf dubhAutoLootTheftAllowed.GetValue() == True
 										; remove ownership if option enabled
 										If dubhAutoLootTheftAlarm.GetValue() == False
@@ -49,7 +55,11 @@ Event OnTimer(Int aiTimerID)
 										EndIf
 
 										; loot object if the item is owned or unowned
-										LootObject(objLoot)
+										If LootObject(objLoot)
+											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											EndIf
+										EndIf
 									EndIf
 								EndIf
 							EndIf
@@ -58,6 +68,8 @@ Event OnTimer(Int aiTimerID)
 						EndWhile
 					EndIf
 				EndIf
+
+				LootArray.Clear()
 			EndIf
 
 		EndIf
@@ -82,6 +94,8 @@ GlobalVariable Property dubhAutoLootTakeAll Auto
 GlobalVariable Property dubhAutoLootTheftAllowed Auto
 GlobalVariable Property dubhAutoLootTheftAlarm Auto
 GlobalVariable Property dubhAutoLootTheftOnlyOwned Auto
+GlobalVariable Property dubhAutoLootToggleDelayOnLoot Auto
+GlobalVariable Property dubhAutoLootToggleUnlockContainers Auto
 GlobalVariable Property dubhAutoLootWorkshopLooting Auto
 
 ; Formlists
@@ -93,6 +107,9 @@ Formlist Property dubhAutoLootSettlements Auto
 
 ; Perk
 Perk Property dubhAutoLootPerk Auto
+Perk Property Locksmith01 Auto
+Perk Property Locksmith02 Auto
+Perk Property Locksmith03 Auto
 
 ; Actor
 Actor Property Player Auto
@@ -108,6 +125,42 @@ Function Log(String asFunction = "", String asMessage = "") DebugOnly
 	Debug.TraceSelf(Self, asFunction, asMessage)
 EndFunction
 
+; Unlock and reward XP based on lock level
+
+Bool Function UnlockForXP(ObjectReference objContainer)
+	Bool bHasPerk = False
+
+	Int iXPReward = 0
+	Int iLockDifficulty = objContainer.GetLockLevel()
+
+	If iLockDifficulty < 25
+		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardEasy") as Int ; 5 Base XP
+		bHasPerk = True
+	ElseIf iLockDifficulty == 25
+		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardEasy") as Int ; 5 Base XP
+		bHasPerk = True
+	ElseIf iLockDifficulty == 50
+		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardAverage") as Int ; 10 Base XP
+		bHasPerk = Player.HasPerk(Locksmith01)
+	ElseIf iLockDifficulty == 75
+		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardHard") as Int ; 15 Base XP
+		bHasPerk = Player.HasPerk(Locksmith02)
+	ElseIf iLockDifficulty == 100
+		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardVeryHard") as Int ; 20 Base XP
+		bHasPerk = Player.HasPerk(Locksmith03)
+	EndIf
+
+	If bHasPerk
+		Log("UnlockForXP", "Unlocking: " + objContainer)
+		objContainer.Unlock(False)
+		Log("UnlockForXP", "Rewarding XP: " + iXPReward)
+		Game.RewardPlayerXP(iXPReward, False) ; True = No XP adjustments
+		Return True
+	EndIf
+
+	Return False
+EndFunction
+
 ; Filter Loot Array
 
 ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
@@ -119,13 +172,15 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 			ObjectReference kItem = akArray[i]
 
 			If kItem != None
-				If !kItem.IsLocked()
-					If kItem.GetItemCount() > 0
-						If dubhAutoLootTheftOnlyOwned.GetValue() == False
-								kResult.Add(kItem, 1)
-						Else
-							If Player.WouldBeStealing(kItem) == True
-								kResult.Add(kItem, 1)
+				If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted()
+					If !kItem.IsLocked() || (dubhAutoLootToggleUnlockContainers.GetValue() == True)
+						If (kItem.GetItemCount() > 0) || kItem.IsLocked()
+							If dubhAutoLootTheftOnlyOwned.GetValue() == False
+									kResult.Add(kItem, 1)
+							Else
+								If Player.WouldBeStealing(kItem) == True
+									kResult.Add(kItem, 1)
+								EndIf
 							EndIf
 						EndIf
 					EndIf
@@ -170,10 +225,16 @@ Bool Function LootObject(ObjectReference objLoot)
 			EndIf
 
 			If kContainer != None
-				If dubhAutoLootTakeAll.GetValue() == True
+				If objLoot.IsLocked() && (dubhAutoLootToggleUnlockContainers.GetValue() == True)
+					If UnlockForXP(objLoot)
+						Log("LootObject", "Unlocked: " + objLoot)
+					EndIf
+				EndIf
+
+				If !objLoot.IsLocked() && (dubhAutoLootTakeAll.GetValue() == True)
 					objLoot.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.GetValue())
 					Return True
-				Else
+				ElseIf !objLoot.IsLocked() && (dubhAutoLootTakeAll.GetValue() == False)
 					If LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
 						Return True
 					EndIf
