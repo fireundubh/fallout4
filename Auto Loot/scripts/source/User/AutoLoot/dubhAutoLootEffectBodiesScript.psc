@@ -22,57 +22,26 @@ Event OnTimer(Int aiTimerID)
 		If CanAutoLootLocation()
 
 			If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
-				;LootArray = Player.FindAllReferencesWithKeyword(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
-				LootArray = FindAllReferencesWithKeywordList(Player, dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
-				Log("OnTimer", "Instantiated(1): " + LootArray)
+				Int i = 0
+				Bool bBreak = False
 
-				LootArray = FilterLootArray(LootArray)
-				Log("OnTimer", "Instantiated(2): " + LootArray)
-
-				If (LootArray as Bool)
-					If LootArray.Length > 0
-						Int i = 0
-						Bool bBreak = False
-						While (i < LootArray.Length) && !bBreak
-
-							If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
-								bBreak = True
-							EndIf
-
-							If !bBreak
-								ObjectReference objLoot = LootArray[i]
-								Log("OnTimer", "Iterating: " + objLoot)
-
-								If objLoot != None
-									; loot object if the item is not owned
-									If (dubhAutoLootTheftAllowed.GetValue() == False) && (Player.WouldBeStealing(objLoot) == False)
-										If LootObject(objLoot)
-											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
-												Utility.Wait(dubhAutoLootDelay.GetValueInt())
-											EndIf
-										EndIf
-									ElseIf dubhAutoLootTheftAllowed.GetValue() == True
-										; remove ownership if option enabled
-										If dubhAutoLootTheftAlarm.GetValue() == False
-											objLoot.SetActorRefOwner(Player)
-										EndIf
-
-										; loot object if the item is owned or unowned
-										If LootObject(objLoot)
-											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
-												Utility.Wait(dubhAutoLootDelay.GetValueInt())
-											EndIf
-										EndIf
-									EndIf
-								EndIf
-							EndIf
-
-							i += 1
-						EndWhile
+				While i < dubhAutoLootFilter.GetSize() && !bBreak
+					If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+						bBreak = True
 					EndIf
-				EndIf
 
-				LootArray.Clear()
+					If !bBreak
+						LootArray = Player.FindAllReferencesWithKeyword(dubhAutoLootFilter.GetAt(i), dubhAutoLootRadius.GetValue())
+						LootArray = FilterLootArray(LootArray)
+						Loot(LootArray)
+					EndIf
+
+					i += 1
+				EndWhile
+
+				If LootArray.Length > 0
+					LootArray.Clear()
+				EndIf
 			EndIf
 
 		EndIf
@@ -118,13 +87,67 @@ Actor Property dubhAutoLootDummyActor Auto
 ; FUNCTIONS
 ; -----------------------------------------------------------------------------
 
-; Log
+; Iterate and Loot
 
-Function Log(String asFunction = "", String asMessage = "") DebugOnly
-	Debug.TraceSelf(Self, asFunction, asMessage)
+Function Loot(ObjectReference[] akLootArray)
+	If (akLootArray as Bool)
+		Int iLootArray = akLootArray.Length
+
+		If iLootArray > 0
+			Int i = 0
+			Bool bBreak = False
+
+			While (i < iLootArray) && !bBreak
+				If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+					bBreak = True
+				EndIf
+
+				If !bBreak
+					ObjectReference objLoot = akLootArray[i]
+
+					If objLoot != None
+						; loot object if the item is not owned
+						If (dubhAutoLootTheftAllowed.GetValue() == False) && (Player.WouldBeStealing(objLoot) == False)
+							If LootObject(objLoot)
+								If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+									Utility.Wait(dubhAutoLootDelay.GetValueInt())
+								EndIf
+							EndIf
+						ElseIf dubhAutoLootTheftAllowed.GetValue() == True
+							; remove ownership if option enabled
+							If dubhAutoLootTheftAlarm.GetValue() == False
+								objLoot.SetActorRefOwner(Player)
+							EndIf
+
+							; loot object if the item is owned or unowned
+							If LootObject(objLoot)
+								If dubhAutoLootToggleDelayOnLoot.GetValue() == True
+									Utility.Wait(dubhAutoLootDelay.GetValueInt())
+								EndIf
+							EndIf
+						EndIf
+					EndIf
+				EndIf
+
+				i += 1
+			EndWhile
+
+			akLootArray.Clear()
+		EndIf
+	EndIf
 EndFunction
 
 ; Filter Loot Array
+
+Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectReference[] akArray)
+	If akContainer.GetItemCount() > 0
+		If dubhAutoLootTheftOnlyOwned.GetValue() == False
+			akArray.Add(akContainer, 1)
+		ElseIf Player.WouldBeStealing(akContainer) == True
+			akArray.Add(akContainer, 1)
+		EndIf
+	EndIf
+EndFunction
 
 ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
@@ -136,17 +159,11 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 
 			If kItem != None
 				If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted()
-					If (kItem as Actor) != Player
-						If (kItem as Actor).IsDead() == True
-							If kItem.GetItemCount() > 0
-								If dubhAutoLootTheftOnlyOwned.GetValue() == False
-										kResult.Add(kItem, 1)
-								Else
-									If Player.WouldBeStealing(kItem) == True
-										kResult.Add(kItem, 1)
-									EndIf
-								EndIf
-							EndIf
+					Actor kItemAsActor = kItem as Actor
+
+					If (kItemAsActor != None) && (kItemAsActor != Player)
+						If kItemAsActor.IsDead()
+							AddObjectToObjectReferenceArray(kItem, kResult)
 						EndIf
 					EndIf
 				EndIf
@@ -164,8 +181,10 @@ ObjectReference[] Function FindAllReferencesWithKeywordList(ObjectReference akAc
 
 	If (akActor as Bool) && (akKeywords as Bool) && (afRadius as Bool)
 		Int i = 0
-		While i < akKeywords.GetSize()
-			ObjectReference[] tmpArray = akActor.FindAllReferencesWithKeyword(akKeywords.GetAt(i), afRadius)
+		Int iKeywords = akKeywords.GetSize()
+		While i < iKeywords
+			Keyword kKeyword = akKeywords.GetAt(i) as Keyword
+			ObjectReference[] tmpArray = akActor.FindAllReferencesWithKeyword(kKeyword, afRadius)
 
 			If tmpArray != None
 				Int j = 0
@@ -197,29 +216,30 @@ EndFunction
 
 ; Loot Object
 
-Bool Function LootObject(ObjectReference objLoot)
-	If (objLoot as Bool)
+Bool Function LootObject(ObjectReference objContainer)
+	If (objContainer as Bool)
 		; do not run if the player no longer has the perk
 		If Player.HasPerk(dubhAutoLootPerk)
 			Bool bPlayerOnly = dubhAutoLootPlayerOnly.GetValue() as Bool
 			Int iContainer = dubhAutoLootContainer.GetValueInt() as Int
 
 			; determine where to send loot
-			ObjectReference kContainer = None
+			ObjectReference kOtherContainer = None
 			If (iContainer == 0) || (bPlayerOnly == True)
-				kContainer = Player
+				kOtherContainer = Player
 			Else
-				kContainer = (dubhAutoLootSettlements.GetAt(iContainer) as WorkshopScript) as ObjectReference
+				kOtherContainer = (dubhAutoLootSettlements.GetAt(iContainer) as WorkshopScript) as ObjectReference
 			EndIf
 
-			If kContainer != None
+			; send loot to the other container
+			If kOtherContainer != None
+				Debug.Trace("Trying to loot: " + objContainer)
 				If dubhAutoLootTakeAll.GetValue() == True
-					objLoot.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.GetValue())
+					objContainer.RemoveAllItems(kOtherContainer, dubhAutoLootTheftAlarm.GetValue())
 					Return True
 				Else
-					If LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
-						Return True
-					EndIf
+					LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objContainer, kOtherContainer)
+					Return True
 				EndIf
 			EndIf
 		EndIf
@@ -230,20 +250,23 @@ EndFunction
 
 ; Loot specific items using active filters - excludes bodies and containers filters
 
-Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akItem, ObjectReference akContainer)
-	If (akFilters as Bool) && (akPerks as Bool) && (akItem as Bool) && (akContainer as Bool)
-
+Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akItem, ObjectReference akOtherContainer)
+	If (akFilters as Bool) && (akPerks as Bool) && (akItem as Bool) && (akOtherContainer as Bool)
 		Int i = 0
+		Int iFilters = akFilters.GetSize()
 		Bool bBreak = False
-		While (i < akFilters.GetSize()) && !bBreak
+
+		While (i < iFilters) && !bBreak
 			If Player.HasPerk(dubhAutoLootPerk) == False
 				bBreak = True
 			EndIf
 
 			If !bBreak
 				If (i != 1) && (i != 2)
-					If Player.HasPerk(akPerks.GetAt(i) as Perk)
-						RemoveItems(akFilters.GetAt(i) as Formlist, akItem, akContainer)
+					Perk kPerk = akPerks.GetAt(i) as Perk
+					If Player.HasPerk(kPerk)
+						Formlist kFilter = akFilters.GetAt(i) as Formlist
+						RemoveItems(kFilter, akItem, akOtherContainer)
 					EndIf
 				EndIf
 			EndIf
@@ -264,9 +287,10 @@ Bool Function RemoveItems(Formlist akFormlist, ObjectReference akContainer, Obje
 
 	If (akFormlist as Bool) && (akContainer as Bool) && (akOtherContainer as Bool)
 		Int i = 0
+		Int iForms = akFormlist.GetSize()
 		Bool bBreak = False
-		While (i < akFormlist.GetSize()) && !bBreak
 
+		While (i < iForms) && !bBreak
 			If Player.HasPerk(dubhAutoLootPerk) == False
 				bBreak = True
 			EndIf
