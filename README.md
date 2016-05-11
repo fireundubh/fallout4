@@ -10,48 +10,29 @@
 
 ## Categories
 
-### Major Mods
-
 * **Advanced Mobile Turret Set Extended:** An extension for Advanced Mobile Turret Set by ccmads
-* **Auto Loot:** Automatically loots nearby ammo, bodies, containers, drink, flora, food, junk, meds, and valuables
-* **Interactive Clutter:** Allows objects like Tires to be picked up. 14,049 references replaced!
-
-### Minor Mods
-
-* **Better Vanilla Perks - Aquaboy and Aquagirl:** Moved water radiation immunity from Rank I to a new Rank III
-* **Better Vanilla Perks - Night Person:** A new Rank III allows you to see nearby hostiles while sneaking, even through walls
-
-### Fixes
-
+* **Aqua Perk Remade:** Moved water radiation immunity from Rank I to a new Rank III
 * **Armored Vertibirds:** Increases vertibird health to alleviate the consequences of pilot error
-* **Assorted Fixes:** Fixes a number of vanilla issues while strictly keeping to Bethesda's vision
+* **Assorted Fixes:** [Use the Unofficial Fallout 4 Patch instead.]
+* **Auto Loot:** Automatically loots nearby ammo, bodies, containers, drink, flora, food, junk, meds, and valuables
+* **Better Vanilla Perks - Night Person:** A new Rank III allows you to see nearby hostiles while sneaking, even through walls
+* **Classic Survival Mode Restored:** Turns the Very Hard difficulty into the original Survival difficulty
+* **Easy Hacking:** Reduces the number of word possibilities to a single word
+* **Easy Minigames and Faster Terminals:** Combines Easy Hacking, Easy Lockpicking, and Faster Terminals
+* **Expanded Buildable Area:** Increases the buildable area around all settlements from the center of each settlement
+* **Extra Loot for Locksmiths:** Allows all locked vanilla containers to offer extra loot for skilled locksmiths
+* **Faster Terminals:** Increases the terminal display rate to instantaneous
+* **GMST Tweaks:** fireundubh's personal collection of game setting tweaks, including Stealth Skills Rebalanced from Skyrim
 * **Handy Bowler Hat for Automatron:** Restores ability to equip Mr. Handy and Codsworth with a Bowler Hat
-* **Leveled List and Container Fixes:** Removes duplicates from leveled lists and containers
-* **Locksmith Loot Fix:** Allows all locked vanilla containers to offer extra loot for skilled locksmiths
+* **Interactive Clutter:** Allows objects like Barrels and Tires to be picked up. More than 25,000 references replaced!
 * **More Legendary Items:** Allows more items to receive and spawn with a Legendary mod
+* **No Picket Fences - Sanctuary Hills:** Removes all picket fences from Sanctuary Hills
+* **Optimized Containers and Leveled Lists:** Removes duplicates from leveled lists and containers
 * **Pro Landscaping Kit:** Allows previously unscrappable plants to be scrapped into Compost and eventually converted into Fertilizer
 * **Realistic Gravity:** Allows grenades, or other throwable objects, to fall at a realistic velocity instead of float
-* **Scrap What You Make:** Adds 327 scrap recipes that give you the correct amount and type of components for things you can make
-* **Unlimited Bounties:** Allows you to run multiple bounties simultaneously, and resets the bounty board periodically
-
-### Tweaks
-
-* **Expanded Buildable Area:** Increases the buildable area around all settlements from the center of each settlement
-* **Faster Terminals:** Increases the terminal display rate to instantaneous
-* **No Picket Fences - Sanctuary Hills:** Removes all picket fences from Sanctuary Hills
 * **Settlers Without Borders:** Removes the cosmetic buildable area borders around settlements
 * **Silent Loot:** Removes all item pickup and drop sounds at the plugin level
 * **Unleveled Power Armor:** Allows all power armor models to spawn at any level
+* **Unlimited Bounties:** Allows you to run multiple bounties simultaneously, and resets the bounty board periodically
 * **Unlimited Settlements:** Allows you to build as much as you want in any settlement, and recruit any number of settlers
-
-### Tweaks/Cheats
-
-* **GMST Tweaks:** fireundubh's personal collection of game setting tweaks, including Stealth Skills Rebalanced from Skyrim
-
-### Cheats
-
-* **Terminal Bypass:** Reduces the number of word possibilities to a single word
-
-## Notes
-
-Some parts of Assorted Fixes have been integrated into Simple Bug Fixes and Mo Betta Scrap.
+* **Unofficial Scrap Patch:** Adds more than 300 scrap recipes that give you the correct amount and type of components for things you can make
