@@ -1,3 +1,3 @@
-# Terminal Bypass
+# Easy Hacking
 
 Reduces the number of word possibilities to a single word

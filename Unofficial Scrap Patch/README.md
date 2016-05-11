@@ -1,7 +1,7 @@
 # Unofficial Scrap Patch
 
 * Allows you to receive the correct components when scrapping whatever you can make
-* Adds 327 scrap recipes for things like workbenches and television sets
+* Adds more than 300 scrap recipes for things like workbenches and television sets
 * You'll probably notice the output of workbenches and television sets first
 
 ## Example: Power Armor Station

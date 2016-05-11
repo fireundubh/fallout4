@@ -4,7 +4,7 @@ Interactive Clutter currently replaces 28,882 static objects with their miscella
 
 ## Download/Installation
 
-* [Download Interactive Clutter from Bethesda.net](https://mods.bethesda.net/#en/workshop/fallout4/mod-detail/855776) while in the game.
+* Download: [Interactive Clutter.esp](https://github.com/fireundubh/fo4-mods/blob/master/Interactive%20Clutter/Interactive%20Clutter.esp?raw=true) while in the game.
 * Play!
 
 ## Meshes that did not have physics

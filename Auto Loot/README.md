@@ -21,10 +21,10 @@ With the in-game menu, you can:
 
 ## Download/Installation
 
-Auto Loot is now exclusively available at Bethesda.net. (April 28, 2016)
-
-1. [Download Auto Loot from Bethesda.net](https://mods.bethesda.net/#en/workshop/fallout4/mod-detail/758870) while in the game.
-2. Play!
+1. Download: [Auto Loot.esp](https://github.com/fireundubh/fo4-mods/blob/master/Auto%20Loot/Auto%20Loot.esp?raw=true)
+2. Download: [Auto Loot - Main.ba2](https://github.com/fireundubh/fo4-mods/blob/master/Auto%20Loot/Auto%20Loot%20-%20Main.ba2?raw=true)
+3. Copy both files to your Data directory.
+4. Play!
 
 ## Uninstallation and Deactivation
 
