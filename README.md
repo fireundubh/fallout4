@@ -8,7 +8,7 @@
 
 **Master of Disguise** was featured by [GameSpot](http://www.gamespot.com/videos/top-5-skyrim-mods-of-the-week-become-the-master-of/2300-6423174/), [Kotaku](http://kotaku.com/skyrim-disguises-let-you-walk-around-doing-whatever-1681784966), [Brodual](https://www.youtube.com/watch?v=ATGNFDgNT-A), [MxR Mods](https://www.youtube.com/watch?v=69e7xcYw-G4), and the Skyrim GEMS Hall of Fame.
 
-## Categories
+## Mods
 
 * **Advanced Mobile Turret Set Extended:** An extension for Advanced Mobile Turret Set by ccmads
 * **Aqua Perk Remade:** Moved water radiation immunity from Rank I to a new Rank III
