@@ -6,9 +6,9 @@
 * I've created more than 100 mods for a variety of games, including Fallout 4, Fallout: New Vegas, Skyrim, Dying Light, Shadowrun Returns, Dragon Age: Origins, The Witcher 2, The Witcher 3, Warcraft 2, and StarCraft.
 * I'm also [a contributor to xEdit](https://github.com/TES5Edit/TES5Edit/issues?utf8=%E2%9C%93&q=is%3Aissue+author%3Afireundubh+), primarily FO4Edit.
 
-**Master of Disguise** was featured by [GameSpot](http://www.gamespot.com/videos/top-5-skyrim-mods-of-the-week-become-the-master-of/2300-6423174/), [Kotaku](http://kotaku.com/skyrim-disguises-let-you-walk-around-doing-whatever-1681784966), [Brodual](https://www.youtube.com/watch?v=ATGNFDgNT-A), [MxR Mods](https://www.youtube.com/watch?v=69e7xcYw-G4), and the Skyrim GEMS Hall of Fame.
+**Master of Disguise** was featured by [GameSpot](http://www.gamespot.com/videos/top-5-skyrim-mods-of-the-week-become-the-master-of/2300-6423174/), [Kotaku](http://kotaku.com/skyrim-disguises-let-you-walk-around-doing-whatever-1681784966), [Brodual](https://www.youtube.com/watch?v=ATGNFDgNT-A), [MxR Mods](https://www.youtube.com/watch?v=69e7xcYw-G4), and the Skyrim GEMS Hall of Fame. Master of Disguise was the #1 Stealth mod on the Skyrim Nexus, and the #1 Stealth mod on Steam Workshop.
 
-## Mods
+## List of mods
 
 * **Advanced Mobile Turret Set Extended:** An extension for Advanced Mobile Turret Set by ccmads
 * **Aqua Perk Remade:** Moved water radiation immunity from Rank I to a new Rank III
