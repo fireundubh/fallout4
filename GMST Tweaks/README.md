@@ -2,6 +2,12 @@
 
 fireundubh's personal game setting tweak collection
 
+## Download
+
+1. Download: [GMST Tweaks.esp](https://github.com/fireundubh/fo4-mods/blob/master/GMST Tweaks/GMST Tweaks.esp?raw=true)
+2. Copy that file to your Data directory.
+3. Play!
+
 ## General Tweaks
 
 * Fast terminal display rate

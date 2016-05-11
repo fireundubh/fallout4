@@ -4,26 +4,8 @@
 * Adds more than 300 scrap recipes for things like workbenches and television sets
 * You'll probably notice the output of workbenches and television sets first
 
-## Example: Power Armor Station
+## Download
 
-Power Armor Stations now give you:
-
-* 12 Aluminum
-* 3 Circuitry
-* 6 Fiberglass
-* 6 Gear
-* 4 Plastic
-* 4 Screws
-* 4 Oil
-
-## Example: Television Set
-
-Most television sets now give you:
-
-* 2 Aluminum
-* 3 Circuitry
-* 2 Glass
-* 2 Steel
-* 2 Wood
-
-Previously, you'd receive only Steel. So annoying!
+1. Download: [Unofficial Scrap Patch.esp](https://github.com/fireundubh/fo4-mods/blob/master/Unofficial%20Scrap%20Patch/Unofficial%20Scrap%20Patch.esp?raw=true)
+2. Copy that file to your Data directory.
+3. Play!

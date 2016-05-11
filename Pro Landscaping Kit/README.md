@@ -34,3 +34,9 @@ Chemistry Station | 1x Bag of Fertilizer | 4x Dirty Water, 20x Compost
 * Seaweed
 * Shrubs
 * Vines
+
+## Download
+
+1. Download: [Pro Landscaping Kit.esp](https://github.com/fireundubh/fo4-mods/blob/master/Pro Landscaping Kit/Pro Landscaping Kit.esp?raw=true)
+2. Copy that file to your Data directory.
+3. Play!

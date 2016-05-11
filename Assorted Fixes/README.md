@@ -1,9 +1,10 @@
 # Assorted Fixes
 
-## Notes
+## Download
 
-* Simple Bug Fixes has integrated some fixes from Assorted Fixes.
-* Mo Betta Scrap has integrated some fixes from Assorted Fixes.
+1. Download: [Assorted Fixes.esp](https://github.com/fireundubh/fo4-mods/blob/master/Assorted Fixes/Assorted Fixes.esp?raw=true)
+2. Copy that file to your Data directory.
+3. Play!
 
 ## Perks
 
