@@ -364,13 +364,13 @@ section {
 	padding-bottom:50px;
 }
 
-section ul.three-columns {
+section .three-columns {
 	-webkit-column-count: 3;
 	-moz-column-count: 3;
 	column-count: 3;
-	-webkit-column-gap: 40px;
-	column-gap: 40px;
-	-moz-column-gap: 40px;
+	-webkit-column-gap: 64px;
+	column-gap: 64px;
+	-moz-column-gap: 64px;
 }
 
 section h3 a.top {
