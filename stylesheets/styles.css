@@ -364,15 +364,28 @@ section {
 	padding-bottom:50px;
 }
 
+section ul.three-columns {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 40px;
+	column-gap: 40px;
+	-moz-column-gap: 40px;
+}
+
+section h3 a.top {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	float:right;
+}
 
 /* Footer */
 
 footer {
-  width:170px;
-  float:left;
-  position:fixed;
-  bottom:10px;
-	padding-left: 50px;
+  width:960px;
+  position:relative;
+  margin-left:420px;
+  padding-bottom:128px;
 }
 
 @media print, screen and (max-width: 960px) {
