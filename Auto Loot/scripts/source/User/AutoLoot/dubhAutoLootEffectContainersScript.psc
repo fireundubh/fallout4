@@ -33,7 +33,7 @@ Event OnTimer(Int aiTimerID)
 						Bool bBreak = False
 						While (i < LootArray.Length) && !bBreak
 
-							If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+							If CheckIfLoopShouldExit()
 								bBreak = True
 							EndIf
 
@@ -125,6 +125,18 @@ Function Log(String asFunction = "", String asMessage = "") DebugOnly
 	Debug.TraceSelf(Self, asFunction, asMessage)
 EndFunction
 
+; Return true if exit condition met
+
+Bool Function CheckIfLoopShouldExit()
+	Return !Player.HasPerk(dubhAutoLootPerk) || Player.IsInCombat() || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+EndFunction
+
+; Return true if all conditions are met
+
+Bool Function CheckIfItemCanBeProcessed(ObjectReference akItem)
+	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
+EndFunction
+
 ; Unlock and reward XP based on lock level
 
 Bool Function UnlockForXP(ObjectReference objContainer)
@@ -172,7 +184,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 			ObjectReference kItem = akArray[i]
 
 			If kItem != None
-				If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted()
+				If CheckIfItemCanBeProcessed(kItem)
 					If !kItem.IsLocked() || (dubhAutoLootToggleUnlockContainers.GetValue() == True)
 						If (kItem.GetItemCount() > 0) || kItem.IsLocked()
 							If dubhAutoLootTheftOnlyOwned.GetValue() == False
@@ -253,8 +265,9 @@ Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectRef
 
 		Int i = 0
 		Bool bBreak = False
+
 		While (i < akFilters.GetSize()) && !bBreak
-			If Player.HasPerk(dubhAutoLootPerk) == False
+			If CheckIfLoopShouldExit()
 				bBreak = True
 			EndIf
 
@@ -283,9 +296,10 @@ Bool Function RemoveItems(Formlist akFormlist, ObjectReference akContainer, Obje
 	If (akFormlist as Bool) && (akContainer as Bool) && (akOtherContainer as Bool)
 		Int i = 0
 		Bool bBreak = False
+
 		While (i < akFormlist.GetSize()) && !bBreak
 
-			If Player.HasPerk(dubhAutoLootPerk) == False
+			If CheckIfLoopShouldExit()
 				bBreak = True
 			EndIf
 

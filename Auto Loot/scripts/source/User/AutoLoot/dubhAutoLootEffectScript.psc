@@ -31,9 +31,10 @@ Event OnTimer(Int aiTimerID)
 					If LootArray.Length > 0
 						Int i = 0
 						Bool bBreak = False
+
 						While (i < LootArray.Length) && !bBreak
 
-							If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+							If CheckIfLoopShouldExit()
 								bBreak = True
 							EndIf
 
@@ -118,6 +119,18 @@ Function Log(String asFunction = "", String asMessage = "") DebugOnly
 	Debug.TraceSelf(Self, asFunction, asMessage)
 EndFunction
 
+; Return true if exit condition met
+
+Bool Function CheckIfLoopShouldExit()
+	Return !Player.HasPerk(dubhAutoLootPerk) || Player.IsInCombat() || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+EndFunction
+
+; Return true if all conditions are met
+
+Bool Function CheckIfItemCanBeProcessed(ObjectReference akItem)
+	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
+EndFunction
+
 ; Filter Loot Array
 
 ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
@@ -125,6 +138,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 
 	If (akArray as Bool) && (akArray != None)
 		Int i = 0
+
 		While i < akArray.Length
 			ObjectReference kItem = akArray[i]
 
@@ -132,7 +146,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 				ObjectReference kContainer = kItem.GetContainer()
 
 				If (kContainer == None) && (kContainer != Player)
-					If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted() && !kItem.IsDestroyed() ; for flora
+					If CheckIfItemCanBeProcessed(kItem)
 						If dubhAutoLootTheftOnlyOwned.GetValue() == False
 								kResult.Add(kItem, 1)
 						Else
@@ -168,6 +182,7 @@ EndFunction
 
 Bool Function LootObject(ObjectReference objLoot)
 	If (objLoot as Bool)
+
 		; do not run if the player no longer has the perk
 		If Player.HasPerk(dubhAutoLootPerk)
 			Bool bPlayerOnly = dubhAutoLootPlayerOnly.GetValue() as Bool

@@ -26,7 +26,7 @@ Event OnTimer(Int aiTimerID)
 				Bool bBreak = False
 
 				While i < dubhAutoLootFilter.GetSize() && !bBreak
-					If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+					If CheckIfLoopShouldExit()
 						bBreak = True
 					EndIf
 
@@ -87,6 +87,18 @@ Actor Property dubhAutoLootDummyActor Auto
 ; FUNCTIONS
 ; -----------------------------------------------------------------------------
 
+; Return true if exit condition met
+
+Bool Function CheckIfLoopShouldExit()
+	Return !Player.HasPerk(dubhAutoLootPerk) || Player.IsInCombat() || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+EndFunction
+
+; Return true if all conditions are met
+
+Bool Function CheckIfItemCanBeProcessed(ObjectReference akItem)
+	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
+EndFunction
+
 ; Iterate and Loot
 
 Function Loot(ObjectReference[] akLootArray)
@@ -98,7 +110,7 @@ Function Loot(ObjectReference[] akLootArray)
 			Bool bBreak = False
 
 			While (i < iLootArray) && !bBreak
-				If !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+				If CheckIfLoopShouldExit()
 					bBreak = True
 				EndIf
 
@@ -154,11 +166,12 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 
 	If (akArray as Bool) && (akArray != None)
 		Int i = 0
+
 		While i < akArray.Length
 			ObjectReference kItem = akArray[i]
 
 			If kItem != None
-				If kItem.Is3DLoaded() && !kItem.IsDisabled() && !kItem.IsDeleted()
+				If CheckIfItemCanBeProcessed(kItem)
 					Actor kItemAsActor = kItem as Actor
 
 					If (kItemAsActor != None) && (kItemAsActor != Player)
@@ -182,6 +195,7 @@ ObjectReference[] Function FindAllReferencesWithKeywordList(ObjectReference akAc
 	If (akActor as Bool) && (akKeywords as Bool) && (afRadius as Bool)
 		Int i = 0
 		Int iKeywords = akKeywords.GetSize()
+
 		While i < iKeywords
 			Keyword kKeyword = akKeywords.GetAt(i) as Keyword
 			ObjectReference[] tmpArray = akActor.FindAllReferencesWithKeyword(kKeyword, afRadius)
@@ -218,6 +232,7 @@ EndFunction
 
 Bool Function LootObject(ObjectReference objContainer)
 	If (objContainer as Bool)
+
 		; do not run if the player no longer has the perk
 		If Player.HasPerk(dubhAutoLootPerk)
 			Bool bPlayerOnly = dubhAutoLootPlayerOnly.GetValue() as Bool
@@ -257,7 +272,7 @@ Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectRef
 		Bool bBreak = False
 
 		While (i < iFilters) && !bBreak
-			If Player.HasPerk(dubhAutoLootPerk) == False
+			If CheckIfLoopShouldExit()
 				bBreak = True
 			EndIf
 
@@ -291,7 +306,7 @@ Bool Function RemoveItems(Formlist akFormlist, ObjectReference akContainer, Obje
 		Bool bBreak = False
 
 		While (i < iForms) && !bBreak
-			If Player.HasPerk(dubhAutoLootPerk) == False
+			If CheckIfLoopShouldExit()
 				bBreak = True
 			EndIf
 
