@@ -1,0 +1,13 @@
+<PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="D:\Steam\steamapps\common\Fallout 4\Data\Scripts" Optimize="true" Release="true" Final="true">
+  <Imports>
+    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>
+    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
+  </Imports>
+  <Scripts>
+  	<Script>DefaultDisableHavokOnLoad.psc</Script>
+  	<Script>AutoLoot\dubhAutoLootQuestScript.psc</Script>
+  	<Script>AutoLoot\dubhAutoLootEffectScript.psc</Script>
+  	<Script>AutoLoot\dubhAutoLootEffectBodiesScript.psc</Script>
+  	<Script>AutoLoot\dubhAutoLootEffectContainersScript.psc</Script>
+  </Scripts>
+</PapyrusProject>

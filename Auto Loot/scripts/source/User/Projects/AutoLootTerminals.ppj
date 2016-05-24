@@ -1,0 +1,101 @@
+<PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="D:\Steam\steamapps\common\Fallout 4\Data\Scripts" Optimize="true" Release="true" Final="true">
+  <Imports>
+    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>
+    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
+  </Imports>
+  <Scripts>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EA.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EC.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026ED.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EE.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EF.psc</Script>
+
+		   <Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuMain_010026E1.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E3.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E5.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E6.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E7.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E8.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E9.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FC.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FD.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FE.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FF.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F1.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F2.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F3.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F4.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F6.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F7.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F8.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F9.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270B.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270E.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002701.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002702.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002703.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002704.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002706.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002707.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002708.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002709.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271B.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271E.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002710.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002711.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002712.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002713.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002715.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002716.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002717.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002718.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuOwnersh_0100272A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100272C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100272E.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100272F.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002720.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002721.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002722.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002723.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002725.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002726.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002727.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002728.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002729.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002730.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002731.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002732.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002733.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002735.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002736.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002737.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002738.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100919C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100919D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100919E</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100919F</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A0</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A1</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A2</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A3</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A4</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A5</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A6</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A7</Script>
+  </Scripts>
+</PapyrusProject>
