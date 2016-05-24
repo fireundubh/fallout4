@@ -1,10 +1,18 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F6 Extends Terminal Hidden Const
+ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_0100919E Extends Terminal Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 ;BEGIN CODE
-SetContainer(1)
+SetContainer(31)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_02
+Function Fragment_Terminal_02(ObjectReference akTerminalRef)
+;BEGIN CODE
+SetContainer(31)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -12,7 +20,15 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_03
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 ;BEGIN CODE
-SetContainer(2)
+SetContainer(32)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_04
+Function Fragment_Terminal_04(ObjectReference akTerminalRef)
+;BEGIN CODE
+SetContainer(32)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -20,7 +36,15 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_05
 Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 ;BEGIN CODE
-SetContainer(3)
+SetContainer(33)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_06
+Function Fragment_Terminal_06(ObjectReference akTerminalRef)
+;BEGIN CODE
+SetContainer(33)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -28,7 +52,15 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_07
 Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ;BEGIN CODE
-SetContainer(4)
+SetContainer(34)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_08
+Function Fragment_Terminal_08(ObjectReference akTerminalRef)
+;BEGIN CODE
+SetContainer(34)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -36,31 +68,15 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_09
 Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 ;BEGIN CODE
-SetContainer(21)
+SetContainer(35)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Terminal_11
-Function Fragment_Terminal_11(ObjectReference akTerminalRef)
+;BEGIN FRAGMENT Fragment_Terminal_10
+Function Fragment_Terminal_10(ObjectReference akTerminalRef)
 ;BEGIN CODE
-SetContainer(11)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_Terminal_13
-Function Fragment_Terminal_13(ObjectReference akTerminalRef)
-;BEGIN CODE
-SetContainer(5)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_Terminal_15
-Function Fragment_Terminal_15(ObjectReference akTerminalRef)
-;BEGIN CODE
-SetContainer(6)
+SetContainer(35)
 ;END CODE
 EndFunction
 ;END FRAGMENT

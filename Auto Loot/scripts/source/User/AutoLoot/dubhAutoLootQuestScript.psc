@@ -5,12 +5,12 @@ ScriptName AutoLoot:dubhAutoLootQuestScript Extends Quest
 ; -----------------------------------------------------------------------------
 
 Event OnQuestInit()
-	StartTimer(10, dubhAutoLootQuestTimer)
+	StartTimer(5, dubhAutoLootQuestTimer)
 EndEvent
 
 Event OnTimer(Int aiTimerID)
 	If MQ102.IsStageDone(6) == False
-		StartTimer(10, dubhAutoLootQuestTimer)
+		StartTimer(5, dubhAutoLootQuestTimer)
 	Else
 		Self.Stop()
 	EndIf

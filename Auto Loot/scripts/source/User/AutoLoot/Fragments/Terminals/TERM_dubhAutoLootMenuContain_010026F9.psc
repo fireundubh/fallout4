@@ -4,12 +4,7 @@ ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F9 Ex
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(24)
-	i += 1
-EndWhile
+SetContainer(24)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -17,12 +12,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_03
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(25)
-	i += 1
-EndWhile
+SetContainer(25)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -30,12 +20,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_05
 Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(12)
-	i += 1
-EndWhile
+SetContainer(12)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -43,12 +28,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_07
 Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(26)
-	i += 1
-EndWhile
+SetContainer(26)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -56,12 +36,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_09
 Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(27)
-	i += 1
-EndWhile
+SetContainer(27)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -69,12 +44,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_11
 Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(28)
-	i += 1
-EndWhile
+SetContainer(28)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -82,12 +52,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_13
 Function Fragment_Terminal_13(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(29)
-	i += 1
-EndWhile
+SetContainer(29)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -95,12 +60,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_15
 Function Fragment_Terminal_15(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(8)
-	i += 1
-EndWhile
+SetContainer(8)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -108,12 +68,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_17
 Function Fragment_Terminal_17(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 10
-	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
-	kGlobal.SetValue(30)
-	i += 1
-EndWhile
+SetContainer(30)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -122,3 +77,12 @@ EndFunction
 
 Formlist Property dubhAutoLootGlobals Auto Const
 Formlist Property dubhAutoLootPerks Auto Const
+
+Function SetContainer(Float afContainerID)
+	Int i = 0
+	While i < 10
+		GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+		kGlobal.SetValue(afContainerID)
+		i += 1
+	EndWhile
+EndFunction

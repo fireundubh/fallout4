@@ -11,7 +11,7 @@ ObjectReference[] LootArray = None
 ; -----------------------------------------------------------------------------
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
-	StartTimer(dubhAutoLootDelay.GetValueInt(), dubhAutoLootTimer)
+	StartTimer(dubhAutoLootDelay.Value as Int, dubhAutoLootTimer)
 EndEvent
 
 Event OnTimer(Int aiTimerID)
@@ -22,7 +22,7 @@ Event OnTimer(Int aiTimerID)
 		If CanAutoLootLocation()
 
 			If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
-				LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.GetValue())
+				LootArray = Player.FindAllReferencesOfType(dubhAutoLootFilter, dubhAutoLootRadius.Value)
 				LootArray = FilterLootArray(LootArray)
 
 				Log("OnTimer", "LootArray: " + LootArray)
@@ -42,22 +42,22 @@ Event OnTimer(Int aiTimerID)
 
 								If objLoot != None
 									; loot object if the item is not owned
-									If (dubhAutoLootTheftAllowed.GetValue() == False) && (Player.WouldBeStealing(objLoot) == False)
+									If (dubhAutoLootTheftAllowed.Value == False) && (Player.WouldBeStealing(objLoot) == False)
 										If LootObject(objLoot)
-											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
-												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											If dubhAutoLootToggleDelayOnLoot.Value == True
+												Utility.Wait(dubhAutoLootDelay.Value as Int)
 											EndIf
 										EndIf
-									ElseIf dubhAutoLootTheftAllowed.GetValue() == True
+									ElseIf dubhAutoLootTheftAllowed.Value == True
 										; remove ownership if option enabled
-										If dubhAutoLootTheftAlarm.GetValue() == False
+										If dubhAutoLootTheftAlarm.Value == False
 											objLoot.SetActorRefOwner(Player)
 										EndIf
 
 										; loot object if the item is owned or unowned
 										If LootObject(objLoot)
-											If dubhAutoLootToggleDelayOnLoot.GetValue() == True
-												Utility.Wait(dubhAutoLootDelay.GetValueInt())
+											If dubhAutoLootToggleDelayOnLoot.Value == True
+												Utility.Wait(dubhAutoLootDelay.Value as Int)
 											EndIf
 										EndIf
 									EndIf
@@ -74,7 +74,7 @@ Event OnTimer(Int aiTimerID)
 
 		EndIf
 
-		StartTimer(dubhAutoLootDelay.GetValueInt(), dubhAutoLootTimer)
+		StartTimer(dubhAutoLootDelay.Value as Int, dubhAutoLootTimer)
 	EndIf
 EndEvent
 
@@ -179,15 +179,16 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
 
 	If (akArray as Bool) && (akArray != None)
-		Int i = 0
-		While i < akArray.Length
+		Int i = akArray.Length - 1
+
+		While i >= 0
 			ObjectReference kItem = akArray[i]
 
 			If kItem != None
 				If CheckIfItemCanBeProcessed(kItem)
-					If !kItem.IsLocked() || (dubhAutoLootToggleUnlockContainers.GetValue() == True)
+					If !kItem.IsLocked() || (dubhAutoLootToggleUnlockContainers.Value == True)
 						If (kItem.GetItemCount() > 0) || kItem.IsLocked()
-							If dubhAutoLootTheftOnlyOwned.GetValue() == False
+							If dubhAutoLootTheftOnlyOwned.Value == False
 									kResult.Add(kItem, 1)
 							Else
 								If Player.WouldBeStealing(kItem) == True
@@ -199,7 +200,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 				EndIf
 			EndIf
 
-			i += 1
+			i -= 1
 		EndWhile
 	EndIf
 
@@ -209,7 +210,7 @@ EndFunction
 ; Returns true if loot in location can be processed
 
 Bool Function CanAutoLootLocation()
-	If dubhAutoLootWorkshopLooting.GetValue() == False
+	If dubhAutoLootWorkshopLooting.Value == False
 		Form kLocation = Game.GetPlayer().GetCurrentLocation() as Form
 		If dubhAutoLootLocations.HasForm(kLocation)
 			Return False
@@ -225,8 +226,8 @@ Bool Function LootObject(ObjectReference objLoot)
 	If (objLoot as Bool)
 		; do not run if the player no longer has the perk
 		If Player.HasPerk(dubhAutoLootPerk)
-			Bool bPlayerOnly = dubhAutoLootPlayerOnly.GetValue() as Bool
-			Int iContainer = dubhAutoLootContainer.GetValueInt() as Int
+			Bool bPlayerOnly = dubhAutoLootPlayerOnly.Value as Bool
+			Int iContainer = dubhAutoLootContainer.Value as Int
 
 			; determine where to send loot
 			ObjectReference kContainer = None
@@ -237,16 +238,16 @@ Bool Function LootObject(ObjectReference objLoot)
 			EndIf
 
 			If kContainer != None
-				If objLoot.IsLocked() && (dubhAutoLootToggleUnlockContainers.GetValue() == True)
+				If objLoot.IsLocked() && (dubhAutoLootToggleUnlockContainers.Value == True)
 					If UnlockForXP(objLoot)
 						Log("LootObject", "Unlocked: " + objLoot)
 					EndIf
 				EndIf
 
-				If !objLoot.IsLocked() && (dubhAutoLootTakeAll.GetValue() == True)
-					objLoot.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.GetValue())
+				If !objLoot.IsLocked() && (dubhAutoLootTakeAll.Value == True)
+					objLoot.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.Value)
 					Return True
-				ElseIf !objLoot.IsLocked() && (dubhAutoLootTakeAll.GetValue() == False)
+				ElseIf !objLoot.IsLocked() && (dubhAutoLootTakeAll.Value == False)
 					If LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
 						Return True
 					EndIf

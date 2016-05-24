@@ -4,11 +4,11 @@ Scriptname AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_010026F4 Ex
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 ;BEGIN CODE
-Int i = 0
-While i < 9
+Int i = 9
+While i > -1
 	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
 	kGlobal.SetValue(0)
-	i += 1
+	i -= 1
 EndWhile
 ;END CODE
 EndFunction

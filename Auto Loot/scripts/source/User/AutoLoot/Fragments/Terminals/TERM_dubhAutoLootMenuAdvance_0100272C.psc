@@ -14,8 +14,34 @@ EndWhile
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Terminal_02
+Function Fragment_Terminal_02(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 10
+While i < 21
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+	kGlobal.SetValue(0)
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_Terminal_03
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 10
+While i < 21
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+	kGlobal.SetValue(1)
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_04
+Function Fragment_Terminal_04(ObjectReference akTerminalRef)
 ;BEGIN CODE
 Int i = 10
 While i < 21
@@ -40,8 +66,34 @@ EndWhile
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Terminal_06
+Function Fragment_Terminal_06(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 10
+While i < 21
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+	kGlobal.SetValue(2)
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_Terminal_07
 Function Fragment_Terminal_07(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 10
+While i < 21
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+	kGlobal.SetValue(3)
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_08
+Function Fragment_Terminal_08(ObjectReference akTerminalRef)
 ;BEGIN CODE
 Int i = 10
 While i < 21
@@ -66,8 +118,34 @@ EndWhile
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Terminal_10
+Function Fragment_Terminal_10(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 10
+While i < 21
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+	kGlobal.SetValue(4)
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_Terminal_11
 Function Fragment_Terminal_11(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 10
+While i < 21
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(i) as GlobalVariable
+	kGlobal.SetValue(5)
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_12
+Function Fragment_Terminal_12(ObjectReference akTerminalRef)
 ;BEGIN CODE
 Int i = 10
 While i < 21
