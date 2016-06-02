@@ -90,7 +90,7 @@ GlobalVariable Property dubhAutoLootContainer Auto
 GlobalVariable Property dubhAutoLootDelay Auto
 GlobalVariable Property dubhAutoLootPlayerOnly Auto
 GlobalVariable Property dubhAutoLootRadius Auto
-GlobalVariable Property dubhAutoLootTakeAll Auto
+;GlobalVariable Property dubhAutoLootTakeAll Auto
 GlobalVariable Property dubhAutoLootTheftAllowed Auto
 GlobalVariable Property dubhAutoLootTheftAlarm Auto
 GlobalVariable Property dubhAutoLootTheftOnlyOwned Auto
@@ -244,13 +244,13 @@ Bool Function LootObject(ObjectReference objLoot)
 					EndIf
 				EndIf
 
-				If !objLoot.IsLocked() && (dubhAutoLootTakeAll.Value == True)
+				If !objLoot.IsLocked() ;&& (dubhAutoLootTakeAll.Value == True)
 					objLoot.RemoveAllItems(kContainer, dubhAutoLootTheftAlarm.Value)
 					Return True
-				ElseIf !objLoot.IsLocked() && (dubhAutoLootTakeAll.Value == False)
-					If LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
-						Return True
-					EndIf
+				;ElseIf !objLoot.IsLocked() && (dubhAutoLootTakeAll.Value == False)
+				;	If LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objLoot, kContainer)
+				;		Return True
+				;	EndIf
 				EndIf
 			EndIf
 		EndIf
@@ -261,33 +261,33 @@ EndFunction
 
 ; Loot specific items using active filters - excludes bodies and containers filters
 
-Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akItem, ObjectReference akContainer)
-	If (akFilters as Bool) && (akPerks as Bool) && (akItem as Bool) && (akContainer as Bool)
-
-		Int i = 0
-		Bool bBreak = False
-
-		While (i < akFilters.GetSize()) && !bBreak
-			If CheckIfLoopShouldExit()
-				bBreak = True
-			EndIf
-
-			If !bBreak
-				If (i != 1) && (i != 2)
-					If Player.HasPerk(akPerks.GetAt(i) as Perk)
-						RemoveItems(akFilters.GetAt(i) as Formlist, akItem, akContainer)
-					EndIf
-				EndIf
-			EndIf
-
-			i += 1
-		EndWhile
-
-		Return True
-	EndIf
-
-	Return False
-EndFunction
+;Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akItem, ObjectReference akContainer)
+;	If (akFilters as Bool) && (akPerks as Bool) && (akItem as Bool) && (akContainer as Bool)
+;
+;		Int i = 0
+;		Bool bBreak = False
+;
+;		While (i < akFilters.GetSize()) && !bBreak
+;			If CheckIfLoopShouldExit()
+;				bBreak = True
+;			EndIf
+;
+;			If !bBreak
+;				If (i != 1) && (i != 2)
+;					If Player.HasPerk(akPerks.GetAt(i) as Perk)
+;						RemoveItems(akFilters.GetAt(i) as Formlist, akItem, akContainer)
+;					EndIf
+;				EndIf
+;			EndIf
+;
+;			i += 1
+;		EndWhile
+;
+;		Return True
+;	EndIf
+;
+;	Return False
+;EndFunction
 
 ; Iterates through loot in a container and removes specific items to another container
 

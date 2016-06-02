@@ -4,28 +4,28 @@
     <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
   </Imports>
   <Scripts>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EA.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EC.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026ED.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EE.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EF.psc</Script>
-
 		   <Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuMain_010026E1.psc</Script>
+
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E3.psc</Script>
+
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E5.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E6.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E7.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E8.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E9.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EA.psc</Script>
+
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EC.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026ED.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EE.psc</Script>
 
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FC.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FD.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FE.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FF.psc</Script>
 
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F1.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F2.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F3.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F0.psc</Script>
+
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F4.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F6.psc</Script>
 		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F7.psc</Script>

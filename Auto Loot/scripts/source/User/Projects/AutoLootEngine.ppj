@@ -4,7 +4,6 @@
     <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
   </Imports>
   <Scripts>
-  	<Script>DefaultDisableHavokOnLoad.psc</Script>
   	<Script>AutoLoot\dubhAutoLootQuestScript.psc</Script>
   	<Script>AutoLoot\dubhAutoLootEffectScript.psc</Script>
   	<Script>AutoLoot\dubhAutoLootEffectBodiesScript.psc</Script>
