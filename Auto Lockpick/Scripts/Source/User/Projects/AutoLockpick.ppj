@@ -1,0 +1,13 @@
+<PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="D:\Steam\steamapps\common\Fallout 4\Data\Scripts" Optimize="true" Release="true" Final="true">
+  <Imports>
+    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>
+    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
+  </Imports>
+  <Scripts>
+  	<Script>AutoLockpick\dubhAutoLockpickQuestScript.psc</Script>
+  	<Script>AutoLockpick\dubhAutoLockpickEffectScript.psc</Script>
+  	<Script>AutoLockpick\Fragments\Terminals\TERM_dubhAutoLockpickMenu_0100080B.psc</Script>
+  	<Script>AutoLockpick\Fragments\Terminals\TERM_dubhAutoLockpickMenuDis_0100080C.psc</Script>
+  	<Script>AutoLockpick\Fragments\Terminals\TERM_dubhAutoLockpickMenuPro_0100080D.psc</Script>
+  </Scripts>
+</PapyrusProject>
