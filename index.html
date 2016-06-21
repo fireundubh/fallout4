@@ -11,7 +11,7 @@
 <script>
 $(document).ready(function() {
 	$(".downloads").click(function() {
-	  $(".downloads-list").toggle("fast");
+	  $(".downloads-list, .downloads-info").toggle("fast");
 	});
 	$(".about-me").click(function() {
 	  $(".about-me-text").toggle("fast");
@@ -42,8 +42,9 @@ $(document).ready(function() {
 	<a id="top" class="anchor" href="#top" aria-hidden="true"></a>
 	<div class="wrapper">
 		<header>
-			<h1 class="header"><a href="#" class="downloads">Downloads</a></h1>
+			<h1 class="header"><a href="#" class="downloads">Downloads &rsaquo;</a></h1>
 			<div class="downloads-list" style="display:none">
+				<p class="downloads-info"><em>[Click heading to expand list.]</em></p>
 				<ul>
 					<li><a class="buttons github" href="https://github.com/fireundubh/fallout4/tree/master/Advanced%20Portable%20Turret%20Set%20Extended">Advanced Mobile Turret Set Extended</a></li>
 					<li class="download"><a class="buttons" href="https://github.com/fireundubh/fallout4/blob/master/Aqua%20Perk%20Remake/Aqua%20Perk%20Remake.esp?raw=true">Aqua Perk Remake</a></li>
@@ -104,7 +105,7 @@ $(document).ready(function() {
 			<p></p>
 
 			<h2>Frequently Asked Questions</h2>
-			<h3><a id="about-me" class="about-me" href="#" aria-hidden="true">Who's fireundubh?</a></h3>
+			<h3><a id="about-me" class="about-me" href="#" aria-hidden="true">Who's fireundubh? &rsaquo;</a></h3>
 			<div class="about-me-text" style="display:none">
 				<p><strong>fireundubh</strong> is the creator of <em>Master of Disguise</em> for Skyrim, and <em>Auto Loot</em> and <em>Auto Lockpick</em> for Fallout 4.</p>
 				<p>Master of Disguise was featured by <a href="http://www.gamespot.com/videos/top-5-skyrim-mods-of-the-week-become-the-master-of/2300-6423174/">GameSpot</a>, <a href="http://kotaku.com/skyrim-disguises-let-you-walk-around-doing-whatever-1681784966">Kotaku</a>, <a href="https://www.youtube.com/watch?v=ATGNFDgNT-A">Brodual</a>, <a href="https://www.youtube.com/watch?v=69e7xcYw-G4">MxR Mods</a>, and the Skyrim G.E.M.S. Hall of Fame, was the #1 Stealth mod on the Steam Workshop and the Skyrim Nexus, and has more than 1 million views on YouTube. Although best known for Master of Disguise, fireundubh has created more than 100 mods for a variety of games, from Duke Nukem 3D to Stellaris.</p>
@@ -112,7 +113,7 @@ $(document).ready(function() {
 				<p></p>
 			</div>
 
-			<h3><a id="install" class="install" href="#" aria-hidden="true">How do I install mods manually?</a></h3>
+			<h3><a id="install" class="install" href="#" aria-hidden="true">How do I install mods manually? &rsaquo;</a></h3>
 			<div class="install-text" style="display:none">
 				<ol>
 					<li>Download a plugin (<code>.esp</code>) and the associated resources archive (<code>.ba2</code>). Note: Not all mods have or need archives.</li>
@@ -121,7 +122,7 @@ $(document).ready(function() {
 				</ol>
 			</div>
 
-			<h3><a id="bethnet" class="bethnet" href="#" aria-hidden="true">Can you upload your mods to Bethesda.net?</a></h3>
+			<h3><a id="bethnet" class="bethnet" href="#" aria-hidden="true">Can you upload your mods to Bethesda.net? &rsaquo;</a></h3>
 			<div class="bethnet-text" style="display:none">
 				<p><strong>No, I removed my mods from Bethesda.net.</strong> This platform is haphazardly designed, universally loathed by modders, dominated by a loud toxic minority within the community, and poorly moderated by volunteers on power trips, if moderated at all.</p>
 				<p>As one of the first modders to distribute mods through the Bethesda.net Workshop (you can see several of my mods in official promotional videos), I was an early adopter. Many of the problems that we saw at the start of the private beta remain in the product today, despite an extraordinary amount of feedback and bug reports that we provided. Bethesda.net continues to be highly inconvenient and unfriendly to modders.</p>
@@ -132,14 +133,14 @@ $(document).ready(function() {
 				<p></p>
 			</div>
 
-			<h3><a id="nexus" class="nexus" href="#" aria-hidden="true">Can you upload your mods to the Nexus?</a></h3>
+			<h3><a id="nexus" class="nexus" href="#" aria-hidden="true">Can you upload your mods to the Nexus? &rsaquo;</a></h3>
 			<div class="nexus-text" style="display:none">
 				<p><strong>No, I removed my mods from the Nexus sometime ago.</strong> As long as the Nexus profits off the traffic that mods provide their business without offering modders an opportunity to participate in a YouTube-like revenue sharing program, I will not distribute my mods on the Nexus platform.</p>
 				<p>This is not a protest, or a one-man boycott. This is a personal decision that I feel is right for me.</p>
 				<p></p>
 			</div>
 
-			<h3><a id="rights" class="rights" href="#" aria-hidden="true">Can I port your mods to consoles? Or upload your mods anywhere?</a></h3>
+			<h3><a id="rights" class="rights" href="#" aria-hidden="true">Can I port your mods to consoles? Or upload your mods anywhere? &rsaquo;</a></h3>
 			<div class="rights-text" style="display:none">
 				<ul>
 					<li>No, you may not port my mods to consoles. Please remember: I would be happy to support consoles if Bethesda.net were a better platform.</li>
@@ -151,7 +152,7 @@ $(document).ready(function() {
 				<p></p>
 			</div>
 
-			<h3><a id="issues" class="issues" href="#" aria-hidden="true">Where can I submit bug reports, or provide feedback?</a></h3>
+			<h3><a id="issues" class="issues" href="#" aria-hidden="true">Where can I submit bug reports, or provide feedback? &rsaquo;</a></h3>
 			<div class="issues-text" style="display:none">
 				<p>You can submit issues and other feedback on <a href="https://github.com/fireundubh/fallout4/issues">my GitHub issue tracker</a>. You will need a GitHub account.</p>
 				<p>I have stopped providing technical support via e-mail. Way too many e-mails, guys! Use the tracker. Other folks might be able to help there, too.</p>
