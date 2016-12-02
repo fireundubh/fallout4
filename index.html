@@ -16,6 +16,9 @@ $(document).ready(function() {
 	$(".install").click(function() {
 	  $(".install-text").toggle("fast");
 	});
+	$(".dlc").click(function() {
+	  $(".dlc-text").toggle("fast");
+	});
 	$(".bethnet").click(function() {
 	  $(".bethnet-text").toggle("fast");
 	});
@@ -127,6 +130,12 @@ $(document).ready(function() {
 					<li>Copy the plugin and archive to your <code>Steam\steamapps\common\Fallout 4\Data</code> folder.</li>
 					<li>Enable the plugin from within Fallout 4 or with your choice of mod manager.</li>
 				</ol>
+			</div>
+
+			<h3><a id="dlc" class="dlc" href="#" aria-hidden="true">Can you support the latest DLC? &rsaquo;</a></h3>
+			<div class="dlc-text" style="display:none">
+				<p>Not yet due to limited availability.</p>
+				<p></p>
 			</div>
 
 			<h3><a id="bethnet" class="bethnet" href="#" aria-hidden="true">Can you upload your mods to Bethesda.net? &rsaquo;</a></h3>
