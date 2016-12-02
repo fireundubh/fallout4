@@ -10,9 +10,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$(".downloads").click(function() {
-	  $(".downloads-list, .downloads-info").toggle("fast");
-	});
 	$(".about-me").click(function() {
 	  $(".about-me-text").toggle("fast");
 	});
@@ -43,8 +40,7 @@ $(document).ready(function() {
 	<div class="wrapper">
 		<header>
 			<h1 class="header"><a href="#" class="downloads">Downloads &rsaquo;</a></h1>
-			<p class="downloads-info"><em>[Click heading to expand list.]</em></p>
-			<div class="downloads-list" style="display:none">
+			<div class="downloads-list">
 				<ul>
 					<li><a class="buttons github" href="https://github.com/fireundubh/fallout4/tree/master/Advanced%20Portable%20Turret%20Set%20Extended">Advanced Mobile Turret Set Extended</a></li>
 					<li class="download"><a class="buttons" href="https://github.com/fireundubh/fallout4/blob/master/Aqua%20Perk%20Remake/Aqua%20Perk%20Remake.esp?raw=true">Aqua Perk Remake</a></li>
@@ -116,7 +112,7 @@ $(document).ready(function() {
 					<li><em>Master of Disguise</em> &mdash; #1 in Stealth in the Skyrim G.E.M.S. Hall of Fame (pre-GitHub)
 					<li><em>Master of Disguise</em> &mdash; #1 in Stealth on the Skyrim Nexus (pre-GitHub)
 					<li>Contributed to xEdit and decoded the Fallout 4 plugin data structures
-					<li>Invited by Bethesda Softworks to test the Creation Kit before the closed beta
+					<li>Invited by Bethesda Softworks to test the Fallout 4 Creation Kit before the closed beta
 					<li>Wrote and edited the <a href="http://www.creationkit.com/fallout4/index.php?title=Papyrus_FAQs">Papyrus FAQs</a> on the Creation Kit Wiki
 					<li>Created the <a href="https://github.com/fireundubh/ultraedit-wordfiles">UltraEdit syntax highlighting definitions</a> for Papyrus and xEdit
 					<li>Wrote the <a href="https://github.com/fireundubh/xedit">bash tag generator</a> for Fallout 3, Fallout: New Vegas, Oblivion, and Skyrim
