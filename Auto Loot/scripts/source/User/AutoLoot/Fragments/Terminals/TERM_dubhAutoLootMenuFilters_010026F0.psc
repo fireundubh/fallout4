@@ -148,18 +148,14 @@ EndFunction
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Actor Property Player Auto
-Formlist Property dubhAutoLootGlobals Auto
 Formlist Property dubhAutoLootPerks Auto
-GlobalVariable Property dubhAutoLootTotalFiltersActive Auto
 
 Function TogglePerk(Int iIndex)
 	Perk kPerk = dubhAutoLootPerks.GetAt(iIndex) as Perk
 
 	If Player.HasPerk(kPerk)
 		Player.RemovePerk(kPerk)
-		dubhAutoLootTotalFiltersActive.Value -= 1
 	Else
 		Player.AddPerk(kPerk, False)
-		dubhAutoLootTotalFiltersActive.Value += 1
 	EndIf
 EndFunction
