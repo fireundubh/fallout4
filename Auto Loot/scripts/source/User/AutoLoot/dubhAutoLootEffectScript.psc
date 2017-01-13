@@ -122,7 +122,7 @@ EndFunction
 ; Return true if exit condition met
 
 Bool Function CheckIfLoopShouldExit()
-	Return !Player.HasPerk(dubhAutoLootPerk) || Player.IsInCombat() || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+	Return !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
 EndFunction
 
 ; Return true if all conditions are met

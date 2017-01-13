@@ -60,7 +60,6 @@ EndFunction
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Formlist Property dubhAutoLootGlobals Auto Const
-Formlist Property dubhAutoLootPerks Auto Const
 
 Function SetContainer(Float afContainerID)
 	Int i = 0

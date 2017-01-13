@@ -4,8 +4,7 @@ ScriptName AutoLoot:Fragments:Terminals:TERM_dubhAutoLootMenuContain_01002716 Ex
 ;BEGIN FRAGMENT Fragment_Terminal_01
 Function Fragment_Terminal_01(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(7)
+SetGlobal(7)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -13,8 +12,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_03
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(15)
+SetGlobal(15)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -22,8 +20,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_05
 Function Fragment_Terminal_05(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(16)
+SetGlobal(16)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -31,8 +28,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_07
 Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(13)
+SetGlobal(13)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -40,8 +36,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_09
 Function Fragment_Terminal_09(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(14)
+SetGlobal(14)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -49,8 +44,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_11
 Function Fragment_Terminal_11(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(17)
+SetGlobal(17)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -58,8 +52,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Terminal_13
 Function Fragment_Terminal_13(ObjectReference akTerminalRef)
 ;BEGIN CODE
-GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
-kGlobal.SetValue(18)
+SetGlobal(18)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -67,4 +60,8 @@ EndFunction
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Formlist Property dubhAutoLootGlobals Auto Const
-Formlist Property dubhAutoLootPerks Auto Const
+
+Function SetGlobal(Int aiValue)
+	GlobalVariable kGlobal = dubhAutoLootGlobals.GetAt(9) as GlobalVariable
+	kGlobal.SetValue(aiValue)
+EndFunction

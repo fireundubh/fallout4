@@ -1,7 +1,7 @@
-<PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="D:\Steam\steamapps\common\Fallout 4\Data\Scripts" Optimize="true" Release="true" Final="true">
+<PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="E:\SteamLibrary\Fallout 4\Data\Scripts" Optimize="true" Release="true" Final="true">
   <Imports>
-    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>
-    <Import>D:\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
+    <Import>E:\SteamLibrary\Fallout 4\Data\Scripts\Source\User</Import>    
+    <Import>E:\SteamLibrary\Fallout 4\Data\Scripts\Source\Base</Import>    
   </Imports>
   <Scripts>
   	<Script>AutoLoot\dubhAutoLootQuestScript.psc</Script>
