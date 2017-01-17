@@ -18,6 +18,23 @@ EndWhile
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Terminal_02
+Function Fragment_Terminal_02(ObjectReference akTerminalRef)
+;BEGIN CODE
+Int i = 0
+While i < dubhAutoLootPerks.GetSize()
+	Perk kPerk = dubhAutoLootPerks.GetAt(i) as Perk
+
+	If !Player.HasPerk(kPerk)
+		Player.AddPerk(kPerk)
+	EndIf
+
+	i += 1
+EndWhile
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Actor Property Player Auto
