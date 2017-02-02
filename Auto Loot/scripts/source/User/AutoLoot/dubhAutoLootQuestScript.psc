@@ -5,12 +5,12 @@ ScriptName AutoLoot:dubhAutoLootQuestScript Extends Quest
 ; -----------------------------------------------------------------------------
 
 Event OnQuestInit()
-	StartTimer(5, dubhAutoLootQuestTimer)
+	StartTimer(5)
 EndEvent
 
 Event OnTimer(Int aiTimerID)
-	If MQ102.IsStageDone(6) == False
-		StartTimer(5, dubhAutoLootQuestTimer)
+	If Player.IsInLocation(PrewarSanctuaryHillsLocation) || Player.IsInLocation(PrewarVault111Location)
+		StartTimer(5)
 	Else
 		Self.Stop()
 	EndIf
@@ -25,9 +25,6 @@ EndEvent
 ; -----------------------------------------------------------------------------
 
 Actor Property Player Auto
-
-Int Property dubhAutoLootQuestTimer Auto
-
-Quest Property MQ102 Auto
-
+Location Property PrewarSanctuaryHillsLocation Auto
+Location Property PrewarVault111Location Auto
 Form Property dubhAutoLootHolotape Auto
