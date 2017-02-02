@@ -1,0 +1,17 @@
+<PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="E:\ModOrganizer\Games\Fallout4\mods\My Mods - Track Everything\Scripts" Optimize="true" Release="true" Final="true">
+  <Imports>
+    <Import>E:\Program Files (x86)\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>    
+    <Import>E:\Program Files (x86)\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>    
+  </Imports>
+  <Scripts>
+  	<Script>TrackEverything\SingleObjectiveQuestScript.psc</Script>
+  	<Script>TrackEverything\MultipleObjectivesQuestScript.psc</Script>
+  	<Script>TrackEverything\dubhTrackEverythingHolotapeQuestScript.psc</Script>
+  	<Script>TrackEverything\Fragments\Terminals\TERM_dubhTrackEverythingMenu_0100081D.psc</Script>
+  	<Script>TrackEverything\Fragments\Terminals\TERM_dubhTrackEverythingMenu_0100081E.psc</Script>
+  	<Script>TrackEverything\Fragments\Terminals\TERM_dubhTrackEverythingMenu_0100081F.psc</Script>
+  	<Script>TrackEverything\Fragments\Terminals\TERM_dubhTrackEverythingMenu_01000820.psc</Script>
+  	<Script>TrackEverything\Fragments\Terminals\TERM_dubhTrackEverythingMenu_01000821.psc</Script>
+  	<Script>TrackEverything\Fragments\Terminals\TERM_dubhTrackEverythingMenu_01000822.psc</Script>
+  </Scripts>
+</PapyrusProject>
