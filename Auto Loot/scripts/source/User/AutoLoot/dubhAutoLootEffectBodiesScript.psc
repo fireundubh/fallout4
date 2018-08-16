@@ -1,179 +1,134 @@
 ScriptName AutoLoot:dubhAutoLootEffectBodiesScript Extends ActiveMagicEffect
 
 ; -----------------------------------------------------------------------------
-; VARS
+; EVENTS
 ; -----------------------------------------------------------------------------
 
 ObjectReference[] LootArray = None
 
-; -----------------------------------------------------------------------------
-; EVENTS
-; -----------------------------------------------------------------------------
-
 Event OnEffectStart(Actor akTarget, Actor akCaster)
-	StartTimer(dubhAutoLootDelay.Value as Int, dubhAutoLootTimer)
+	StartTimer(Delay.Value as Int, TimerID as Int)
 EndEvent
 
 Event OnTimer(Int aiTimerID)
-	; do not run if the player no longer has the perk
-	If Player.HasPerk(dubhAutoLootPerk)
-
-		; do not run if the location cannot be auto looted
-		If CanAutoLootLocation()
-
-			If !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled()
+	If PlayerRef.HasPerk(ActivePerk)
+		If LocationCanBeLooted()
+			If GameStateIsValid()
 				Int i = 0
 				Bool bBreak = False
 
-				While (i < dubhAutoLootFilter.GetSize()) && !bBreak
-					If CheckIfLoopShouldExit()
+				While (i < Filter.GetSize()) && !bBreak
+					If !GameStateIsValid()
 						bBreak = True
 					EndIf
 
 					If !bBreak
-						LootArray = Player.FindAllReferencesWithKeyword(dubhAutoLootFilter.GetAt(i), dubhAutoLootRadius.Value)
+						LootArray = PlayerRef.FindAllReferencesWithKeyword(Filter.GetAt(i), Radius.Value as Float)
 
-						If LootArray.Length > 0
+						If LootArray != None
 							LootArray = FilterLootArray(LootArray)
-							Loot(LootArray)
+
+							If LootArray != None
+								Loot(LootArray)
+							EndIf
 						EndIf
 					EndIf
 
 					i += 1
 				EndWhile
 
-				If LootArray.Length > 0
+				If LootArray != None
 					LootArray.Clear()
 				EndIf
 			EndIf
-
 		EndIf
 
-		StartTimer(dubhAutoLootDelay.Value as Int, dubhAutoLootTimer)
+		StartTimer(Delay.Value as Int, TimerID)
 	EndIf
 EndEvent
-
-; -----------------------------------------------------------------------------
-; PROPERTIES
-; -----------------------------------------------------------------------------
-
-; Misc.
-Int Property dubhAutoLootTimer Auto
-
-; Globals
-GlobalVariable Property dubhAutoLootContainer Auto
-GlobalVariable Property dubhAutoLootDelay Auto
-GlobalVariable Property dubhAutoLootPlayerOnly Auto
-GlobalVariable Property dubhAutoLootRadius Auto
-;GlobalVariable Property dubhAutoLootTakeAll Auto
-GlobalVariable Property dubhAutoLootTheftAllowed Auto
-GlobalVariable Property dubhAutoLootTheftAlarm Auto
-GlobalVariable Property dubhAutoLootTheftOnlyOwned Auto
-GlobalVariable Property dubhAutoLootToggleDelayOnLoot Auto
-GlobalVariable Property dubhAutoLootToggleDisableOnLoot Auto
-GlobalVariable Property dubhAutoLootWorkshopLooting Auto
-
-; Formlists
-Formlist Property dubhAutoLootFilter Auto
-Formlist Property dubhAutoLootFilterAll Auto
-Formlist Property dubhAutoLootLocations Auto
-Formlist Property dubhAutoLootPerks Auto
-Formlist Property dubhAutoLootSettlements Auto
-
-; Perk
-Perk Property dubhAutoLootPerk Auto
-
-; Actor
-Actor Property Player Auto
-Actor Property dubhAutoLootDummyActor Auto
 
 ; -----------------------------------------------------------------------------
 ; FUNCTIONS
 ; -----------------------------------------------------------------------------
 
-; Return true if exit condition met
+; Log
 
-Bool Function CheckIfLoopShouldExit()
-	Return !Player.HasPerk(dubhAutoLootPerk) || Utility.IsInMenuMode() || !Game.IsMovementControlsEnabled()
+Function Log(String asFunction = "", String asMessage = "") DebugOnly
+	Debug.TraceSelf(Self, asFunction, asMessage)
+EndFunction
+
+; Return true if any exit condition met
+
+Bool Function GameStateIsValid()
+	If PlayerRef.HasPerk(ActivePerk) && !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled() && !Game.IsVATSPlaybackActive()
+		Return True
+	EndIf
+
+	Return False
 EndFunction
 
 ; Return true if all conditions are met
 
-Bool Function CheckIfItemCanBeProcessed(ObjectReference akItem)
-	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
+Bool Function ItemCanBeProcessed(ObjectReference akItem)
+	If akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
+		Return True
+	EndIf
+
+	Return False
 EndFunction
 
-; Return true if container was disabled
+; Disables the container when container is empty
 
-Bool Function TryToDisableContainer(ObjectReference akContainer)
-	If (akContainer as Bool)
-		If dubhAutoLootToggleDisableOnLoot.Value == True
-			If akContainer.GetItemCount() == 0
-				akContainer.DisableNoWait()
-				akContainer.Delete()
-				Return True
-			EndIf
+Function TryToDisableBody(ObjectReference akContainer)
+	If AutoLoot_Setting_RemoveBodiesOnLoot.Value == 1
+		If akContainer.GetItemCount(None) == 0
+			akContainer.DisableNoWait()
+			akContainer.Delete()
 		EndIf
 	EndIf
-	Return False
 EndFunction
 
 ; Iterate and Loot
 
 Function Loot(ObjectReference[] akLootArray)
-	If (akLootArray as Bool)
-		Int iLootArray = akLootArray.Length
+	If akLootArray.Length > 0
+		Int i = 0
+		Bool bBreak = False
 
-		If iLootArray > 0
-			Int i = 0
-			Bool bBreak = False
+		While (i < akLootArray.Length) && !bBreak
+			If !GameStateIsValid()
+				bBreak = True
+			EndIf
 
-			While (i < iLootArray) && !bBreak
-				If CheckIfLoopShouldExit()
-					bBreak = True
-				EndIf
+			If !bBreak
+				ObjectReference objLoot = akLootArray[i] as ObjectReference
 
-				If !bBreak
-					ObjectReference objLoot = akLootArray[i]
-
-					If objLoot != None
-						; loot object if the item is not owned
-						If (dubhAutoLootTheftAllowed.Value == False) && (Player.WouldBeStealing(objLoot) == False)
-							If LootObject(objLoot)
-								If dubhAutoLootToggleDelayOnLoot.Value == True
-									Utility.Wait(dubhAutoLootDelay.Value as Int)
-								EndIf
-							EndIf
-						ElseIf dubhAutoLootTheftAllowed.Value == True
-							; remove ownership if option enabled
-							If dubhAutoLootTheftAlarm.Value == False
-								objLoot.SetActorRefOwner(Player)
-							EndIf
-
-							; loot object if the item is owned or unowned
-							If LootObject(objLoot)
-								If dubhAutoLootToggleDelayOnLoot.Value == True
-									Utility.Wait(dubhAutoLootDelay.Value as Int)
-								EndIf
-							EndIf
+				If objLoot != None
+					If PlayerRef.WouldBeStealing(objLoot)
+						If (AutoLoot_Setting_AllowStealing.Value == 1) && (AutoLoot_Setting_StealingIsHostile.Value == 0)
+							objLoot.SetActorRefOwner(PlayerRef)
 						EndIf
 					EndIf
+
+					LootObject(objLoot)
 				EndIf
+			EndIf
 
-				i += 1
-			EndWhile
+			i += 1
+		EndWhile
 
-			akLootArray.Clear()
-		EndIf
+		akLootArray.Clear()
 	EndIf
 EndFunction
 
 ; Filter Loot Array
 
 Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectReference[] akArray)
-	If dubhAutoLootTheftOnlyOwned.Value == False
-		akArray.Add(akContainer, 1)
-	ElseIf Player.WouldBeStealing(akContainer) == True
+  If AutoLoot_Setting_LootOnlyOwned.Value == 1
+  	If PlayerRef.WouldBeStealing(akContainer)
+  		akArray.Add(akContainer, 1)
+  	EndIf
+	Else
 		akArray.Add(akContainer, 1)
 	EndIf
 EndFunction
@@ -181,22 +136,33 @@ EndFunction
 ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
 
-	If (akArray as Bool) && (akArray != None)
+	If akArray.Length > 0
 		Int i = akArray.Length - 1
+		Bool bBreak = False
 
-		While i >= 0
-			ObjectReference kItem = akArray[i]
+		While (i >= 0) && !bBreak
+			If kResult.Length >= 128
+				bBreak = True
+			EndIf
 
-			If kItem != None
-				If CheckIfItemCanBeProcessed(kItem)
-					Actor kActor = kItem as Actor
+			If !GameStateIsValid()
+				bBreak = True
+			EndIf
 
-					If (kActor != None) && (kActor != Player)
-						If kActor.IsDead()
-							If kItem.GetItemCount() > 0
-								AddObjectToObjectReferenceArray(kItem, kResult)
-							Else
-								TryToDisableContainer(kItem)
+			If !bBreak
+			ObjectReference kItem = akArray[i] as ObjectReference
+
+				If kItem != None
+					If ItemCanBeProcessed(kItem)
+						Actor kActor = kItem as Actor
+
+						If (kActor != None) && (kActor != PlayerRef)
+							If kActor.IsDead()
+								If kItem.GetItemCount(None) > 0
+									AddObjectToObjectReferenceArray(kItem, kResult)
+								Else
+									TryToDisableBody(kItem)
+								EndIf
 							EndIf
 						EndIf
 					EndIf
@@ -213,35 +179,54 @@ EndFunction
 ObjectReference[] Function FindAllReferencesWithKeywordList(ObjectReference akActor, Formlist akKeywords, Float afRadius)
 	ObjectReference[] kResult = new ObjectReference[0]
 
-	If (akActor as Bool) && (akKeywords as Bool) && (afRadius as Bool)
-		Int i = 0
-		Int iKeywords = akKeywords.GetSize()
+	Int i = 0
+	Int iKeywords = akKeywords.GetSize()
+	Bool bBreak = False
 
-		While i < iKeywords
+	While (i < iKeywords) && !bBreak
+		If kResult.Length >= 128
+			bBreak = True
+		EndIf
+
+		If !GameStateIsValid()
+			bBreak = True
+		EndIf
+
+		If !bBreak
 			Keyword kKeyword = akKeywords.GetAt(i) as Keyword
 			ObjectReference[] tmpArray = akActor.FindAllReferencesWithKeyword(kKeyword, afRadius)
 
 			If tmpArray != None
 				Int j = 0
-				While j < tmpArray.Length
-					kResult.Add(tmpArray[j])
+				Bool bBreakTmp = False
+
+				While (j < tmpArray.Length) && !bBreakTmp
+					If kResult.Length >= 128
+						bBreakTmp = True
+					EndIf
+
+					If !bBreakTmp
+						kResult.Add(tmpArray[j])
+					EndIf
+
 					j += 1
 				EndWhile
 			EndIf
+		EndIf
 
-			i += 1
-		EndWhile
-	EndIf
+		i += 1
+	EndWhile
 
 	Return kResult
 EndFunction
 
 ; Returns true if loot in location can be processed
 
-Bool Function CanAutoLootLocation()
-	If dubhAutoLootWorkshopLooting.Value == False
-		Form kLocation = Game.GetPlayer().GetCurrentLocation() as Form
-		If dubhAutoLootLocations.HasForm(kLocation)
+Bool Function LocationCanBeLooted()
+	If AutoLoot_Setting_LootSettlements.Value == 0
+		Form kLocation = PlayerRef.GetCurrentLocation() as Form
+
+		If AutoLoot_Locations.HasForm(kLocation)
 			Return False
 		EndIf
 	EndIf
@@ -251,103 +236,69 @@ EndFunction
 
 ; Loot Object
 
-Bool Function LootObject(ObjectReference objContainer)
-	If (objContainer as Bool)
-
-		; do not run if the player no longer has the perk
-		If Player.HasPerk(dubhAutoLootPerk)
-			Bool bPlayerOnly = dubhAutoLootPlayerOnly.Value as Bool
-			Int iContainer = dubhAutoLootContainer.Value as Int
-
-			; determine where to send loot
-			ObjectReference kOtherContainer = None
-
-			If (iContainer == 0) || (bPlayerOnly == True)
-				kOtherContainer = Player
-			Else
-				kOtherContainer = (dubhAutoLootSettlements.GetAt(iContainer) as WorkshopScript) as ObjectReference
-			EndIf
-
-			; send loot to the other container
-			If kOtherContainer != None
-				Debug.Trace("Trying to loot: " + objContainer)
-
-				;If dubhAutoLootTakeAll.Value == True
-					objContainer.RemoveAllItems(kOtherContainer, dubhAutoLootTheftAlarm.Value)
-				;Else
-				;	LootObjectByFilter(dubhAutoLootFilterAll, dubhAutoLootPerks, objContainer, kOtherContainer)
-				;EndIf
-
-				TryToDisableContainer(objContainer)
-
-				Return True
-			EndIf
+Function LootObject(ObjectReference objContainer)
+	If (objContainer != None) && (DummyActor != None)
+		If AutoLoot_Setting_TakeAll.Value == 1
+			objContainer.RemoveAllItems(DummyActor, AutoLoot_Setting_StealingIsHostile.Value)
+		Else
+			LootObjectByFilter(FilterAll, AutoLoot_Perks, objContainer, DummyActor)
 		EndIf
-	EndIf
 
-	Return False
+		TryToDisableBody(objContainer)
+	EndIf
 EndFunction
 
 ; Loot specific items using active filters - excludes bodies and containers filters
 
-;Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akItem, ObjectReference akOtherContainer)
-;	If (akFilters as Bool) && (akPerks as Bool) && (akItem as Bool) && (akOtherContainer as Bool)
-;		Int i = 0
-;		Int iFilters = akFilters.GetSize()
-;		Bool bBreak = False
-;
-;		While (i < iFilters) && !bBreak
-;			If CheckIfLoopShouldExit()
-;				bBreak = True
-;			EndIf
-;
-;			If !bBreak
-;				If (i != 1) && (i != 2)
-;					Perk kPerk = akPerks.GetAt(i) as Perk
-;					If Player.HasPerk(kPerk)
-;						Formlist kFilter = akFilters.GetAt(i) as Formlist
-;						RemoveItems(kFilter, akItem, akOtherContainer)
-;					EndIf
-;				EndIf
-;			EndIf
-;
-;			i += 1
-;		EndWhile
-;
-;		Return True
-;	EndIf
-;
-;	Return False
-;EndFunction
+Bool Function LootObjectByFilter(Formlist akFilters, Formlist akPerks, ObjectReference akContainer, ObjectReference akOtherContainer)
+	Int i = 0
+	Bool bBreak = False
 
-; Iterates through loot in a container and removes specific items to another container
+	While (i < akFilters.GetSize()) && !bBreak
+		If !GameStateIsValid()
+			bBreak = True
+		EndIf
 
-Bool Function RemoveItems(Formlist akFormlist, ObjectReference akContainer, ObjectReference akOtherContainer)
-	Bool bItemsRemoved = False
-
-	If (akFormlist as Bool) && (akContainer as Bool) && (akOtherContainer as Bool)
-		Int i = 0
-		Int iForms = akFormlist.GetSize()
-		Bool bBreak = False
-
-		While (i < iForms) && !bBreak
-			If CheckIfLoopShouldExit()
-				bBreak = True
-			EndIf
-
-			If !bBreak
-				Form objLoot = akFormlist.GetAt(i)
-				Int lootCount = akContainer.GetItemCount(objLoot)
-
-				If lootCount > 0
-					akContainer.RemoveItem(objLoot, lootCount, False, akOtherContainer)
-					bItemsRemoved = True
+		If !bBreak
+			If (i != 2) && (i != 4)
+				If PlayerRef.HasPerk(akPerks.GetAt(i) as Perk)
+					Formlist kFilter = akFilters.GetAt(i) as Formlist
+					akContainer.RemoveItem(kFilter, -1, True, akOtherContainer)
 				EndIf
 			EndIf
+		EndIf
 
-			i += 1
-		EndWhile
-	EndIf
-
-	Return bItemsRemoved
+		i += 1
+	EndWhile
 EndFunction
+
+; -----------------------------------------------------------------------------
+; PROPERTIES
+; -----------------------------------------------------------------------------
+
+; Actor
+Actor Property PlayerRef Auto
+Actor Property DummyActor Auto
+
+; Formlists
+Formlist Property Filter Auto
+Formlist Property FilterAll Auto
+Formlist Property AutoLoot_Locations Auto
+Formlist Property AutoLoot_Perks Auto
+
+; Globals
+GlobalVariable Property Destination Auto
+GlobalVariable Property Delay Auto
+GlobalVariable Property Radius Auto
+GlobalVariable Property AutoLoot_Setting_TakeAll Auto
+GlobalVariable Property AutoLoot_Setting_AllowStealing Auto
+GlobalVariable Property AutoLoot_Setting_StealingIsHostile Auto
+GlobalVariable Property AutoLoot_Setting_LootOnlyOwned Auto
+GlobalVariable Property AutoLoot_Setting_RemoveBodiesOnLoot Auto
+GlobalVariable Property AutoLoot_Setting_LootSettlements Auto
+
+; Misc.
+Int Property TimerID Auto
+
+; Perk
+Perk Property ActivePerk Auto

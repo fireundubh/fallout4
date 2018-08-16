@@ -1,12 +1,14 @@
 <PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="E:\ModOrganizer\Games\Fallout4\mods\Auto Loot\scripts" Optimize="true" Release="true" Final="true">
   <Imports>
-    <Import>E:\Program Files (x86)\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
+    <Import>E:\ModOrganizer\Games\Fallout4\mods\Auto Loot\scripts\Source\User</Import>
     <Import>E:\Program Files (x86)\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>
   </Imports>
   <Scripts>
+  	<Script>AutoLoot\dubhAutoLootDummyScript.psc</Script>
   	<Script>AutoLoot\dubhAutoLootQuestScript.psc</Script>
   	<Script>AutoLoot\dubhAutoLootEffectScript.psc</Script>
   	<Script>AutoLoot\dubhAutoLootEffectBodiesScript.psc</Script>
+  	<Script>AutoLoot\dubhAutoLootEffectComponentsScript.psc</Script>
   	<Script>AutoLoot\dubhAutoLootEffectContainersScript.psc</Script>
   </Scripts>
 </PapyrusProject>

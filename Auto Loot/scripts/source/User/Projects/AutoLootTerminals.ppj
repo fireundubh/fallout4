@@ -1,101 +1,127 @@
 <PapyrusProject xmlns="PapyrusProject.xsd" Flags="Institute_Papyrus_Flags.flg" Output="E:\ModOrganizer\Games\Fallout4\mods\Auto Loot\scripts" Optimize="true" Release="true" Final="true">
   <Imports>
-    <Import>E:\Program Files (x86)\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\User</Import>
+    <Import>E:\ModOrganizer\Games\Fallout4\mods\Auto Loot\scripts\Source\User</Import>
     <Import>E:\Program Files (x86)\Steam\steamapps\common\Fallout 4\Data\Scripts\Source\Base</Import>
   </Imports>
   <Scripts>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuMain_010026E1.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E3.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E5.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E6.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E7.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E8.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026E9.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EA.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EC.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026ED.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuDistanc_010026EE.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FC.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FD.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FE.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026FF.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuFilters_010026F0.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F4.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F6.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F7.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F8.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010026F9.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270B.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270C.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270D.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100270E.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002701.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002702.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002703.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002704.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002706.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002707.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002708.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002709.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271B.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271C.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271D.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100271E.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002710.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002711.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002712.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002713.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002715.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002716.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002717.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002718.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuOwnersh_0100272A.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100272C.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100272E.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100272F.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002720.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002721.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002722.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002723.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002725.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002726.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002727.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002728.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_01002729.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002730.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002731.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002732.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002733.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002735.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002736.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002737.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_01002738.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100919C.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuAdvance_0100919D.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100919E.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_0100919F.psc</Script>
-
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A0.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A1.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A2.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A3.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A4.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A5.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A6.psc</Script>
-		<Script>AutoLoot\Fragments\Terminals\TERM_dubhAutoLootMenuContain_010091A7.psc</Script>
+  	<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_100_04000FFC.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_201_All_04000FFE.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_203_Ammo_04001000.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_204_Armo_0400108D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_205_Bods_04001007.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_206_Comp_040010A2.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_207_Cont_04001008.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_208_Drnk_04001001.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_209_Flor_04001009.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_210_Food_04001002.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_211_Holo_040010A3.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_212_Junk_04001003.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_213_Keys_040010A4.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_214_Mags_040010A5.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_215_Meds_04001004.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_216_Valu_04001005.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_217_Weap_04001095.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_300_0400100A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_301_04001109.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_401_Rules_0400104A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_403_All_01_0400100D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_404_All_02_0400100E.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_405_All_03_0400100F.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_406_All_04_04001010.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_407_All_05_04001011.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_410_Ammo_01_04001014.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_411_Ammo_02_04001015.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_412_Ammo_03_04001016.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_413_Ammo_04_04001017.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_414_Ammo_05_04001018.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_416_Armo_01_0400108F.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_417_Armo_02_04001090.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_418_Armo_03_04001091.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_419_Armo_04_04001092.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_420_Armo_05_04001093.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_422_Bods_01_04001039.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_423_Bods_02_0400103A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_424_Bods_03_0400103B.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_425_Bods_04_0400103C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_426_Bods_05_0400103D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_428_Cont_01_0400103F.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_429_Cont_02_04001040.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_430_Cont_03_04001041.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_431_Cont_04_04001042.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_432_Cont_05_04001043.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_434_Drnk_01_0400101A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_435_Drnk_02_0400101B.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_436_Drnk_03_0400101C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_437_Drnk_04_0400101D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_438_Drnk_05_0400101E.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_440_Flora_01_04001045.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_441_Flora_02_04001046.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_442_Flora_03_04001047.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_443_Flora_04_04001048.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_444_Flora_05_04001049.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_446_Food_01_04001020.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_447_Food_02_04001021.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_448_Food_03_04001022.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_449_Food_04_04001023.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_450_Food_05_04001024.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_452_Junk_01_04001026.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_453_Junk_02_04001027.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_454_Junk_03_04001028.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_455_Junk_04_04001029.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_456_Junk_05_0400102A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_458_Meds_01_0400102C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_459_Meds_02_0400102D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_460_Meds_03_0400102E.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_461_Meds_04_0400102F.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_462_Meds_05_04001030.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_464_Valu_01_04001032.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_465_Valu_02_04001033.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_466_Valu_03_04001034.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_467_Valu_04_04001035.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_468_Valu_05_04001036.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_470_Weap_01_04001097.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_471_Weap_02_04001098.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_472_Weap_03_04001099.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_473_Weap_04_0400109A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_474_Weap_05_0400109B.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_476_Comp_01_040010EE.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_477_Comp_02_040010EF.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_478_Comp_03_040010F0.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_479_Comp_04_040010F1.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_480_Comp_05_040010F2.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_482_Holo_01_040010F4.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_483_Holo_02_040010F5.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_484_Holo_03_040010F6.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_485_Holo_04_040010F7.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_486_Holo_05_040010F8.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_488_Keys_01_040010FA.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_489_Keys_02_040010FB.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_490_Keys_03_040010FC.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_491_Keys_04_040010FD.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_492_Keys_05_040010FE.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_494_Mags_01_04001100.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_495_Mags_02_04001101.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_496_Mags_03_04001102.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_497_Mags_04_04001103.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_498_Mags_05_04001104.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_500_0400104B.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_600_0400104C.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_601_Settings_0400104D.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_603_Del_All_0400104F.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_605_Del_Ammo_04001051.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_606_Del_Armo_04001094.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_607_Del_Bods_04001058.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_608_Del_Comp_04001105.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_609_Del_Cont_04001059.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_610_Del_Drnk_04001052.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_611_Del_Flor_0400105A.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_612_Del_Food_04001053.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_613_Del_Holo_04001106.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_614_Del_Junk_04001054.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_615_Del_Keys_04001107.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_616_Del_Mags_04001108.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_617_Del_Meds_04001055.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_618_Del_Valu_04001056.psc</Script>
+		<Script>AutoLoot\Fragments\Terminals\TERM_AutoLoot_619_Del_Weap_0400109C.psc</Script>
   </Scripts>
 </PapyrusProject>

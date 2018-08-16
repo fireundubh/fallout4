@@ -5,26 +5,40 @@ ScriptName AutoLoot:dubhAutoLootQuestScript Extends Quest
 ; -----------------------------------------------------------------------------
 
 Event OnQuestInit()
-	StartTimer(5)
-EndEvent
+	Self.RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
 
-Event OnTimer(Int aiTimerID)
-	If Player.IsInLocation(PrewarSanctuaryHillsLocation) || Player.IsInLocation(PrewarVault111Location)
-		StartTimer(5)
+	If MQ101.IsCompleted() == True
+		If PlayerRef.GetItemCount(AutoLoot_Holotape) == 0
+			PlayerRef.AddItem(AutoLoot_Holotape, 1, False)
+		EndIf
 	Else
-		Self.Stop()
+		RegisterForRemoteEvent(MQ102, "OnStageSet")
 	EndIf
 EndEvent
 
-Event OnQuestShutdown()
-	Player.AddItem(dubhAutoLootHolotape, 1, False)
+Event Quest.OnStageSet(Quest akSender, Int auiStageID, Int auiItemID)
+	; v111 elevator exit radios on
+	If akSender == MQ102 && auiStageID == 15
+		UnRegisterForRemoteEvent(MQ102, "OnStageSet")
+
+		If PlayerRef.GetItemCount(AutoLoot_Holotape) == 0
+			PlayerRef.AddItem(AutoLoot_Holotape, 1, False)
+		EndIf
+	Endif
+EndEvent
+
+Event Actor.OnPlayerLoadGame(Actor akSender)
+	If PlayerRef.GetItemCount(AutoLoot_Holotape) == 0
+		PlayerRef.AddItem(AutoLoot_Holotape, 1, False)
+	EndIf
 EndEvent
 
 ; -----------------------------------------------------------------------------
 ; PROPERTIES
 ; -----------------------------------------------------------------------------
 
-Actor Property Player Auto
-Location Property PrewarSanctuaryHillsLocation Auto
-Location Property PrewarVault111Location Auto
-Form Property dubhAutoLootHolotape Auto
+Actor Property PlayerRef Auto
+Form Property AutoLoot_Holotape Auto
+
+Quest Property MQ101 Auto Const Mandatory
+Quest Property MQ102 Auto Const Mandatory
