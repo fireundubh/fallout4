@@ -84,6 +84,14 @@ EndFunction
 ; Filter Loot Array
 
 Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectReference[] akArray)
+	; exclude quest items that are explicitly excluded
+	If QuestItems.GetSize() > 0
+		If QuestItems.HasForm(akContainer as Form)
+			Return
+		EndIf
+	EndIf
+
+	; add only owned items when Auto Steal is enabled and mode is set to Owned Only
   If AutoLoot_Setting_AllowStealing.Value == 1 && AutoLoot_Setting_LootOnlyOwned.Value == 1
   	If PlayerRef.WouldBeStealing(akContainer)
   		akArray.Add(akContainer, 1)
@@ -91,6 +99,7 @@ Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectRefe
   	EndIf
   EndIf
 
+	; add all items when Auto Steal is enabled and mode is set to Owned and Unowned
 	If AutoLoot_Setting_AllowStealing.Value == 1
 		akArray.Add(akContainer, 1)
 		Return
@@ -105,10 +114,10 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
 
 	If akArray.Length > 0
-		Int i = akArray.Length - 1
+		Int i = 0
 		Bool bBreak = False
 
-		While (i >= 0) && !bBreak
+		While (i < akArray.Length) && !bBreak
 			If kResult.Length >= 128
 				bBreak = True
 			EndIf
@@ -131,7 +140,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 				EndIf
 			EndIf
 
-			i -= 1
+			i += 1
 		EndWhile
 	EndIf
 
@@ -166,6 +175,7 @@ Actor Property DummyActor Auto
 
 ; Formlists
 Formlist Property Filter Auto
+Formlist Property QuestItems Auto
 Formlist Property AutoLoot_Locations Auto
 
 ; Globals
