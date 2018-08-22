@@ -60,21 +60,13 @@ EndFunction
 ; Return true if any exit condition met
 
 Bool Function GameStateIsValid()
-	If PlayerRef.HasPerk(ActivePerk) && !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled() && !Game.IsVATSPlaybackActive()
-		Return True
-	EndIf
-
-	Return False
+	Return PlayerRef.HasPerk(ActivePerk) && !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled() && !Game.IsVATSPlaybackActive()
 EndFunction
 
 ; Return true if all conditions are met
 
 Bool Function ItemCanBeProcessed(ObjectReference akItem)
-	If akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
-		Return True
-	EndIf
-
-	Return False
+	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
 EndFunction
 
 ; Disables the container when container is empty
@@ -104,8 +96,8 @@ Function Loot(ObjectReference[] akLootArray)
 				ObjectReference objLoot = akLootArray[i] as ObjectReference
 
 				If objLoot != None
-					If PlayerRef.WouldBeStealing(objLoot)
-						If (AutoLoot_Setting_AllowStealing.Value == 1) && (AutoLoot_Setting_StealingIsHostile.Value == 0)
+					If (AutoLoot_Setting_AllowStealing.Value == 1) && (AutoLoot_Setting_StealingIsHostile.Value == 0)
+						If PlayerRef.WouldBeStealing(objLoot)
 							objLoot.SetActorRefOwner(PlayerRef)
 						EndIf
 					EndIf
@@ -124,11 +116,19 @@ EndFunction
 ; Filter Loot Array
 
 Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectReference[] akArray)
-  If AutoLoot_Setting_LootOnlyOwned.Value == 1
+  If AutoLoot_Setting_AllowStealing.Value == 1 && AutoLoot_Setting_LootOnlyOwned.Value == 1
   	If PlayerRef.WouldBeStealing(akContainer)
   		akArray.Add(akContainer, 1)
+  		Return
   	EndIf
-	Else
+  EndIf
+
+	If AutoLoot_Setting_AllowStealing.Value == 1
+		akArray.Add(akContainer, 1)
+		Return
+	EndIf
+
+	If !PlayerRef.WouldBeStealing(akContainer)
 		akArray.Add(akContainer, 1)
 	EndIf
 EndFunction
@@ -223,15 +223,11 @@ EndFunction
 ; Returns true if loot in location can be processed
 
 Bool Function LocationCanBeLooted()
-	If AutoLoot_Setting_LootSettlements.Value == 0
-		Form kLocation = PlayerRef.GetCurrentLocation() as Form
-
-		If AutoLoot_Locations.HasForm(kLocation)
-			Return False
-		EndIf
+	If AutoLoot_Setting_LootSettlements.Value == 1
+		Return True
 	EndIf
 
-	Return True
+	Return !AutoLoot_Locations.HasForm(PlayerRef.GetCurrentLocation() as Form)
 EndFunction
 
 ; Loot Object

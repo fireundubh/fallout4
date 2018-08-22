@@ -29,6 +29,30 @@ EndFunction
 Function Fragment_Terminal_03(ObjectReference akTerminalRef)
 ;BEGIN CODE
 ; ---------------------------------------------------------------------
+; [ITXT]		Loot Notifications (disabled)
+; ---------------------------------------------------------------------
+GlobalVariable kGlobal = AutoLoot_Globals_Settings.GetAt(8) as GlobalVariable
+kGlobal.SetValue(0)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_04
+Function Fragment_Terminal_04(ObjectReference akTerminalRef)
+;BEGIN CODE
+; ---------------------------------------------------------------------
+; [ITXT]		Loot Notifications (enabled)
+; ---------------------------------------------------------------------
+GlobalVariable kGlobal = AutoLoot_Globals_Settings.GetAt(8) as GlobalVariable
+kGlobal.SetValue(1)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_05
+Function Fragment_Terminal_05(ObjectReference akTerminalRef)
+;BEGIN CODE
+; ---------------------------------------------------------------------
 ; [ITXT]		Loot Settlements (disabled)
 ; ---------------------------------------------------------------------
 GlobalVariable kGlobal = AutoLoot_Globals_Settings.GetAt(6) as GlobalVariable
@@ -37,8 +61,8 @@ kGlobal.SetValue(1)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Terminal_04
-Function Fragment_Terminal_04(ObjectReference akTerminalRef)
+;BEGIN FRAGMENT Fragment_Terminal_06
+Function Fragment_Terminal_06(ObjectReference akTerminalRef)
 ;BEGIN CODE
 ; ---------------------------------------------------------------------
 ; [ITXT]		Loot Settlements (enabled)
@@ -49,8 +73,8 @@ kGlobal.SetValue(0)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Terminal_05
-Function Fragment_Terminal_05(ObjectReference akTerminalRef)
+;BEGIN FRAGMENT Fragment_Terminal_07
+Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ;BEGIN CODE
 ; ---------------------------------------------------------------------
 ; [ITXT]		EXPERIMENTAL: Remove Bodies On Loot (disabled)
@@ -61,8 +85,8 @@ kGlobal.SetValue(1)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Terminal_06
-Function Fragment_Terminal_06(ObjectReference akTerminalRef)
+;BEGIN FRAGMENT Fragment_Terminal_08
+Function Fragment_Terminal_08(ObjectReference akTerminalRef)
 ;BEGIN CODE
 ; ---------------------------------------------------------------------
 ; [ITXT]		EXPERIMENTAL: Remove Bodies On Loot (enabled)

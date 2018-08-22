@@ -74,6 +74,14 @@ Function Fragment_Terminal_07(ObjectReference akTerminalRef)
 ; [ITXT]		Components Filter (disabled)
 ; ---------------------------------------------------------------------
 PlayerRef.AddPerk(AutoLoot_Perk_Components)
+
+If PlayerRef.HasPerk(AutoLoot_Perk_Valuables)
+	PlayerRef.RemovePerk(AutoLoot_Perk_Valuables)
+EndIf
+
+If PlayerRef.HasPerk(AutoLoot_Perk_Junk)
+	PlayerRef.RemovePerk(AutoLoot_Perk_Junk)
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -206,6 +214,14 @@ Function Fragment_Terminal_20(ObjectReference akTerminalRef)
 ; [ITXT]		Junk Filter (disabled)
 ; ---------------------------------------------------------------------
 PlayerRef.AddPerk(AutoLoot_Perk_Junk)
+
+If PlayerRef.HasPerk(AutoLoot_Perk_Components)
+	PlayerRef.RemovePerk(AutoLoot_Perk_Components)
+EndIf
+
+If PlayerRef.HasPerk(AutoLoot_Perk_Valuables)
+	PlayerRef.RemovePerk(AutoLoot_Perk_Valuables)
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -294,6 +310,14 @@ Function Fragment_Terminal_28(ObjectReference akTerminalRef)
 ; [ITXT]		Valuables Filter (disabled)
 ; ---------------------------------------------------------------------
 PlayerRef.AddPerk(AutoLoot_Perk_Valuables)
+
+If PlayerRef.HasPerk(AutoLoot_Perk_Components)
+	PlayerRef.RemovePerk(AutoLoot_Perk_Components)
+EndIf
+
+If PlayerRef.HasPerk(AutoLoot_Perk_Junk)
+	PlayerRef.RemovePerk(AutoLoot_Perk_Junk)
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT

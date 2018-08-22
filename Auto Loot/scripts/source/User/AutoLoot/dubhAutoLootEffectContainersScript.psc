@@ -72,21 +72,13 @@ EndFunction
 ; Return true if any exit condition met
 
 Bool Function GameStateIsValid()
-	If PlayerRef.HasPerk(ActivePerk) && !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled() && !Game.IsVATSPlaybackActive()
-		Return True
-	EndIf
-
-	Return False
+	Return PlayerRef.HasPerk(ActivePerk) && !Utility.IsInMenuMode() && Game.IsMovementControlsEnabled() && !Game.IsVATSPlaybackActive()
 EndFunction
 
 ; Return true if all conditions are met
 
 Bool Function ItemCanBeProcessed(ObjectReference akItem)
-	If akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
-		Return True
-	EndIf
-
-	Return False
+	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
 EndFunction
 
 ; Unlock and reward XP based on lock level
@@ -123,11 +115,26 @@ EndFunction
 ; Filter Loot Array
 
 Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectReference[] akArray)
-  If AutoLoot_Setting_LootOnlyOwned.Value == 1
+  If AutoLoot_Setting_UnlockContainers.Value == 0
+  	If akContainer.IsLocked()
+  		; don't add items in locked containers
+  		Return
+  	EndIf
+  EndIf
+
+  If AutoLoot_Setting_AllowStealing.Value == 1 && AutoLoot_Setting_LootOnlyOwned.Value == 1
   	If PlayerRef.WouldBeStealing(akContainer)
   		akArray.Add(akContainer, 1)
+  		Return
   	EndIf
-	Else
+  EndIf
+
+	If AutoLoot_Setting_AllowStealing.Value == 1
+		akArray.Add(akContainer, 1)
+		Return
+	EndIf
+
+	If !PlayerRef.WouldBeStealing(akContainer)
 		akArray.Add(akContainer, 1)
 	EndIf
 EndFunction
@@ -154,11 +161,7 @@ ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 				If kItem != None
 					If ItemCanBeProcessed(kItem)
 						If kItem.GetItemCount(None) > 0
-							Bool bLocked = kItem.IsLocked()
-
-							If !bLocked || (bLocked && AutoLoot_Setting_UnlockContainers.Value == 1)
-								AddObjectToObjectReferenceArray(kItem, kResult)
-							EndIf
+							AddObjectToObjectReferenceArray(kItem, kResult)
 						EndIf
 					EndIf
 				EndIf
@@ -174,23 +177,19 @@ EndFunction
 ; Returns true if loot in location can be processed
 
 Bool Function LocationCanBeLooted()
-	If AutoLoot_Setting_LootSettlements.Value == 0
-		Form kLocation = PlayerRef.GetCurrentLocation() as Form
-
-		If AutoLoot_Locations.HasForm(kLocation)
-			Return False
-		EndIf
+	If AutoLoot_Setting_LootSettlements.Value == 1
+		Return True
 	EndIf
 
-	Return True
+	Return !AutoLoot_Locations.HasForm(PlayerRef.GetCurrentLocation() as Form)
 EndFunction
 
 ; Loot Object
 
 Function LootObject(ObjectReference objLoot)
 	If (objLoot != None) && (DummyActor != None)
-		If objLoot.IsLocked()
-			If AutoLoot_Setting_UnlockContainers.Value == 1
+		If AutoLoot_Setting_UnlockContainers.Value == 1
+			If objLoot.IsLocked()
 				UnlockForXP(objLoot)
 			EndIf
 		EndIf
