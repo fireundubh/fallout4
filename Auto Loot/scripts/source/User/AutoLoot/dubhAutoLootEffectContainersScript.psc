@@ -81,38 +81,56 @@ Bool Function ItemCanBeProcessed(ObjectReference akItem)
 	Return akItem.Is3DLoaded() && !akItem.IsDisabled() && !akItem.IsDeleted() && !akItem.IsDestroyed() && !akItem.IsActivationBlocked()
 EndFunction
 
+; Check if player has a lockpicking perk - uses formlist to support other mods
+
+Bool Function PlayerCanPickLock()
+	Int i = 0
+	Bool bBreak = False
+
+	While (i < AutoLoot_Perks_Lockpicking.GetSize()) && !bBreak
+		If !GameStateIsValid()
+			bBreak = True
+		EndIf
+
+		If !bBreak
+			If PlayerRef.HasPerk(AutoLoot_Perks_Lockpicking.GetAt(i) as Perk)
+				Return True
+			EndIf
+		EndIf
+
+		i += 1
+	EndWhile
+
+	Return False
+EndFunction
+
 ; Unlock and reward XP based on lock level
 
-Function UnlockForXP(ObjectReference objContainer)
-	Bool bHasPerk = False
-
+Bool Function TryToUnlockForXP(ObjectReference objContainer)
 	Int iXPReward = 0
 	Int iLockDifficulty = objContainer.GetLockLevel()
 
-	If iLockDifficulty < 25
+	If iLockDifficulty < 50
 		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardEasy") as Int ; 5 Base XP
-		bHasPerk = True
-	ElseIf iLockDifficulty >= 25 && iLockDifficulty < 50
-		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardEasy") as Int ; 5 Base XP
-		bHasPerk = True
 	ElseIf iLockDifficulty >= 50 && iLockDifficulty < 75
 		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardAverage") as Int ; 10 Base XP
-		bHasPerk = PlayerRef.HasPerk(Locksmith01)
 	ElseIf iLockDifficulty >= 75 && iLockDifficulty < 100
 		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardHard") as Int ; 15 Base XP
-		bHasPerk = PlayerRef.HasPerk(Locksmith02)
 	ElseIf iLockDifficulty >= 100
 		iXPReward = Game.GetGameSettingFloat("fLockpickXPRewardVeryHard") as Int ; 20 Base XP
-		bHasPerk = PlayerRef.HasPerk(Locksmith03) || PlayerRef.HasPerk(Locksmith04)
 	EndIf
 
-	If bHasPerk
+	If iLockDifficulty < 50 || PlayerCanPickLock()
 		objContainer.Unlock(False)
-		Game.RewardPlayerXP(iXPReward, False) ; True = No XP adjustments
+		Game.RewardPlayerXP(iXPReward, False)
+
+		Return True
 	EndIf
+
+	Return False
 EndFunction
 
-; Filter Loot Array
+; Adds an object reference to the filtered loot array
 
 Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectReference[] akArray)
 	; exclude quest items that are explicitly excluded
@@ -148,6 +166,8 @@ Function AddObjectToObjectReferenceArray(ObjectReference akContainer, ObjectRefe
 		akArray.Add(akContainer, 1)
 	EndIf
 EndFunction
+
+; Filters the loot array for valid items
 
 ObjectReference[] Function FilterLootArray(ObjectReference[] akArray)
 	ObjectReference[] kResult = new ObjectReference[0]
@@ -199,9 +219,7 @@ EndFunction
 Function LootObject(ObjectReference objLoot)
 	If (objLoot != None) && (DummyActor != None)
 		If objLoot.IsLocked()
-			If AutoLoot_Setting_UnlockContainers.Value == 1
-				UnlockForXP(objLoot)
-			Else
+			If !TryToUnlockForXP(objLoot)
 				Return
 			EndIf
 		EndIf
@@ -252,6 +270,7 @@ Formlist Property QuestItems Auto
 Formlist Property AutoLoot_FilterAll Auto
 Formlist Property AutoLoot_Locations Auto
 Formlist Property AutoLoot_Perks Auto
+Formlist Property AutoLoot_Perks_Lockpicking Auto
 
 ; Globals
 GlobalVariable Property Destination Auto
@@ -269,7 +288,3 @@ Int Property TimerID Auto
 
 ; Perk
 Perk Property ActivePerk Auto
-Perk Property Locksmith01 Auto
-Perk Property Locksmith02 Auto
-Perk Property Locksmith03 Auto
-Perk Property Locksmith04 Auto
